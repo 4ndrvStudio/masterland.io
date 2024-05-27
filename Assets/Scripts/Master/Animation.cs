@@ -14,6 +14,7 @@ namespace masterland.Master
         private int _animIDVertical;
         private int _animIDHorizontal;
         private int _animIDGrounded;
+         private int _animIDSliding;
         private int _animIDSwordLM;
         private float _currentWeight;
         private float _smoothWeightTime =3f;
@@ -37,6 +38,7 @@ namespace masterland.Master
             _animIDVertical = Animator.StringToHash("vertical");
             _animIDHorizontal = Animator.StringToHash("horizontal");
             _animIDGrounded = Animator.StringToHash("grounded");
+            _animIDSliding = Animator.StringToHash("sliding");
             _animIDSwordLM = Animator.StringToHash("sword");
         }
 
@@ -59,6 +61,11 @@ namespace masterland.Master
         public void SetGrounded(bool isActive) {
             _animator.SetBool(_animIDGrounded, isActive);
         }
+
+        public void SetSliding(bool isActive) {
+            _animator.SetBool(_animIDSliding, isActive);
+        }
+
         public void SetWeaponType(int typeId) 
         {
              _animator.SetBool(_animIDSwordLM, typeId == 1);

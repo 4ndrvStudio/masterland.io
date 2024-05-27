@@ -20,7 +20,7 @@ namespace masterland.Master
             public bool LockOn;
             public Vector3 TargetLockOn;
 
-            public MoveData(Vector2 move, Vector3 deltaPostion, float cameraAngle, 
+            public MoveData(Vector2 move, Vector3 deltaPostion, float cameraAngle,
                                 bool sprint, bool jump, bool lockOn, Vector3 targetLockOn) : this()
             {
                 Move = move;
@@ -77,24 +77,27 @@ namespace masterland.Master
         public float Gravity = -15.0f;
         public float FallTimeout = 0.15f;
         public bool Grounded = true;
+        public bool IsSliding = false;
         public float GroundedOffset = -0.14f;
         public float GroundedRadius = 0.28f;
         public LayerMask GroundLayers;
         private float _animationBlend;
         private float _animationBlendX;
         private float _targetRotation = 0.0f;
-        private float _verticalVelocity;
+        [SerializeField] private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+        public float _maxSlopeAngle = 45f;
 
 
-       [HideInInspector] public CharacterController Controller;
-    
+        [HideInInspector] public CharacterController Controller;
+
         public MoveData MasterMoveData;
         public float ActionTime = 0.5f;
         public float RunSpeedTime;
         public float JumpTime;
         public float CurrentSpeed;
         public float CurrentSpeedX;
+        [SerializeField] private Vector3 _slopeDirection;
 
         public override void Awake()
         {
@@ -166,26 +169,27 @@ namespace masterland.Master
         [Replicate]
         private void Move(MoveData md, ReplicateState state = ReplicateState.Invalid, Channel channel = Channel.Unreliable)
         {
-      
-                GroundedCheck();
-                if (md.LockOn && Grounded) 
-                {
-                    LockOnMovement(md, (float)base.TimeManager.TickDelta);
-                }
-                else {
-                    LocoMovement(md, (float)base.TimeManager.TickDelta);
-                    JumpAndGravity(md, (float)base.TimeManager.TickDelta);
-                } 
-                 _master.State.IsBlock = md.LockOn && Grounded;
-                MasterMoveData = md;  
+
+            GroundedCheck();
+            if (md.LockOn && Grounded)
+            {
+                LockOnMovement(md, (float)base.TimeManager.TickDelta);
+            }
+            else
+            {
+                LocoMovement(md, (float)base.TimeManager.TickDelta);
+                JumpAndGravity(md, (float)base.TimeManager.TickDelta);
+            }
+            _master.State.IsBlock = md.LockOn && Grounded;
+            MasterMoveData = md;
         }
 
-     
+
 
         private void LocoMovement(MoveData md, float deltaTime)
         {
             //md.Sprint = md.Sprint && !_master.State.IsTired;
-            float rootSpeed = md.Sprint && !_master.State.IsAction? SprintSpeed : MoveSpeed;
+            float rootSpeed = md.Sprint && !_master.State.IsAction ? SprintSpeed : MoveSpeed;
             CurrentSpeed = Mathf.Lerp(CurrentSpeed, rootSpeed, deltaTime * 5f);
             RunSpeedTime = md.Sprint && !_master.State.IsAction || _master.State.IsActionKeepSpeed ? RunSpeedTime += deltaTime : 0;
 
@@ -210,49 +214,60 @@ namespace masterland.Master
 
             Vector3 deltaPosition = _master.State.IsActionKeepSpeed ? (md.DeltaPostion * 2) + transform.forward * 0.1f : md.DeltaPostion;
 
-            Vector3 deltaMovement = targetDirection.normalized * (CurrentSpeed * deltaTime) +
-                                    deltaPosition +
-                                    new Vector3(0.0f, _verticalVelocity, 0.0f) * deltaTime;
-            
-            if(Controller.enabled)
+            Vector3 deltaMovement;
+
+            if (IsOnSteepSlope(out _, out Vector3 slopeDirection))
+            {
+                Vector3 fallMovement = slopeDirection* -_verticalVelocity * deltaTime;
+                deltaMovement = fallMovement;
+
+            }
+            else
+            {
+                deltaMovement = targetDirection.normalized * (CurrentSpeed * deltaTime) +
+                                     deltaPosition +
+                                     new Vector3(0.0f, _verticalVelocity, 0.0f) * deltaTime;
+            }
+
+            if (Controller.enabled)
                 Controller.Move(deltaMovement);
-           
-            if(IsClientInitialized)
+
+            if (IsClientInitialized)
                 _master.Animation.LocoMovement(_animationBlend);
         }
 
         private void LockOnMovement(MoveData md, float deltaTime)
         {
-            RunSpeedTime =0;
+            RunSpeedTime = 0;
 
-            float rootSpeed = md.Sprint? SprintSpeed/3  : MoveSpeed/3;
+            float rootSpeed = md.Sprint ? SprintSpeed / 3 : MoveSpeed / 3;
 
-            CurrentSpeed = Mathf.Lerp(CurrentSpeed, rootSpeed*md.Move.y, deltaTime * 10f);
-            CurrentSpeedX = Mathf.Lerp(CurrentSpeedX, rootSpeed*md.Move.x, deltaTime* 10f);
+            CurrentSpeed = Mathf.Lerp(CurrentSpeed, rootSpeed * md.Move.y, deltaTime * 10f);
+            CurrentSpeedX = Mathf.Lerp(CurrentSpeedX, rootSpeed * md.Move.x, deltaTime * 10f);
 
-            _animationBlend = CurrentSpeed/(SprintSpeed/3);
-            _animationBlendX = CurrentSpeedX/(SprintSpeed/3);
+            _animationBlend = CurrentSpeed / (SprintSpeed / 3);
+            _animationBlendX = CurrentSpeedX / (SprintSpeed / 3);
 
             Vector3 from = md.TargetLockOn - transform.position;
             from.y = 0;
             Quaternion rotation = Quaternion.LookRotation(from);
-            if(!_master.State.IsDodge && !_master.State.IsHardAction)
+            if (!_master.State.IsDodge && !_master.State.IsHardAction)
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.2f);
 
             Vector3 moveDir = transform.forward * md.Move.y + transform.right * md.Move.x;
 
-            if(md.Move.y != 0 && md.Move.x != 0)
-                rootSpeed=((Mathf.Abs(md.Move.y) + Mathf.Abs(md.Move.x))/2 * rootSpeed);
-            
-            Vector3 deltaPosition = _master.State.IsAction? md.DeltaPostion : Vector3.zero;
-            
-            Vector3 targetDirection = _master.State.IsAction? Vector3.zero : (moveDir * rootSpeed * deltaTime);
-           
-            if(Controller.enabled)
+            if (md.Move.y != 0 && md.Move.x != 0)
+                rootSpeed = ((Mathf.Abs(md.Move.y) + Mathf.Abs(md.Move.x)) / 2 * rootSpeed);
+
+            Vector3 deltaPosition = _master.State.IsAction ? md.DeltaPostion : Vector3.zero;
+
+            Vector3 targetDirection = _master.State.IsAction ? Vector3.zero : (moveDir * rootSpeed * deltaTime);
+
+            if (Controller.enabled)
                 Controller.Move(targetDirection + deltaPosition +
                                     new Vector3(0.0f, _verticalVelocity, 0.0f) * deltaTime);
 
-             if(IsClientInitialized)
+            if (IsClientInitialized)
                 _master.Animation.LockOnMovement(_animationBlend, _animationBlendX);
         }
 
@@ -276,29 +291,73 @@ namespace masterland.Master
         private void GroundedCheck()
         {
             // set sphere position, with offset
-            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset,
-            transform.position.z);
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers);
+
+            if (Grounded && IsOnSteepSlope(out Vector3 slopeNormal, out Vector3 slopeDirection))
+            {
+                IsSliding = true;
+                Grounded = false;
+                _slopeDirection = slopeDirection;
+            }
+            else
+            {
+                IsSliding = false;
+            }
+        }
+
+        private bool IsOnSteepSlope(out Vector3 slopeNormal, out Vector3 slopeDirection)
+        {
+            slopeNormal = Vector3.up;
+            slopeDirection = Vector3.zero;
+
+            if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out RaycastHit hit, 5, GroundLayers))
+            {
+                slopeNormal = hit.normal;
+                float angle = Vector3.Angle(Vector3.up, hit.normal);
+                if (angle >= Controller.slopeLimit)
+                {
+                    slopeDirection = Vector3.ProjectOnPlane(Vector3.down, slopeNormal);
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void JumpAndGravity(MoveData md, float delta)
         {
-            if(md.LockOn)
+            if (md.LockOn)
                 return;
 
-            float jumpFactor = _master.Weapon.GetTypeId() != 0 ? JumpHeight * 1.5f : JumpHeight;
+            if (Grounded)
+            {
+                if (_verticalVelocity < 0.0f)
+                {
+                    _verticalVelocity = -2f;
+                }
 
-            // if (Grounded && md.Jump && !_master.State.IsAction)
-            //     _verticalVelocity = Mathf.Sqrt(jumpFactor * -2f * Gravity);
+                float jumpFactor = _master.Weapon.GetTypeId() != 0 ? JumpHeight * 1.5f : JumpHeight;
+                if (md.Jump && !_master.State.IsAction) 
+                    _verticalVelocity = Mathf.Sqrt(jumpFactor * -2f * Gravity);
+
+            }
+            else
+            {
+                if (_verticalVelocity < _terminalVelocity)
+                {
+                    _verticalVelocity += Gravity * delta;
+                }
+            }
+
 
             JumpTime = Grounded ? 0 : JumpTime += delta;
 
+            _master.Animation.SetSliding(IsSliding);
             _master.Animation.SetGrounded(Grounded);
+        
 
-            if (_verticalVelocity < _terminalVelocity)
-            {
-                _verticalVelocity += Gravity * delta;
-            }
+
         }
 
         private void OnDrawGizmosSelected()
