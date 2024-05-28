@@ -170,7 +170,7 @@ namespace MapMagic.Core
 		public Material DefaultTerrainMaterial ()
 		{
 			#if UNITY_2019_2_OR_NEWER
-			Shader shader = UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset?.defaultTerrainMaterial?.shader;
+			Shader shader = UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline?.defaultTerrainMaterial?.shader;
 			#else
 			Shader shader = null;
 			#endif

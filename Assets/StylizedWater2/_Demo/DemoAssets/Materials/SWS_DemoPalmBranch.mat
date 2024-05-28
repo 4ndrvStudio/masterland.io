@@ -8,8 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SWS_DemoPalmBranch
-  m_Shader: {fileID: -6465566751694194690, guid: e2335271dc0537147af5dbcb5f4ece06,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e2335271dc0537147af5dbcb5f4ece06, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _NORMALMAP
@@ -20,6 +21,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -149,6 +151,7 @@ Material:
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.401}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &1059197617892422896
 MonoBehaviour:
   m_ObjectHideFlags: 11

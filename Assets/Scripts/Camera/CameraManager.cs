@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
+using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Rendering;
+
 
 namespace masterland
 {
     public class CameraManager : Singleton<CameraManager>
     {
         public Camera MainCamara;
-        [SerializeField] private CinemachineFreeLook _cineCam;
-        [SerializeField] private CinemachineVirtualCamera _lockOnCam;
+        [SerializeField] private FreeCamera _cineCam;
+        [SerializeField] private CinemachineCamera _lockOnCam;
         [SerializeField] private TargetLookPoint _targetLookPoint;
         [SerializeField] private TargetLookPoint _targetLockPoint;
         

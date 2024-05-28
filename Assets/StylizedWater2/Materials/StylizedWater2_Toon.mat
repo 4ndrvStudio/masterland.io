@@ -8,21 +8,22 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: StylizedWater2_Toon
-  m_Shader: {fileID: -6465566751694194690, guid: d7b0192b9bf19c949900035fa781fdc4,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: d7b0192b9bf19c949900035fa781fdc4, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ADVANCED_SHADING
   - _ENVIRONMENTREFLECTIONS_OFF
-  - _FOAM
-  - _NORMALMAP
   - _RECEIVE_SHADOWS_OFF
   - _SHARP_INERSECTION
   - _SPECULARHIGHLIGHTS_OFF
   - _UNLIT
+  - _WAVES
   m_InvalidKeywords:
   - ADVANCED_LIGHTING
   - _DEPTHEXP_ON
   - _DEPTH_TEX
+  - _VERTEXCOLORWAVEFLATTENING_ON
   - _WORLDSPACEUV_ON
   - _ZCLIP_ON
   m_LightmapFlags: 4
@@ -31,6 +32,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -164,7 +166,7 @@ Material:
     - _FoamBaseAmount: 1
     - _FoamClipping: 0.968
     - _FoamDistortion: 0.22
-    - _FoamOn: 1
+    - _FoamOn: 0
     - _FoamOpacity: 0.151
     - _FoamSize: 0.771
     - _FoamSpeed: 0.5
@@ -198,11 +200,11 @@ Material:
     - _Metallicness: 0.1
     - _NORMALMAPOn: 1
     - _NormalMap: 1
-    - _NormalMapOn: 1
+    - _NormalMapOn: 0
     - _NormalSpeed: 0.2
     - _NormalStrength: 0.353
     - _NormalSubSpeed: -0.5
-    - _NormalSubTiling: 0.5
+    - _NormalSubTiling: 5
     - _NormalTiling: 0.3300001
     - _OcclusionStrength: 1
     - _PlanarReflectionsEnabled: 0
@@ -266,15 +268,15 @@ Material:
     - _UnderwaterSurfaceSmoothness: 0.8
     - _VertexColorDepth: 0
     - _VertexColorFoam: 0
-    - _VertexColorWaveFlattening: 0
-    - _WaveCount: 4
+    - _VertexColorWaveFlattening: 1
+    - _WaveCount: 5
     - _WaveDistance: 0.679
     - _WaveHeight: 0.47
     - _WaveNormalStr: 0
     - _WaveSpeed: 2
     - _WaveSteepness: 5
     - _WaveTint: 0.1
-    - _WavesOn: 0
+    - _WavesOn: 1
     - _WorkflowMode: 1
     - _WorldSpaceUV: 1
     - _ZClip: 1
@@ -290,7 +292,7 @@ Material:
     - _FoamTiling: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _HorizonColor: {r: 0.68, g: 1, b: 0.99, a: 0.15}
     - _IntersectionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _NormalTiling: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _NormalTiling: {r: 5, g: 5, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShallowColor: {r: 0, g: 1, b: 0.98136926, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
@@ -299,6 +301,7 @@ Material:
     - _WaveDirection: {r: 1, g: 1, b: 1, a: 1}
     - _WaveFadeDistance: {r: 150, g: 300, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &6498140463000427223
 MonoBehaviour:
   m_ObjectHideFlags: 11
