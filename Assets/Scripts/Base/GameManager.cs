@@ -6,11 +6,12 @@ using FishNet.Managing;
 using FishNet.Object;
 using FishNet.Transporting;
 using FishNet.Transporting.Tugboat;
-using Unity.VisualScripting;
+using FishNet.Transporting.Bayou;
 using UnityEngine;
 
 namespace masterland.Manager
 {
+    using FishNet.Transporting.Multipass;
     using Map;
     public class GameManager : MonoBehaviour
     {
@@ -23,7 +24,9 @@ namespace masterland.Manager
         [SerializeField] private bool _isServer;
         [SerializeField] private Transform _spawnPos;
         private NetworkManager _networkManager;
-        private Tugboat _tugBoat;
+        private Multipass _mp;
+        private Tugboat _tugboat;
+        private Bayou _bayou;
         private LocalConnectionState _clientState;
         private LocalConnectionState _serverState;
         public string PlayerName = "Player @";
@@ -35,13 +38,23 @@ namespace masterland.Manager
                 Instance = this;
 
             _networkManager = _networkManager = FindFirstObjectByType<NetworkManager>();
-            _tugBoat = FindFirstObjectByType<Tugboat>();
-        
+            _mp = FindFirstObjectByType<Multipass>();       
+            _tugboat = FindFirstObjectByType<Tugboat>();   
+            _bayou = FindFirstObjectByType<Bayou>();
+
+            #if UNITY_WEBGL && !UNITY_EDITOR
+                Debug.Log("Set Port to Bayou");
+                _mp.SetClientTransport<Bayou>();
+            #else
+                Debug.Log("Set Port to Tugboat");
+                _mp.SetClientTransport<Tugboat>();
+            #endif
+
             _uiManager.SetActive(!_isServer);
          
             if (_isDev)
             {
-                _tugBoat.SetClientAddress("127.0.0.1");
+                _networkManager.TransportManager.Transport.SetClientAddress("127.0.0.1");
                 if (_isServer)
                 {
                     StartServer();
@@ -49,7 +62,7 @@ namespace masterland.Manager
             }
             else
             {
-                _tugBoat.SetClientAddress(Sanitize(_serverIpAddress));
+                _networkManager.TransportManager.Transport.SetClientAddress(Sanitize(_serverIpAddress));
                 if (_isServer)
                 {
                     StartServer();
@@ -68,6 +81,7 @@ namespace masterland.Manager
                 _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedStartScenes;
             }
 
+            Application.targetFrameRate = 61;
 
 
         }
@@ -76,18 +90,6 @@ namespace masterland.Manager
         private void ClientManager_OnClientConnectionState(ClientConnectionStateArgs obj)
         {
             _clientState = obj.ConnectionState;
-             if(_clientState == LocalConnectionState.Starting) {
-                Debug.Log("Starting ....");
-           }
-           if(_clientState == LocalConnectionState.Stopped) {
-                Debug.Log("Stopped ....");
-           }
-           if(_clientState == LocalConnectionState.Started) {
-                Debug.Log("Started ....");
-           }
-           if(_clientState == LocalConnectionState.Stopping) {
-                Debug.Log("Stopping ....");
-           }
         }
 
 
@@ -124,7 +126,8 @@ namespace masterland.Manager
 
         public void StartServer()
         {
-            _tugBoat.SetPort(_port);
+            _tugboat.SetPort(_port);
+            _bayou.SetPort(_port);
             if (_serverState != LocalConnectionState.Stopped)
                 _networkManager.ServerManager.StopConnection(true);
             StartCoroutine(IEStartServer());
@@ -139,7 +142,9 @@ namespace masterland.Manager
 
         private void StartClient(ushort port)
         {
-            _tugBoat.SetPort(port);
+            _tugboat.SetPort(port);
+            _bayou.SetPort(port);
+        
             if (_clientState != LocalConnectionState.Stopped)
                 _networkManager.ClientManager.StopConnection();
 
@@ -150,16 +155,10 @@ namespace masterland.Manager
         {
             UIManager.Instance.ToggleWaiting(true);
             UIManager.Instance.ToggleLoginPanel(false);
-            Debug.Log("Init client");
             yield return new WaitUntil(() => _clientState == LocalConnectionState.Stopped);
-            Debug.Log("Stop client");
             _networkManager.ClientManager.StartConnection();
-            Debug.Log("start connect");
-
             yield return new WaitUntil(() => _clientState == LocalConnectionState.Started);
-            Debug.Log("start client");
             yield return new WaitForSeconds(2f);
-            Debug.Log("Loaded");
             UIManager.Instance.ToggleWaiting(false);
         }
 

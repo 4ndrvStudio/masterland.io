@@ -4139,7 +4139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e4a322dca349547989b14021da4e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transport: {fileID: 5301952783826273760}
+  Transport: {fileID: 7843143035913308106}
   _intermediateLayer: {fileID: 0}
   _latencySimulator:
     _enabled: 0
@@ -5098,7 +5098,7 @@ MonoBehaviour:
   _timingType: 0
   _allowTickDropping: 0
   _maximumFrameTicks: 2
-  _tickRate: 60
+  _tickRate: 61
   _pingInterval: 1
   _physicsMode: 1
 --- !u!1 &5077215451385742049
@@ -5270,10 +5270,13 @@ GameObject:
   - component: {fileID: 5013542384732635934}
   - component: {fileID: 7843143035913308102}
   - component: {fileID: 2526845028118149361}
+  - component: {fileID: 7843143035913308106}
   - component: {fileID: 5301952783826273760}
+  - component: {fileID: 7843143035913308105}
   - component: {fileID: 4952671588778858259}
   - component: {fileID: 1170714486240747625}
   - component: {fileID: 7843143035913308103}
+  - component: {fileID: 7843143035913308107}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -5806,7 +5809,69 @@ MonoBehaviour:
   _remoteServerTimeout: 2
   _remoteServerTimeoutDuration: 60
   _changeFrameRate: 1
-  _frameRate: 60
+  _frameRate: 61
+--- !u!114 &7843143035913308105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445529876130908978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 362dfd7e6009fb44c90beec3df0ad853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useWss: 0
+  _sslConfiguration:
+    Enabled: 0
+    CertificatePath: 
+    CertificatePassword: 
+    SslProtocol: 0
+  _mtu: 1023
+  _port: 7777
+  _maximumClients: 2000
+  _clientAddress: localhost
+--- !u!114 &7843143035913308106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445529876130908978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 314b449d3505bd24487ba69b61c2fda5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalServerActions: 1
+  _transports:
+  - {fileID: 5301952783826273760}
+  - {fileID: 7843143035913308105}
+--- !u!114 &7843143035913308107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445529876130908978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68828c85278210948b9d50a8db3aab74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _authenticator: {fileID: 0}
+  _remoteClientTimeout: 2
+  _remoteClientTimeoutDuration: 60
+  _syncTypeRate: 0.1
+  SpawnPacking:
+    Position: 0
+    Rotation: 2
+    Scale: 2
+  _changeFrameRate: 1
+  _frameRate: 61
+  _shareIds: 1
+  _startOnHeadless: 1
 --- !u!224 &7904908816989827031
 RectTransform:
   m_ObjectHideFlags: 0

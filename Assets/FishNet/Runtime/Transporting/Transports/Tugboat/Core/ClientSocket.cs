@@ -154,7 +154,7 @@ namespace FishNet.Transporting.Tugboat.Client
             //Assign properties.
             _port = port;
             _address = address;
-
+            Debug.Log("Call Start Client ..");
             ResetQueues();
             Task t = Task.Run(() => ThreadedSocket());
 
