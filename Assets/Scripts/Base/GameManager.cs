@@ -9,8 +9,9 @@ using FishNet.Transporting.Tugboat;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace masterland
+namespace masterland.Manager
 {
+    using Map;
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
@@ -33,7 +34,6 @@ namespace masterland
             if (Instance == null)
                 Instance = this;
 
-
             _networkManager = _networkManager = FindFirstObjectByType<NetworkManager>();
             _tugBoat = FindFirstObjectByType<Tugboat>();
         
@@ -41,7 +41,7 @@ namespace masterland
          
             if (_isDev)
             {
-                _tugBoat.SetClientAddress("localhost");
+                _tugBoat.SetClientAddress("127.0.0.1");
                 if (_isServer)
                 {
                     StartServer();
@@ -76,6 +76,18 @@ namespace masterland
         private void ClientManager_OnClientConnectionState(ClientConnectionStateArgs obj)
         {
             _clientState = obj.ConnectionState;
+             if(_clientState == LocalConnectionState.Starting) {
+                Debug.Log("Starting ....");
+           }
+           if(_clientState == LocalConnectionState.Stopped) {
+                Debug.Log("Stopped ....");
+           }
+           if(_clientState == LocalConnectionState.Started) {
+                Debug.Log("Started ....");
+           }
+           if(_clientState == LocalConnectionState.Stopping) {
+                Debug.Log("Stopping ....");
+           }
         }
 
 
@@ -100,7 +112,7 @@ namespace masterland
             }
          
             Vector3 randomDirection = UnityEngine.Random.insideUnitCircle.normalized * 20f;
-            Vector3 newPosition = _spawnPos.transform.position + new Vector3(randomDirection.x, 5, randomDirection.z);
+            Vector3 newPosition = Map.Instance.MapData.SpawnPos.position + new Vector3(randomDirection.x, 5, randomDirection.z);
             Quaternion randomRotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f);
             _playerPrefab.transform.position = newPosition;
             _playerPrefab.transform.rotation = randomRotation;
@@ -138,9 +150,14 @@ namespace masterland
         {
             UIManager.Instance.ToggleWaiting(true);
             UIManager.Instance.ToggleLoginPanel(false);
+            Debug.Log("Init client");
             yield return new WaitUntil(() => _clientState == LocalConnectionState.Stopped);
+            Debug.Log("Stop client");
             _networkManager.ClientManager.StartConnection();
+            Debug.Log("start connect");
+
             yield return new WaitUntil(() => _clientState == LocalConnectionState.Started);
+            Debug.Log("start client");
             yield return new WaitForSeconds(2f);
             Debug.Log("Loaded");
             UIManager.Instance.ToggleWaiting(false);

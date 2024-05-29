@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace masterland
 {
+    using Manager;
     public class UIManager : MonoBehaviour
     {
         public static UIManager Instance;

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TFF_Atlas_Vegetation_1A_D
-  m_Shader: {fileID: 4800000, guid: 6643609342d69a5419d4f58d75fd5a09, type: 3}
+  m_Shader: {fileID: 4800000, guid: 95ba5b42a42a33143b0a911b61cc9bca, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

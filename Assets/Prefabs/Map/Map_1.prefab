@@ -1,0 +1,2611 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1278745052143539445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5900922026975249338}
+  - component: {fileID: 6407284766363660824}
+  - component: {fileID: 5385701197663989450}
+  m_Layer: 0
+  m_Name: Spawn Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5900922026975249338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278745052143539445}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 629.29535, y: 52.58, z: 879.72845}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5823858658092803396}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &6407284766363660824
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278745052143539445}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &5385701197663989450
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278745052143539445}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2420429688120113114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5823858658092803396}
+  - component: {fileID: 8072024276700607794}
+  m_Layer: 0
+  m_Name: Map_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5823858658092803396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420429688120113114}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4446394807084797477}
+  - {fileID: 5900922026975249338}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8072024276700607794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420429688120113114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c6f25902b07fd4088382bf334a3fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MapID: 1
+  TransitionDatas:
+  - MineralType: 0
+    Drafts:
+    - pos: {x: 523.1945, y: 58.928528, z: 156.44693}
+      rotation: {x: 0, y: 0.011001563, z: 0, w: 0.9999395}
+      scale: {x: 4.6329985, y: 4.6329985, z: 4.6329985}
+      terrainHeight: 0
+      id: 1
+      hash: 76012
+      num: 0
+    - pos: {x: 518.1481, y: 59.060356, z: 158.0921}
+      rotation: {x: 0, y: 0.4345028, z: 0, w: -0.90067047}
+      scale: {x: 6.075903, y: 6.075903, z: 6.075903}
+      terrainHeight: 0
+      id: 2
+      hash: 76013
+      num: 0
+    - pos: {x: 431.68372, y: 55.67378, z: 224.33334}
+      rotation: {x: 0, y: 0.17829995, z: 0, w: 0.9839762}
+      scale: {x: 5.8375363, y: 5.8375363, z: 5.8375363}
+      terrainHeight: 0
+      id: 3
+      hash: 64016
+      num: 0
+    - pos: {x: 430.51202, y: 56.163513, z: 219.09349}
+      rotation: {x: 0, y: 0.8613547, z: 0, w: -0.508004}
+      scale: {x: 5.294333, y: 5.294333, z: 5.294333}
+      terrainHeight: 0
+      id: 4
+      hash: 64018
+      num: 0
+    - pos: {x: 402.50922, y: 55.348385, z: 262.18408}
+      rotation: {x: 0, y: 0.8957298, z: 0, w: 0.44459882}
+      scale: {x: 4.3292847, y: 4.3292847, z: 4.3292847}
+      terrainHeight: 0
+      id: 5
+      hash: 60020
+      num: 0
+    - pos: {x: 407.45178, y: 55.50548, z: 262.97406}
+      rotation: {x: 0, y: 0.99467015, z: 0, w: -0.10310822}
+      scale: {x: 4.267938, y: 4.267938, z: 4.267938}
+      terrainHeight: 0
+      id: 6
+      hash: 60021
+      num: 0
+    - pos: {x: 402.01498, y: 54.932922, z: 258.51425}
+      rotation: {x: 0, y: 0.8197754, z: 0, w: -0.5726852}
+      scale: {x: 5.00564, y: 5.00564, z: 5.00564}
+      terrainHeight: 0
+      id: 7
+      hash: 60022
+      num: 0
+    - pos: {x: 397.09033, y: 55.164204, z: 261.23593}
+      rotation: {x: 0, y: 0.4377475, z: 0, w: 0.8990979}
+      scale: {x: 4.162161, y: 4.162161, z: 4.162161}
+      terrainHeight: 0
+      id: 8
+      hash: 60023
+      num: 0
+    - pos: {x: 427.11258, y: 65.69313, z: 291.2739}
+      rotation: {x: 0, y: 0.92256165, z: 0, w: 0.38584974}
+      scale: {x: 4.429797, y: 4.429797, z: 4.429797}
+      terrainHeight: 0
+      id: 9
+      hash: 64022
+      num: 0
+    - pos: {x: 423.42242, y: 63.902046, z: 288.05725}
+      rotation: {x: 0, y: 0.8489039, z: 0, w: -0.5285472}
+      scale: {x: 5.2514462, y: 5.2514462, z: 5.2514462}
+      terrainHeight: 0
+      id: 10
+      hash: 64023
+      num: 0
+    - pos: {x: 402.38052, y: 64.08569, z: 303.5856}
+      rotation: {x: 0, y: 0.61042917, z: 0, w: -0.79207087}
+      scale: {x: 4.967175, y: 4.967175, z: 4.967175}
+      terrainHeight: 0
+      id: 11
+      hash: 64024
+      num: 0
+    - pos: {x: 443.9671, y: 57.987045, z: 247.63101}
+      rotation: {x: 0, y: 0.15942577, z: 0, w: -0.9872099}
+      scale: {x: 5.0645294, y: 5.0645294, z: 5.0645294}
+      terrainHeight: 0
+      id: 12
+      hash: 68018
+      num: 0
+    - pos: {x: 445.3473, y: 57.795467, z: 242.82536}
+      rotation: {x: 0, y: 0.981559, z: 0, w: 0.19115952}
+      scale: {x: 5.8559265, y: 5.8559265, z: 5.8559265}
+      terrainHeight: 0
+      id: 13
+      hash: 68020
+      num: 0
+    - pos: {x: 449.70337, y: 69.5508, z: 301.57037}
+      rotation: {x: 0, y: 0.93093836, z: 0, w: 0.3651764}
+      scale: {x: 4.8354278, y: 4.8354278, z: 4.8354278}
+      terrainHeight: 0
+      id: 14
+      hash: 68024
+      num: 0
+    - pos: {x: 453.36887, y: 69.67942, z: 300.3242}
+      rotation: {x: 0, y: 0.98870283, z: 0, w: 0.14988878}
+      scale: {x: 3.9094055, y: 3.9094055, z: 3.9094055}
+      terrainHeight: 0
+      id: 15
+      hash: 68025
+      num: 0
+    - pos: {x: 456.41602, y: 70.75245, z: 303.85516}
+      rotation: {x: 0, y: 0.9813267, z: 0, w: 0.19234832}
+      scale: {x: 5.014133, y: 5.014133, z: 5.014133}
+      terrainHeight: 0
+      id: 16
+      hash: 68026
+      num: 0
+    - pos: {x: 567.3786, y: 62.742294, z: 238.43283}
+      rotation: {x: 0, y: 0.044525117, z: 0, w: -0.99900824}
+      scale: {x: 4.765939, y: 4.765939, z: 4.765939}
+      terrainHeight: 0
+      id: 17
+      hash: 84020
+      num: 0
+    - pos: {x: 613.38574, y: 55.687206, z: 281.80405}
+      rotation: {x: 0, y: 0.73170614, z: 0, w: -0.68162024}
+      scale: {x: 5.5536866, y: 5.5536866, z: 5.5536866}
+      terrainHeight: 0
+      id: 18
+      hash: 88022
+      num: 0
+    - pos: {x: 614.078, y: 56.717308, z: 286.69403}
+      rotation: {x: 0, y: 0.6559336, z: 0, w: 0.7548186}
+      scale: {x: 5.6374936, y: 5.6374936, z: 5.6374936}
+      terrainHeight: 0
+      id: 19
+      hash: 88023
+      num: 0
+    - pos: {x: 622.9886, y: 56.456226, z: 294.35162}
+      rotation: {x: 0, y: 0.17820063, z: 0, w: 0.9839942}
+      scale: {x: 4.48974, y: 4.48974, z: 4.48974}
+      terrainHeight: 0
+      id: 20
+      hash: 92024
+      num: 0
+    - pos: {x: 157.85211, y: 55.514362, z: 364.3118}
+      rotation: {x: 0, y: 0.6558023, z: 0, w: -0.75493264}
+      scale: {x: 5.280084, y: 5.280084, z: 5.280084}
+      terrainHeight: 0
+      id: 21
+      hash: 24026
+      num: 0
+    - pos: {x: 341.01346, y: 55.876675, z: 316.8386}
+      rotation: {x: 0, y: 0.99277884, z: 0, w: -0.11995902}
+      scale: {x: 4.1435604, y: 4.1435604, z: 4.1435604}
+      terrainHeight: 0
+      id: 22
+      hash: 52024
+      num: 0
+    - pos: {x: 341.99323, y: 55.58924, z: 313.2399}
+      rotation: {x: 0, y: -0.09309985, z: 0, w: -0.9956568}
+      scale: {x: 4.5702486, y: 4.5702486, z: 4.5702486}
+      terrainHeight: 0
+      id: 23
+      hash: 52025
+      num: 0
+    - pos: {x: 349.1395, y: 56.63144, z: 315.43835}
+      rotation: {x: 0, y: 0.99971956, z: 0, w: 0.023680814}
+      scale: {x: 5.4066377, y: 5.4066377, z: 5.4066377}
+      terrainHeight: 0
+      id: 24
+      hash: 52026
+      num: 0
+    - pos: {x: 340.45743, y: 57.9795, z: 329.2782}
+      rotation: {x: 0, y: 0.99971956, z: 0, w: 0.023680814}
+      scale: {x: 5.4066377, y: 5.4066377, z: 5.4066377}
+      terrainHeight: 0
+      id: 25
+      hash: 52026
+      num: 0
+    - pos: {x: 344.6361, y: 58.859848, z: 329.8608}
+      rotation: {x: 0, y: 0.26305798, z: 0, w: -0.96478003}
+      scale: {x: 4.2659726, y: 4.2659726, z: 4.2659726}
+      terrainHeight: 0
+      id: 26
+      hash: 52028
+      num: 0
+    - pos: {x: 336.5395, y: 57.24699, z: 327.4213}
+      rotation: {x: 0, y: 0.5248268, z: 0, w: 0.85120904}
+      scale: {x: 6.0267, y: 6.0267, z: 6.0267}
+      terrainHeight: 0
+      id: 27
+      hash: 52029
+      num: 0
+    - pos: {x: 400.4449, y: 64.29513, z: 307.21716}
+      rotation: {x: 0, y: 0.2540608, z: 0, w: 0.96718824}
+      scale: {x: 5.139282, y: 5.139282, z: 5.139282}
+      terrainHeight: 0
+      id: 28
+      hash: 64025
+      num: 0
+    - pos: {x: 454.99603, y: 74.4767, z: 315.54562}
+      rotation: {x: 0, y: 0.9813267, z: 0, w: 0.19234832}
+      scale: {x: 5.014133, y: 5.014133, z: 5.014133}
+      terrainHeight: 0
+      id: 29
+      hash: 68026
+      num: 0
+    - pos: {x: 450.7521, y: 76.633064, z: 319.49103}
+      rotation: {x: 0, y: 0.76801103, z: 0, w: -0.6404366}
+      scale: {x: 4.701785, y: 4.701785, z: 4.701785}
+      terrainHeight: 0
+      id: 30
+      hash: 68027
+      num: 0
+    - pos: {x: 454.79993, y: 76.088615, z: 319.5071}
+      rotation: {x: 0, y: 0.9709325, z: 0, w: 0.23935357}
+      scale: {x: 5.1709375, y: 5.1709375, z: 5.1709375}
+      terrainHeight: 0
+      id: 31
+      hash: 68029
+      num: 0
+    - pos: {x: 466.09, y: 79.954765, z: 326.40115}
+      rotation: {x: 0, y: 0.47439164, z: 0, w: 0.88031393}
+      scale: {x: 4.4575224, y: 4.4575224, z: 4.4575224}
+      terrainHeight: 0
+      id: 32
+      hash: 72026
+      num: 0
+    - pos: {x: 474.0938, y: 79.960304, z: 320.59842}
+      rotation: {x: 0, y: 0.01809418, z: 0, w: -0.99983627}
+      scale: {x: 4.047189, y: 4.047189, z: 4.047189}
+      terrainHeight: 0
+      id: 33
+      hash: 72028
+      num: 0
+    - pos: {x: 473.9772, y: 81.30248, z: 326.41858}
+      rotation: {x: 0, y: 0.6448938, z: 0, w: 0.76427215}
+      scale: {x: 4.8175993, y: 4.8175993, z: 4.8175993}
+      terrainHeight: 0
+      id: 34
+      hash: 72029
+      num: 0
+    - pos: {x: 469.87552, y: 79.88697, z: 323.57898}
+      rotation: {x: 0, y: 0.5929132, z: 0, w: 0.8052664}
+      scale: {x: 4.53403, y: 4.53403, z: 4.53403}
+      terrainHeight: 0
+      id: 35
+      hash: 36013
+      num: 0
+    - pos: {x: 549.6244, y: 92.64969, z: 337.94556}
+      rotation: {x: 0, y: 0.044396278, z: 0, w: 0.999014}
+      scale: {x: 4.12861, y: 4.12861, z: 4.12861}
+      terrainHeight: 0
+      id: 36
+      hash: 84026
+      num: 0
+    - pos: {x: 551.5449, y: 92.65504, z: 344.20053}
+      rotation: {x: 0, y: 0.98639137, z: 0, w: -0.16441426}
+      scale: {x: 4.5066557, y: 4.5066557, z: 4.5066557}
+      terrainHeight: 0
+      id: 37
+      hash: 84028
+      num: 0
+    - pos: {x: 553.2431, y: 92.64957, z: 340.7118}
+      rotation: {x: 0, y: 0.78208715, z: 0, w: 0.62316906}
+      scale: {x: 5.3711214, y: 5.3711214, z: 5.3711214}
+      terrainHeight: 0
+      id: 38
+      hash: 84029
+      num: 0
+    - pos: {x: 164.00871, y: 55.508343, z: 383.29276}
+      rotation: {x: 0, y: 0.9874966, z: 0, w: -0.15764037}
+      scale: {x: 4.83241, y: 4.83241, z: 4.83241}
+      terrainHeight: 0
+      id: 39
+      hash: 24028
+      num: 0
+    - pos: {x: 160.92247, y: 55.09383, z: 378.4785}
+      rotation: {x: 0, y: -0.04729232, z: 0, w: -0.9988811}
+      scale: {x: 5.9919553, y: 5.9919553, z: 5.9919553}
+      terrainHeight: 0
+      id: 40
+      hash: 24029
+      num: 0
+    - pos: {x: 162.3258, y: 54.904507, z: 388.5276}
+      rotation: {x: 0, y: 0.5717447, z: 0, w: 0.8204316}
+      scale: {x: 4.194168, y: 4.194168, z: 4.194168}
+      terrainHeight: 0
+      id: 41
+      hash: 24030
+      num: 0
+    - pos: {x: 246.37395, y: 58.35558, z: 387.59006}
+      rotation: {x: 0, y: 0.74417084, z: 0, w: -0.6679894}
+      scale: {x: 5.8975496, y: 5.8975496, z: 5.8975496}
+      terrainHeight: 0
+      id: 42
+      hash: 36028
+      num: 0
+    - pos: {x: 247.68217, y: 58.198902, z: 390.65112}
+      rotation: {x: 0, y: 0.6131438, z: 0, w: -0.78997135}
+      scale: {x: 4.7768188, y: 4.7768188, z: 4.7768188}
+      terrainHeight: 0
+      id: 43
+      hash: 36030
+      num: 0
+    - pos: {x: 296.0976, y: 55.702778, z: 387.98703}
+      rotation: {x: 0, y: 0.6409511, z: 0, w: 0.7675817}
+      scale: {x: 3.9738402, y: 3.9738402, z: 3.9738402}
+      terrainHeight: 0
+      id: 44
+      hash: 44028
+      num: 0
+    - pos: {x: 300.8761, y: 55.85559, z: 388.09558}
+      rotation: {x: 0, y: 0.30954224, z: 0, w: 0.9508857}
+      scale: {x: 3.9396574, y: 3.9396574, z: 3.9396574}
+      terrainHeight: 0
+      id: 45
+      hash: 44029
+      num: 0
+    - pos: {x: 251.0133, y: 57.860825, z: 389.7615}
+      rotation: {x: 0, y: 0.8680825, z: 0, w: 0.49641997}
+      scale: {x: 4.992514, y: 4.992514, z: 4.992514}
+      terrainHeight: 0
+      id: 46
+      hash: 18014
+      num: 0
+    - pos: {x: 339.9245, y: 57.307053, z: 388.94437}
+      rotation: {x: 0, y: 0.26305798, z: 0, w: -0.96478003}
+      scale: {x: 4.2659726, y: 4.2659726, z: 4.2659726}
+      terrainHeight: 0
+      id: 47
+      hash: 52028
+      num: 0
+    - pos: {x: 338.7466, y: 57.729107, z: 382.39874}
+      rotation: {x: 0, y: 0.5248268, z: 0, w: 0.85120904}
+      scale: {x: 6.0267, y: 6.0267, z: 6.0267}
+      terrainHeight: 0
+      id: 48
+      hash: 52029
+      num: 0
+    - pos: {x: 332.88617, y: 57.594276, z: 380.65088}
+      rotation: {x: 0, y: 0.45850003, z: 0, w: 0.8886944}
+      scale: {x: 6.028876, y: 6.028876, z: 6.028876}
+      terrainHeight: 0
+      id: 49
+      hash: 52030
+      num: 0
+    - pos: {x: 354.6359, y: 58.56871, z: 392.84967}
+      rotation: {x: 0, y: 0.4322035, z: 0, w: 0.9017761}
+      scale: {x: 5.65813, y: 5.65813, z: 5.65813}
+      terrainHeight: 0
+      id: 50
+      hash: 56028
+      num: 0
+    - pos: {x: 356.09555, y: 59.492886, z: 388.98474}
+      rotation: {x: 0, y: 0.28924942, z: 0, w: -0.95725375}
+      scale: {x: 5.2626066, y: 5.2626066, z: 5.2626066}
+      terrainHeight: 0
+      id: 51
+      hash: 56031
+      num: 0
+    - pos: {x: 388.23874, y: 63.410362, z: 423.9909}
+      rotation: {x: 0, y: 0.9953711, z: 0, w: 0.09610586}
+      scale: {x: 4.9156556, y: 4.9156556, z: 4.9156556}
+      terrainHeight: 0
+      id: 52
+      hash: 60032
+      num: 0
+    - pos: {x: 389.7264, y: 63.544083, z: 428.66357}
+      rotation: {x: 0, y: 0.29880005, z: 0, w: -0.9543157}
+      scale: {x: 5.755835, y: 5.755835, z: 5.755835}
+      terrainHeight: 0
+      id: 53
+      hash: 60033
+      num: 0
+    - pos: {x: 381.8141, y: 61.798344, z: 424.8755}
+      rotation: {x: 0, y: 0.8269353, z: 0, w: -0.56229705}
+      scale: {x: 6.087695, y: 6.087695, z: 6.087695}
+      terrainHeight: 0
+      id: 54
+      hash: 60034
+      num: 0
+    - pos: {x: 562.42444, y: 69.117584, z: 419.86908}
+      rotation: {x: 0, y: 0.7972126, z: 0, w: -0.6036987}
+      scale: {x: 5.40762, y: 5.40762, z: 5.40762}
+      terrainHeight: 0
+      id: 55
+      hash: 80030
+      num: 0
+    - pos: {x: 555.2461, y: 69.118904, z: 416.4587}
+      rotation: {x: 0, y: 0.917299, z: 0, w: 0.39819923}
+      scale: {x: 5.7651706, y: 5.7651706, z: 5.7651706}
+      terrainHeight: 0
+      id: 56
+      hash: 80031
+      num: 0
+    - pos: {x: 558.0627, y: 69.117584, z: 420.06073}
+      rotation: {x: 0, y: 0.45319965, z: 0, w: 0.89140904}
+      scale: {x: 4.854941, y: 4.854941, z: 4.854941}
+      terrainHeight: 0
+      id: 57
+      hash: 40015
+      num: 0
+    - pos: {x: 585.9612, y: 74.815895, z: 383.53455}
+      rotation: {x: 0, y: 0.98639137, z: 0, w: -0.16441426}
+      scale: {x: 4.5066557, y: 4.5066557, z: 4.5066557}
+      terrainHeight: 0
+      id: 58
+      hash: 84028
+      num: 0
+    - pos: {x: 584.52344, y: 76.20186, z: 379.28427}
+      rotation: {x: 0, y: 0.78208715, z: 0, w: 0.62316906}
+      scale: {x: 5.3711214, y: 5.3711214, z: 5.3711214}
+      terrainHeight: 0
+      id: 59
+      hash: 84029
+      num: 0
+    - pos: {x: 597.338, y: 73.90339, z: 378.86987}
+      rotation: {x: 0, y: 0.79568684, z: 0, w: -0.60570824}
+      scale: {x: 5.0583525, y: 5.0583525, z: 5.0583525}
+      terrainHeight: 0
+      id: 60
+      hash: 88026
+      num: 0
+    - pos: {x: 591.8713, y: 74.480515, z: 381.5094}
+      rotation: {x: 0, y: 0.77198595, z: 0, w: 0.6356396}
+      scale: {x: 4.041434, y: 4.041434, z: 4.041434}
+      terrainHeight: 0
+      id: 61
+      hash: 88028
+      num: 0
+    - pos: {x: 602.25555, y: 72.1976, z: 381.8264}
+      rotation: {x: 0, y: 0.82670826, z: 0, w: -0.5626308}
+      scale: {x: 3.969699, y: 3.969699, z: 3.969699}
+      terrainHeight: 0
+      id: 62
+      hash: 88029
+      num: 0
+    - pos: {x: 621.16064, y: 62.50154, z: 431.85455}
+      rotation: {x: 0, y: 0.5518964, z: 0, w: -0.8339127}
+      scale: {x: 4.1109924, y: 4.1109924, z: 4.1109924}
+      terrainHeight: 0
+      id: 63
+      hash: 92032
+      num: 0
+    - pos: {x: 626.1096, y: 60.93097, z: 430.1521}
+      rotation: {x: 0, y: 0.090011895, z: 0, w: 0.9959407}
+      scale: {x: 5.8690524, y: 5.8690524, z: 5.8690524}
+      terrainHeight: 0
+      id: 64
+      hash: 92033
+      num: 0
+    - pos: {x: 324.54068, y: 55.054737, z: 446.25214}
+      rotation: {x: 0, y: 0.85680854, z: 0, w: -0.51563466}
+      scale: {x: 5.156689, y: 5.156689, z: 5.156689}
+      terrainHeight: 0
+      id: 65
+      hash: 52034
+      num: 0
+    - pos: {x: 329.56885, y: 55.38086, z: 444.06073}
+      rotation: {x: 0, y: 0.94502735, z: 0, w: -0.3269912}
+      scale: {x: 4.2480745, y: 4.2480745, z: 4.2480745}
+      terrainHeight: 0
+      id: 66
+      hash: 52035
+      num: 0
+    - pos: {x: 335.24564, y: 55.987846, z: 443.5351}
+      rotation: {x: 0, y: 0.8505004, z: 0, w: -0.5259744}
+      scale: {x: 4.6388946, y: 4.6388946, z: 4.6388946}
+      terrainHeight: 0
+      id: 67
+      hash: 52036
+      num: 0
+    - pos: {x: 433.06824, y: 78.20695, z: 471.11392}
+      rotation: {x: 0, y: 0.8464796, z: 0, w: 0.5324212}
+      scale: {x: 4.83978, y: 4.83978, z: 4.83978}
+      terrainHeight: 0
+      id: 68
+      hash: 64034
+      num: 0
+    - pos: {x: 433.98447, y: 78.62173, z: 465.66467}
+      rotation: {x: 0, y: 0.1372392, z: 0, w: 0.99053794}
+      scale: {x: 4.1892548, y: 4.1892548, z: 4.1892548}
+      terrainHeight: 0
+      id: 69
+      hash: 64036
+      num: 0
+    - pos: {x: 458.03043, y: 79.23768, z: 471.97235}
+      rotation: {x: 0, y: 0.4882815, z: 0, w: 0.8726862}
+      scale: {x: 5.993078, y: 5.993078, z: 5.993078}
+      terrainHeight: 0
+      id: 70
+      hash: 72034
+      num: 0
+    - pos: {x: 458.80884, y: 78.79916, z: 476.2803}
+      rotation: {x: 0, y: 0.061027005, z: 0, w: 0.9981361}
+      scale: {x: 4.100604, y: 4.100604, z: 4.100604}
+      terrainHeight: 0
+      id: 71
+      hash: 72037
+      num: 0
+    - pos: {x: 478.09174, y: 84.06646, z: 475.08847}
+      rotation: {x: 0, y: 0.26344737, z: 0, w: -0.96467376}
+      scale: {x: 4.900073, y: 4.900073, z: 4.900073}
+      terrainHeight: 0
+      id: 72
+      hash: 76036
+      num: 0
+    - pos: {x: 483.1881, y: 86.81644, z: 470.72223}
+      rotation: {x: 0, y: 0.97623295, z: 0, w: -0.21672381}
+      scale: {x: 4.2825375, y: 4.2825375, z: 4.2825375}
+      terrainHeight: 0
+      id: 73
+      hash: 76039
+      num: 0
+    - pos: {x: 551.1675, y: 69.11784, z: 440.0914}
+      rotation: {x: 0, y: 0.846387, z: 0, w: -0.5325683}
+      scale: {x: 6.057022, y: 6.057022, z: 6.057022}
+      terrainHeight: 0
+      id: 74
+      hash: 76032
+      num: 0
+    - pos: {x: 537.63055, y: 70.1709, z: 447.02835}
+      rotation: {x: 0, y: 0.91866004, z: 0, w: 0.395049}
+      scale: {x: 5.617139, y: 5.617139, z: 5.617139}
+      terrainHeight: 0
+      id: 75
+      hash: 76034
+      num: 0
+    - pos: {x: 541.0498, y: 69.40436, z: 441.8594}
+      rotation: {x: 0, y: 0.26344737, z: 0, w: -0.96467376}
+      scale: {x: 4.900073, y: 4.900073, z: 4.900073}
+      terrainHeight: 0
+      id: 76
+      hash: 76036
+      num: 0
+    - pos: {x: 555.89954, y: 69.117584, z: 442.45746}
+      rotation: {x: 0, y: -0.13801117, z: 0, w: -0.99043065}
+      scale: {x: 5.1104336, y: 5.1104336, z: 5.1104336}
+      terrainHeight: 0
+      id: 77
+      hash: 80034
+      num: 0
+    - pos: {x: 554.1736, y: 69.117935, z: 445.3545}
+      rotation: {x: 0, y: 0.97558826, z: 0, w: 0.21960762}
+      scale: {x: 4.8271456, y: 4.8271456, z: 4.8271456}
+      terrainHeight: 0
+      id: 78
+      hash: 80035
+      num: 0
+    - pos: {x: 553.8208, y: 69.12538, z: 450.11096}
+      rotation: {x: 0, y: 0.18557253, z: 0, w: -0.98263055}
+      scale: {x: 5.71344, y: 5.71344, z: 5.71344}
+      terrainHeight: 0
+      id: 79
+      hash: 80036
+      num: 0
+    - pos: {x: 538.92096, y: 77.6469, z: 484.4431}
+      rotation: {x: 0, y: 0.18557253, z: 0, w: -0.98263055}
+      scale: {x: 5.71344, y: 5.71344, z: 5.71344}
+      terrainHeight: 0
+      id: 80
+      hash: 80036
+      num: 0
+    - pos: {x: 542.87244, y: 76.88874, z: 480.1231}
+      rotation: {x: 0, y: -0.054247767, z: 0, w: -0.9985275}
+      scale: {x: 5.302475, y: 5.302475, z: 5.302475}
+      terrainHeight: 0
+      id: 81
+      hash: 80037
+      num: 0
+    - pos: {x: 539.38904, y: 78.24686, z: 496.1215}
+      rotation: {x: 0, y: 0.999388, z: 0, w: 0.034980386}
+      scale: {x: 5.3697176, y: 5.3697176, z: 5.3697176}
+      terrainHeight: 0
+      id: 82
+      hash: 80038
+      num: 0
+    - pos: {x: 544.0098, y: 77.44856, z: 491.57187}
+      rotation: {x: 0, y: 0.007973686, z: 0, w: 0.99996823}
+      scale: {x: 6.012802, y: 6.012802, z: 6.012802}
+      terrainHeight: 0
+      id: 83
+      hash: 80040
+      num: 0
+    - pos: {x: 540.5141, y: 77.693375, z: 489.3817}
+      rotation: {x: 0, y: 0.69077104, z: 0, w: 0.72307354}
+      scale: {x: 4.5602813, y: 4.5602813, z: 4.5602813}
+      terrainHeight: 0
+      id: 84
+      hash: 80041
+      num: 0
+    - pos: {x: 585.3183, y: 63.110046, z: 487.30145}
+      rotation: {x: 0, y: 0.9936585, z: 0, w: -0.11244029}
+      scale: {x: 5.005359, y: 5.005359, z: 5.005359}
+      terrainHeight: 0
+      id: 85
+      hash: 88036
+      num: 0
+    - pos: {x: 587.86664, y: 63.04104, z: 483.5149}
+      rotation: {x: 0, y: 0.75954175, z: 0, w: -0.6504585}
+      scale: {x: 5.35231, y: 5.35231, z: 5.35231}
+      terrainHeight: 0
+      id: 86
+      hash: 88037
+      num: 0
+    - pos: {x: 590.53265, y: 62.314934, z: 485.7462}
+      rotation: {x: 0, y: 0.72177273, z: 0, w: 0.69213015}
+      scale: {x: 4.328021, y: 4.328021, z: 4.328021}
+      terrainHeight: 0
+      id: 87
+      hash: 88038
+      num: 0
+    - pos: {x: 589.4938, y: 62.648964, z: 491.83548}
+      rotation: {x: 0, y: 0.7520552, z: 0, w: 0.6591001}
+      scale: {x: 4.129172, y: 4.129172, z: 4.129172}
+      terrainHeight: 0
+      id: 88
+      hash: 88039
+      num: 0
+    - pos: {x: 834.212, y: 48.80363, z: 445.93057}
+      rotation: {x: 0, y: 0.23323742, z: 0, w: -0.9724198}
+      scale: {x: 3.991528, y: 3.991528, z: 3.991528}
+      terrainHeight: 0
+      id: 89
+      hash: 128032
+      num: 0
+    - pos: {x: 828.4425, y: 49.25467, z: 445.54037}
+      rotation: {x: 0, y: 0.9629495, z: 0, w: -0.26968163}
+      scale: {x: 6.136197, y: 6.136197, z: 6.136197}
+      terrainHeight: 0
+      id: 90
+      hash: 128035
+      num: 0
+    - pos: {x: 358.64514, y: 72.40161, z: 567.5764}
+      rotation: {x: 0, y: 0.5486939, z: 0, w: -0.83602333}
+      scale: {x: 5.425028, y: 5.425028, z: 5.425028}
+      terrainHeight: 0
+      id: 91
+      hash: 52042
+      num: 0
+    - pos: {x: 362.61258, y: 71.43626, z: 568.9306}
+      rotation: {x: 0, y: 0.71758753, z: 0, w: -0.69646835}
+      scale: {x: 4.8703127, y: 4.8703127, z: 4.8703127}
+      terrainHeight: 0
+      id: 92
+      hash: 52044
+      num: 0
+    - pos: {x: 366.1864, y: 69.49833, z: 520.1918}
+      rotation: {x: 0, y: 0.6760554, z: 0, w: -0.7368508}
+      scale: {x: 6.1671505, y: 6.1671505, z: 6.1671505}
+      terrainHeight: 0
+      id: 93
+      hash: 56038
+      num: 0
+    - pos: {x: 368.7111, y: 69.13269, z: 524.9197}
+      rotation: {x: 0, y: 0.7760299, z: 0, w: -0.6306962}
+      scale: {x: 4.708804, y: 4.708804, z: 4.708804}
+      terrainHeight: 0
+      id: 94
+      hash: 56041
+      num: 0
+    - pos: {x: 373.91574, y: 66.82905, z: 561.9502}
+      rotation: {x: 0, y: 0.93005097, z: 0, w: 0.36743048}
+      scale: {x: 5.888495, y: 5.888495, z: 5.888495}
+      terrainHeight: 0
+      id: 95
+      hash: 56042
+      num: 0
+    - pos: {x: 378.82587, y: 66.26369, z: 561.60406}
+      rotation: {x: 0, y: -0.0793234, z: 0, w: -0.99684894}
+      scale: {x: 4.2204895, y: 4.2204895, z: 4.2204895}
+      terrainHeight: 0
+      id: 96
+      hash: 56044
+      num: 0
+    - pos: {x: 371.1355, y: 67.78956, z: 565.4184}
+      rotation: {x: 0, y: 0.6236141, z: 0, w: -0.7817324}
+      scale: {x: 4.443344, y: 4.443344, z: 4.443344}
+      terrainHeight: 0
+      id: 97
+      hash: 56045
+      num: 0
+    - pos: {x: 514.40045, y: 86.23171, z: 528.8632}
+      rotation: {x: 0, y: 0.9870147, z: 0, w: -0.16062981}
+      scale: {x: 5.3157406, y: 5.3157406, z: 5.3157406}
+      terrainHeight: 0
+      id: 98
+      hash: 76038
+      num: 0
+    - pos: {x: 516.56885, y: 86.52752, z: 524.2543}
+      rotation: {x: 0, y: 0.97623295, z: 0, w: -0.21672381}
+      scale: {x: 4.2825375, y: 4.2825375, z: 4.2825375}
+      terrainHeight: 0
+      id: 99
+      hash: 76039
+      num: 0
+    - pos: {x: 514.1655, y: 86.98905, z: 520.97034}
+      rotation: {x: 0, y: 0.6541032, z: 0, w: 0.7564053}
+      scale: {x: 5.8079166, y: 5.8079166, z: 5.8079166}
+      terrainHeight: 0
+      id: 100
+      hash: 76040
+      num: 0
+    - pos: {x: 543.7964, y: 77.75866, z: 547.1807}
+      rotation: {x: 0, y: 0.47590145, z: 0, w: 0.8794986}
+      scale: {x: 6.0193996, y: 6.0193996, z: 6.0193996}
+      terrainHeight: 0
+      id: 101
+      hash: 80042
+      num: 0
+    - pos: {x: 542.5564, y: 77.558685, z: 554.6518}
+      rotation: {x: 0, y: 0.4630686, z: 0, w: 0.88632244}
+      scale: {x: 4.702066, y: 4.702066, z: 4.702066}
+      terrainHeight: 0
+      id: 102
+      hash: 80045
+      num: 0
+    - pos: {x: 592.9162, y: 67.75811, z: 532.7908}
+      rotation: {x: 0, y: 0.48663142, z: 0, w: -0.8736074}
+      scale: {x: 4.656653, y: 4.656653, z: 4.656653}
+      terrainHeight: 0
+      id: 103
+      hash: 88040
+      num: 0
+    - pos: {x: 597.5464, y: 67.511986, z: 533.5774}
+      rotation: {x: 0, y: 0.33314982, z: 0, w: 0.9428739}
+      scale: {x: 4.1833587, y: 4.1833587, z: 4.1833587}
+      terrainHeight: 0
+      id: 104
+      hash: 88041
+      num: 0
+    - pos: {x: 594.8847, y: 67.26811, z: 529.37866}
+      rotation: {x: 0, y: 0.06860909, z: 0, w: -0.99764365}
+      scale: {x: 5.320093, y: 5.320093, z: 5.320093}
+      terrainHeight: 0
+      id: 105
+      hash: 88042
+      num: 0
+    - pos: {x: 643.0819, y: 55.372643, z: 530.3519}
+      rotation: {x: 0, y: 0.39471155, z: 0, w: 0.9188051}
+      scale: {x: 4.6244354, y: 4.6244354, z: 4.6244354}
+      terrainHeight: 0
+      id: 106
+      hash: 96040
+      num: 0
+    - pos: {x: 643.35266, y: 55.03977, z: 525.57623}
+      rotation: {x: 0, y: 0.9992436, z: 0, w: -0.0388862}
+      scale: {x: 4.496689, y: 4.496689, z: 4.496689}
+      terrainHeight: 0
+      id: 107
+      hash: 96042
+      num: 0
+    - pos: {x: 646.3973, y: 54.498463, z: 525.0192}
+      rotation: {x: 0, y: 0.28605926, z: 0, w: -0.95821196}
+      scale: {x: 4.19129, y: 4.19129, z: 4.19129}
+      terrainHeight: 0
+      id: 108
+      hash: 96043
+      num: 0
+    - pos: {x: 704.9322, y: 50.532345, z: 512.2448}
+      rotation: {x: 0, y: 0.7603764, z: 0, w: 0.64948267}
+      scale: {x: 5.082007, y: 5.082007, z: 5.082007}
+      terrainHeight: 0
+      id: 109
+      hash: 108039
+      num: 0
+    - pos: {x: 701.72955, y: 50.291275, z: 511.0304}
+      rotation: {x: 0, y: 0.9845229, z: 0, w: -0.1752562}
+      scale: {x: 4.005075, y: 4.005075, z: 4.005075}
+      terrainHeight: 0
+      id: 110
+      hash: 108041
+      num: 0
+    - pos: {x: 707.2917, y: 50.824593, z: 508.11017}
+      rotation: {x: 0, y: 0.88889617, z: 0, w: 0.45810875}
+      scale: {x: 5.2758026, y: 5.2758026, z: 5.2758026}
+      terrainHeight: 0
+      id: 111
+      hash: 108038
+      num: 0
+    - pos: {x: 768.90845, y: 59.66767, z: 566.92175}
+      rotation: {x: 0, y: 0.55984384, z: 0, w: 0.82859814}
+      scale: {x: 4.4257965, y: 4.4257965, z: 4.4257965}
+      terrainHeight: 0
+      id: 112
+      hash: 116044
+      num: 0
+    - pos: {x: 767.01294, y: 59.82753, z: 569.9522}
+      rotation: {x: 0, y: 0.22193468, z: 0, w: -0.97506154}
+      scale: {x: 3.96647, y: 3.96647, z: 3.96647}
+      terrainHeight: 0
+      id: 113
+      hash: 116047
+      num: 0
+    - pos: {x: 223.40158, y: 57.301113, z: 585.9614}
+      rotation: {x: 0, y: 0.7449606, z: 0, w: 0.6671085}
+      scale: {x: 4.3669066, y: 4.3669066, z: 4.3669066}
+      terrainHeight: 0
+      id: 114
+      hash: 32044
+      num: 0
+    - pos: {x: 218.22768, y: 56.781647, z: 586.17267}
+      rotation: {x: 0, y: 0.7652242, z: 0, w: -0.64376384}
+      scale: {x: 4.003671, y: 4.003671, z: 4.003671}
+      terrainHeight: 0
+      id: 115
+      hash: 32045
+      num: 0
+    - pos: {x: 264.3173, y: 66.17411, z: 585.645}
+      rotation: {x: 0, y: 0.68544495, z: 0, w: -0.72812444}
+      scale: {x: 4.1331024, y: 4.1331024, z: 4.1331024}
+      terrainHeight: 0
+      id: 116
+      hash: 40044
+      num: 0
+    - pos: {x: 263.67276, y: 65.65437, z: 592.3376}
+      rotation: {x: 0, y: 0.35846165, z: 0, w: -0.93354446}
+      scale: {x: 6.064883, y: 6.064883, z: 6.064883}
+      terrainHeight: 0
+      id: 117
+      hash: 40045
+      num: 0
+    - pos: {x: 260.41434, y: 65.26877, z: 590.3593}
+      rotation: {x: 0, y: 0.48757666, z: 0, w: 0.8730802}
+      scale: {x: 5.612015, y: 5.612015, z: 5.612015}
+      terrainHeight: 0
+      id: 118
+      hash: 40046
+      num: 0
+    - pos: {x: 267.90152, y: 66.570595, z: 590.3355}
+      rotation: {x: 0, y: 0.7960976, z: 0, w: 0.6051683}
+      scale: {x: 6.085169, y: 6.085169, z: 6.085169}
+      terrainHeight: 0
+      id: 119
+      hash: 40047
+      num: 0
+    - pos: {x: 369.85825, y: 72.27988, z: 636.77496}
+      rotation: {x: 0, y: -0.15269072, z: 0, w: -0.98827404}
+      scale: {x: 4.7552004, y: 4.7552004, z: 4.7552004}
+      terrainHeight: 0
+      id: 120
+      hash: 56051
+      num: 0
+    - pos: {x: 386.855, y: 67.35183, z: 589.409}
+      rotation: {x: 0, y: 0.60962945, z: 0, w: -0.7926865}
+      scale: {x: 4.923236, y: 4.923236, z: 4.923236}
+      terrainHeight: 0
+      id: 121
+      hash: 56046
+      num: 0
+    - pos: {x: 388.95074, y: 68.07327, z: 595.97516}
+      rotation: {x: 0, y: 0.97142035, z: 0, w: -0.23736583}
+      scale: {x: 3.9441495, y: 3.9441495, z: 3.9441495}
+      terrainHeight: 0
+      id: 122
+      hash: 56048
+      num: 0
+    - pos: {x: 419.33774, y: 66.670685, z: 581.577}
+      rotation: {x: 0, y: 0.38087523, z: 0, w: -0.92462647}
+      scale: {x: 5.6793976, y: 5.6793976, z: 5.6793976}
+      terrainHeight: 0
+      id: 123
+      hash: 64044
+      num: 0
+    - pos: {x: 422.01544, y: 66.29415, z: 578.58826}
+      rotation: {x: 0, y: 0.86318076, z: 0, w: 0.50489503}
+      scale: {x: 5.186661, y: 5.186661, z: 5.186661}
+      terrainHeight: 0
+      id: 124
+      hash: 64046
+      num: 0
+    - pos: {x: 460.69125, y: 66.97548, z: 586.77045}
+      rotation: {x: 0, y: 0.6699879, z: 0, w: 0.74237204}
+      scale: {x: 5.5329103, y: 5.5329103, z: 5.5329103}
+      terrainHeight: 0
+      id: 125
+      hash: 72046
+      num: 0
+    - pos: {x: 467.26376, y: 67.69806, z: 588.12384}
+      rotation: {x: 0, y: 0.5434279, z: 0, w: 0.83945584}
+      scale: {x: 4.962683, y: 4.962683, z: 4.962683}
+      terrainHeight: 0
+      id: 126
+      hash: 72047
+      num: 0
+    - pos: {x: 464.58667, y: 66.97259, z: 582.9526}
+      rotation: {x: 0, y: 0.8819195, z: 0, w: -0.4714}
+      scale: {x: 4.1302247, y: 4.1302247, z: 4.1302247}
+      terrainHeight: 0
+      id: 127
+      hash: 72048
+      num: 0
+    - pos: {x: 461.74963, y: 67.78944, z: 593.3599}
+      rotation: {x: 0, y: 0.99476343, z: 0, w: -0.102204524}
+      scale: {x: 4.484967, y: 4.484967, z: 4.484967}
+      terrainHeight: 0
+      id: 128
+      hash: 72049
+      num: 0
+    - pos: {x: 493.90662, y: 72.656624, z: 584.2871}
+      rotation: {x: 0, y: 0.97264624, z: 0, w: 0.23229131}
+      scale: {x: 5.5376835, y: 5.5376835, z: 5.5376835}
+      terrainHeight: 0
+      id: 129
+      hash: 76044
+      num: 0
+    - pos: {x: 498.30478, y: 72.938995, z: 579.1388}
+      rotation: {x: 0, y: 0.4302, z: 0, w: 0.9027336}
+      scale: {x: 6.169327, y: 6.169327, z: 6.169327}
+      terrainHeight: 0
+      id: 130
+      hash: 76046
+      num: 0
+    - pos: {x: 495.74738, y: 72.194466, z: 581.85175}
+      rotation: {x: 0, y: 0.8214898, z: 0, w: 0.5702232}
+      scale: {x: 3.9052641, y: 3.9052641, z: 3.9052641}
+      terrainHeight: 0
+      id: 131
+      hash: 76047
+      num: 0
+    - pos: {x: 518.4699, y: 83.19172, z: 622.6628}
+      rotation: {x: 0, y: 0.9864365, z: 0, w: 0.16414325}
+      scale: {x: 5.4535246, y: 5.4535246, z: 5.4535246}
+      terrainHeight: 0
+      id: 132
+      hash: 80048
+      num: 0
+    - pos: {x: 519.2857, y: 82.343544, z: 612.7126}
+      rotation: {x: 0, y: 0.16636918, z: 0, w: 0.98606354}
+      scale: {x: 4.9845824, y: 4.9845824, z: 4.9845824}
+      terrainHeight: 0
+      id: 133
+      hash: 80049
+      num: 0
+    - pos: {x: 520.81476, y: 83.6955, z: 619.06604}
+      rotation: {x: 0, y: 0.26033026, z: 0, w: -0.9655196}
+      scale: {x: 3.9423249, y: 3.9423249, z: 3.9423249}
+      terrainHeight: 0
+      id: 134
+      hash: 80051
+      num: 0
+    - pos: {x: 565.3386, y: 79.24249, z: 636.6852}
+      rotation: {x: 0, y: 0.6534158, z: 0, w: 0.7569992}
+      scale: {x: 5.857892, y: 5.857892, z: 5.857892}
+      terrainHeight: 0
+      id: 135
+      hash: 84050
+      num: 0
+    - pos: {x: 571.0802, y: 79.37505, z: 636.86285}
+      rotation: {x: 0, y: 0.96663105, z: 0, w: 0.2561726}
+      scale: {x: 4.4623656, y: 4.4623656, z: 4.4623656}
+      terrainHeight: 0
+      id: 136
+      hash: 84051
+      num: 0
+    - pos: {x: 584.93567, y: 77.99817, z: 637.6114}
+      rotation: {x: 0, y: 0.6162267, z: 0, w: 0.78756887}
+      scale: {x: 5.3553286, y: 5.3553286, z: 5.3553286}
+      terrainHeight: 0
+      id: 137
+      hash: 88052
+      num: 0
+    - pos: {x: 666.2236, y: 63.417946, z: 632.4808}
+      rotation: {x: 0, y: 0.6645208, z: 0, w: -0.7472698}
+      scale: {x: 5.112469, y: 5.112469, z: 5.112469}
+      terrainHeight: 0
+      id: 138
+      hash: 100050
+      num: 0
+    - pos: {x: 667.8523, y: 61.778564, z: 626.4039}
+      rotation: {x: 0, y: 0.8418262, z: 0, w: 0.53974867}
+      scale: {x: 4.444327, y: 4.444327, z: 4.444327}
+      terrainHeight: 0
+      id: 139
+      hash: 100052
+      num: 0
+    - pos: {x: 789.21826, y: 57.977127, z: 587.9332}
+      rotation: {x: 0, y: 0.3816892, z: 0, w: 0.9242907}
+      scale: {x: 4.05484, y: 4.05484, z: 4.05484}
+      terrainHeight: 0
+      id: 140
+      hash: 120044
+      num: 0
+    - pos: {x: 788.89465, y: 58.15284, z: 583.60516}
+      rotation: {x: 0, y: 0.61026937, z: 0, w: -0.79219395}
+      scale: {x: 4.318686, y: 4.318686, z: 4.318686}
+      terrainHeight: 0
+      id: 141
+      hash: 120045
+      num: 0
+    - pos: {x: 786.2789, y: 58.12677, z: 584.9392}
+      rotation: {x: 0, y: 0.8051084, z: 0, w: 0.59312767}
+      scale: {x: 4.018762, y: 4.018762, z: 4.018762}
+      terrainHeight: 0
+      id: 142
+      hash: 120047
+      num: 0
+    - pos: {x: 267.56006, y: 57.24151, z: 650.12146}
+      rotation: {x: 0, y: 0.76261884, z: 0, w: -0.6468481}
+      scale: {x: 3.945343, y: 3.945343, z: 3.945343}
+      terrainHeight: 0
+      id: 143
+      hash: 40050
+      num: 0
+    - pos: {x: 277.5813, y: 57.627865, z: 688.31354}
+      rotation: {x: 0, y: 0.9269886, z: 0, w: -0.37508947}
+      scale: {x: 4.303244, y: 4.303244, z: 4.303244}
+      terrainHeight: 0
+      id: 144
+      hash: 44052
+      num: 0
+    - pos: {x: 367.40366, y: 72.32046, z: 642.76166}
+      rotation: {x: 0, y: 0.72123307, z: 0, w: -0.69269246}
+      scale: {x: 5.2682924, y: 5.2682924, z: 5.2682924}
+      terrainHeight: 0
+      id: 145
+      hash: 56050
+      num: 0
+    - pos: {x: 374.4943, y: 71.387085, z: 641.04297}
+      rotation: {x: 0, y: 0.91978383, z: 0, w: -0.39242542}
+      scale: {x: 4.6701994, y: 4.6701994, z: 4.6701994}
+      terrainHeight: 0
+      id: 146
+      hash: 56052
+      num: 0
+    - pos: {x: 533.385, y: 89.48881, z: 666.77594}
+      rotation: {x: 0, y: 0.3528015, z: 0, w: -0.9356982}
+      scale: {x: 6.124194, y: 6.124194, z: 6.124194}
+      terrainHeight: 0
+      id: 147
+      hash: 80052
+      num: 0
+    - pos: {x: 531.56775, y: 89.29116, z: 669.3981}
+      rotation: {x: 0, y: 0.3472232, z: 0, w: -0.9377825}
+      scale: {x: 4.382559, y: 4.382559, z: 4.382559}
+      terrainHeight: 0
+      id: 148
+      hash: 80054
+      num: 0
+    - pos: {x: 584.4438, y: 78.342, z: 643.76715}
+      rotation: {x: 0, y: 0.9536693, z: 0, w: 0.30085692}
+      scale: {x: 6.094083, y: 6.094083, z: 6.094083}
+      terrainHeight: 0
+      id: 149
+      hash: 88050
+      num: 0
+    - pos: {x: 585.2852, y: 78.71271, z: 647.4446}
+      rotation: {x: 0, y: 0.42026788, z: 0, w: -0.9074001}
+      scale: {x: 5.5586, y: 5.5586, z: 5.5586}
+      terrainHeight: 0
+      id: 150
+      hash: 88051
+      num: 0
+    - pos: {x: 608.92523, y: 79.58495, z: 667.2558}
+      rotation: {x: 0, y: 0.84658706, z: 0, w: 0.5322502}
+      scale: {x: 4.2789583, y: 4.2789583, z: 4.2789583}
+      terrainHeight: 0
+      id: 151
+      hash: 92052
+      num: 0
+    - pos: {x: 609.34155, y: 80.226, z: 671.09106}
+      rotation: {x: 0, y: 0.9999999, z: 0, w: -0.0005411347}
+      scale: {x: 4.137875, y: 4.137875, z: 4.137875}
+      terrainHeight: 0
+      id: 152
+      hash: 92053
+      num: 0
+    - pos: {x: 605.43695, y: 79.80785, z: 668.1014}
+      rotation: {x: 0, y: 0.99097115, z: 0, w: -0.1340753}
+      scale: {x: 4.2220335, y: 4.2220335, z: 4.2220335}
+      terrainHeight: 0
+      id: 153
+      hash: 92055
+      num: 0
+    - pos: {x: 718.53314, y: 69.83278, z: 683.96704}
+      rotation: {x: 0, y: 0.50152487, z: 0, w: 0.86514324}
+      scale: {x: 4.3351107, y: 4.3351107, z: 4.3351107}
+      terrainHeight: 0
+      id: 154
+      hash: 104052
+      num: 0
+    - pos: {x: 713.8585, y: 70.47559, z: 683.3359}
+      rotation: {x: 0, y: 0.556997, z: 0, w: 0.83051455}
+      scale: {x: 4.7479706, y: 4.7479706, z: 4.7479706}
+      terrainHeight: 0
+      id: 155
+      hash: 104053
+      num: 0
+    - pos: {x: 713.8114, y: 70.615326, z: 688.2639}
+      rotation: {x: 0, y: 0.69957024, z: 0, w: -0.7145638}
+      scale: {x: 5.5231533, y: 5.5231533, z: 5.5231533}
+      terrainHeight: 0
+      id: 156
+      hash: 104054
+      num: 0
+    - pos: {x: 722.0742, y: 65.8946, z: 656.0968}
+      rotation: {x: 0, y: 0.7564292, z: 0, w: 0.65407556}
+      scale: {x: 4.2009063, y: 4.2009063, z: 4.2009063}
+      terrainHeight: 0
+      id: 157
+      hash: 108050
+      num: 0
+    - pos: {x: 718.6442, y: 66.45316, z: 661.8829}
+      rotation: {x: 0, y: 0.7368261, z: 0, w: 0.6760823}
+      scale: {x: 5.865262, y: 5.865262, z: 5.865262}
+      terrainHeight: 0
+      id: 158
+      hash: 108051
+      num: 0
+    - pos: {x: 719.20953, y: 66.032036, z: 658.2262}
+      rotation: {x: 0, y: 0.6538189, z: 0, w: -0.75665104}
+      scale: {x: 4.777661, y: 4.777661, z: 4.777661}
+      terrainHeight: 0
+      id: 159
+      hash: 108052
+      num: 0
+    - pos: {x: 868.74054, y: 54.46277, z: 683.8144}
+      rotation: {x: 0, y: 0.0067625134, z: 0, w: 0.9999771}
+      scale: {x: 5.178589, y: 5.178589, z: 5.178589}
+      terrainHeight: 0
+      id: 160
+      hash: 128052
+      num: 0
+    - pos: {x: 867.4542, y: 55.053524, z: 688.0112}
+      rotation: {x: 0, y: 0.38358003, z: 0, w: -0.92350763}
+      scale: {x: 5.596362, y: 5.596362, z: 5.596362}
+      terrainHeight: 0
+      id: 161
+      hash: 128054
+      num: 0
+    - pos: {x: 870.68274, y: 55.81475, z: 699.53827}
+      rotation: {x: 0, y: 0.9563039, z: 0, w: 0.2923745}
+      scale: {x: 4.7095766, y: 4.7095766, z: 4.7095766}
+      terrainHeight: 0
+      id: 162
+      hash: 132054
+      num: 0
+    - pos: {x: 875.39124, y: 55.182297, z: 700.0722}
+      rotation: {x: 0, y: 0.9985295, z: 0, w: -0.054211296}
+      scale: {x: 5.3160915, y: 5.3160915, z: 5.3160915}
+      terrainHeight: 0
+      id: 163
+      hash: 132055
+      num: 0
+    - pos: {x: 871.4339, y: 56.01238, z: 702.5126}
+      rotation: {x: 0, y: 0.87350506, z: 0, w: -0.48681512}
+      scale: {x: 4.23916, y: 4.23916, z: 4.23916}
+      terrainHeight: 0
+      id: 164
+      hash: 132057
+      num: 0
+    - pos: {x: 332.80185, y: 56.895027, z: 755.91833}
+      rotation: {x: 0, y: 0.39573145, z: 0, w: 0.9183663}
+      scale: {x: 5.1451783, y: 5.1451783, z: 5.1451783}
+      terrainHeight: 0
+      id: 165
+      hash: 52056
+      num: 0
+    - pos: {x: 331.55548, y: 55.94887, z: 759.7719}
+      rotation: {x: 0, y: 0.99511546, z: 0, w: 0.09871765}
+      scale: {x: 4.643808, y: 4.643808, z: 4.643808}
+      terrainHeight: 0
+      id: 166
+      hash: 52057
+      num: 0
+    - pos: {x: 336.12003, y: 56.83788, z: 758.8302}
+      rotation: {x: 0, y: 0.7419229, z: 0, w: 0.6704852}
+      scale: {x: 5.4280453, y: 5.4280453, z: 5.4280453}
+      terrainHeight: 0
+      id: 167
+      hash: 52059
+      num: 0
+    - pos: {x: 383.5521, y: 84.404724, z: 714.3516}
+      rotation: {x: 0, y: 0.4802454, z: 0, w: 0.87713414}
+      scale: {x: 4.061859, y: 4.061859, z: 4.061859}
+      terrainHeight: 0
+      id: 168
+      hash: 56054
+      num: 0
+    - pos: {x: 383.0616, y: 83.86264, z: 723.3741}
+      rotation: {x: 0, y: 0.1071148, z: 0, w: -0.99424666}
+      scale: {x: 5.465176, y: 5.465176, z: 5.465176}
+      terrainHeight: 0
+      id: 169
+      hash: 56055
+      num: 0
+    - pos: {x: 387.67322, y: 64.05514, z: 760.05414}
+      rotation: {x: 0, y: 0.17117205, z: 0, w: -0.9852412}
+      scale: {x: 3.9809296, y: 3.9809296, z: 3.9809296}
+      terrainHeight: 0
+      id: 170
+      hash: 60056
+      num: 0
+    - pos: {x: 386.8753, y: 65.20641, z: 756.15015}
+      rotation: {x: 0, y: 0.7523397, z: 0, w: -0.6587753}
+      scale: {x: 3.9923003, y: 3.9923003, z: 3.9923003}
+      terrainHeight: 0
+      id: 171
+      hash: 60057
+      num: 0
+    - pos: {x: 383.1741, y: 84.26124, z: 718.1374}
+      rotation: {x: 0, y: 0.7165831, z: 0, w: 0.6975018}
+      scale: {x: 5.1279116, y: 5.1279116, z: 5.1279116}
+      terrainHeight: 0
+      id: 172
+      hash: 28027
+      num: 0
+    - pos: {x: 482.04224, y: 76.8931, z: 740.8183}
+      rotation: {x: 0, y: 0.98723626, z: 0, w: 0.15926258}
+      scale: {x: 4.9831786, y: 4.9831786, z: 4.9831786}
+      terrainHeight: 0
+      id: 173
+      hash: 72054
+      num: 0
+    - pos: {x: 478.86014, y: 76.94725, z: 742.3858}
+      rotation: {x: 0, y: 0.9217808, z: 0, w: 0.38771135}
+      scale: {x: 4.451767, y: 4.451767, z: 4.451767}
+      terrainHeight: 0
+      id: 174
+      hash: 72055
+      num: 0
+    - pos: {x: 485.64023, y: 75.623695, z: 743.0454}
+      rotation: {x: 0, y: 0.7646861, z: 0, w: 0.6444029}
+      scale: {x: 4.3179135, y: 4.3179135, z: 4.3179135}
+      terrainHeight: 0
+      id: 175
+      hash: 72056
+      num: 0
+    - pos: {x: 494.24765, y: 69.51783, z: 751.8109}
+      rotation: {x: 0, y: 0.7646861, z: 0, w: 0.6444029}
+      scale: {x: 4.3179135, y: 4.3179135, z: 4.3179135}
+      terrainHeight: 0
+      id: 176
+      hash: 72056
+      num: 0
+    - pos: {x: 489.02322, y: 71.22709, z: 751.97003}
+      rotation: {x: 0, y: 0.902097, z: 0, w: 0.43153337}
+      scale: {x: 6.133249, y: 6.133249, z: 6.133249}
+      terrainHeight: 0
+      id: 177
+      hash: 72057
+      num: 0
+    - pos: {x: 495.80466, y: 67.629196, z: 755.7623}
+      rotation: {x: 0, y: 0.96071255, z: 0, w: -0.2775452}
+      scale: {x: 4.3060513, y: 4.3060513, z: 4.3060513}
+      terrainHeight: 0
+      id: 178
+      hash: 72058
+      num: 0
+    - pos: {x: 489.47333, y: 67.436386, z: 759.8175}
+      rotation: {x: 0, y: 0.99996, z: 0, w: 0.008946494}
+      scale: {x: 4.100815, y: 4.100815, z: 4.100815}
+      terrainHeight: 0
+      id: 179
+      hash: 72059
+      num: 0
+    - pos: {x: 531.5134, y: 63.831398, z: 755.3647}
+      rotation: {x: 0, y: 0.33457696, z: 0, w: 0.94236845}
+      scale: {x: 3.9213376, y: 3.9213376, z: 3.9213376}
+      terrainHeight: 0
+      id: 180
+      hash: 80056
+      num: 0
+    - pos: {x: 533.74915, y: 66.30161, z: 749.6499}
+      rotation: {x: 0, y: 0.9130388, z: 0, w: -0.4078728}
+      scale: {x: 5.854312, y: 5.854312, z: 5.854312}
+      terrainHeight: 0
+      id: 181
+      hash: 80058
+      num: 0
+    - pos: {x: 558.8049, y: 60.679417, z: 763.4387}
+      rotation: {x: 0, y: 0.0055513307, z: 0, w: 0.99998456}
+      scale: {x: 5.20105, y: 5.20105, z: 5.20105}
+      terrainHeight: 0
+      id: 182
+      hash: 84054
+      num: 0
+    - pos: {x: 563.06866, y: 61.8815, z: 761.15375}
+      rotation: {x: 0, y: 0.08337536, z: 0, w: 0.9965182}
+      scale: {x: 4.7494445, y: 4.7494445, z: 4.7494445}
+      terrainHeight: 0
+      id: 183
+      hash: 84056
+      num: 0
+    - pos: {x: 554.9451, y: 60.03609, z: 766.78033}
+      rotation: {x: 0, y: 0.08337536, z: 0, w: 0.9965182}
+      scale: {x: 4.7494445, y: 4.7494445, z: 4.7494445}
+      terrainHeight: 0
+      id: 184
+      hash: 84056
+      num: 0
+    - pos: {x: 547.8074, y: 60.463654, z: 765.63824}
+      rotation: {x: 0, y: 0.96308553, z: 0, w: -0.26919568}
+      scale: {x: 4.70712, y: 4.70712, z: 4.70712}
+      terrainHeight: 0
+      id: 185
+      hash: 84057
+      num: 0
+    - pos: {x: 566.6869, y: 78.4781, z: 727.0623}
+      rotation: {x: 0, y: 0.62219286, z: 0, w: -0.78286403}
+      scale: {x: 5.857892, y: 5.857892, z: 5.857892}
+      terrainHeight: 0
+      id: 186
+      hash: 88054
+      num: 0
+    - pos: {x: 569.6577, y: 80.04333, z: 725.204}
+      rotation: {x: 0, y: 0.94218725, z: 0, w: -0.33508682}
+      scale: {x: 4.764044, y: 4.764044, z: 4.764044}
+      terrainHeight: 0
+      id: 187
+      hash: 88055
+      num: 0
+    - pos: {x: 642.9244, y: 63.662033, z: 765.6451}
+      rotation: {x: 0, y: 0.8808705, z: 0, w: -0.47335726}
+      scale: {x: 4.013638, y: 4.013638, z: 4.013638}
+      terrainHeight: 0
+      id: 188
+      hash: 96056
+      num: 0
+    - pos: {x: 647.7886, y: 62.32084, z: 768.44446}
+      rotation: {x: 0, y: 0.95463604, z: 0, w: 0.29777512}
+      scale: {x: 5.295807, y: 5.295807, z: 5.295807}
+      terrainHeight: 0
+      id: 189
+      hash: 96057
+      num: 0
+    - pos: {x: 642.61383, y: 62.490334, z: 769.118}
+      rotation: {x: 0, y: 0.12566033, z: 0, w: -0.9920733}
+      scale: {x: 4.2295437, y: 4.2295437, z: 4.2295437}
+      terrainHeight: 0
+      id: 190
+      hash: 96059
+      num: 0
+    - pos: {x: 672.9338, y: 61.24525, z: 764.6115}
+      rotation: {x: 0, y: 0.36539835, z: 0, w: 0.9308513}
+      scale: {x: 4.043048, y: 4.043048, z: 4.043048}
+      terrainHeight: 0
+      id: 191
+      hash: 100056
+      num: 0
+    - pos: {x: 667.6401, y: 62.361946, z: 764.51447}
+      rotation: {x: 0, y: 0.26977068, z: 0, w: -0.9629246}
+      scale: {x: 3.9462554, y: 3.9462554, z: 3.9462554}
+      terrainHeight: 0
+      id: 192
+      hash: 100057
+      num: 0
+    - pos: {x: 828.8337, y: 55.13032, z: 747.7165}
+      rotation: {x: 0, y: 0.935517, z: 0, w: -0.35328165}
+      scale: {x: 5.188205, y: 5.188205, z: 5.188205}
+      terrainHeight: 0
+      id: 193
+      hash: 128056
+      num: 0
+    - pos: {x: 825.3751, y: 54.526245, z: 753.30115}
+      rotation: {x: 0, y: 0.84904915, z: 0, w: 0.5283138}
+      scale: {x: 4.9249206, y: 4.9249206, z: 4.9249206}
+      terrainHeight: 0
+      id: 194
+      hash: 128057
+      num: 0
+    - pos: {x: 828.85144, y: 54.16935, z: 756.5394}
+      rotation: {x: 0, y: -0.053441413, z: 0, w: -0.998571}
+      scale: {x: 5.6646576, y: 5.6646576, z: 5.6646576}
+      terrainHeight: 0
+      id: 195
+      hash: 128058
+      num: 0
+    - pos: {x: 830.0634, y: 54.574543, z: 753.3335}
+      rotation: {x: 0, y: 0.9897228, z: 0, w: 0.14299944}
+      scale: {x: 4.663953, y: 4.663953, z: 4.663953}
+      terrainHeight: 0
+      id: 196
+      hash: 64028
+      num: 0
+    - pos: {x: 396.82977, y: 60.693863, z: 777.50684}
+      rotation: {x: 0, y: 0.9967143, z: 0, w: -0.0809975}
+      scale: {x: 6.1335297, y: 6.1335297, z: 6.1335297}
+      terrainHeight: 0
+      id: 197
+      hash: 60058
+      num: 0
+    - pos: {x: 395.3721, y: 60.977066, z: 774.1162}
+      rotation: {x: 0, y: 0.9372078, z: 0, w: 0.34877142}
+      scale: {x: 3.9591002, y: 3.9591002, z: 3.9591002}
+      terrainHeight: 0
+      id: 198
+      hash: 60059
+      num: 0
+    - pos: {x: 389.73074, y: 59.203976, z: 777.94684}
+      rotation: {x: 0, y: 0.22712035, z: 0, w: 0.9738667}
+      scale: {x: 3.9150908, y: 3.9150908, z: 3.9150908}
+      terrainHeight: 0
+      id: 199
+      hash: 60061
+      num: 0
+    - pos: {x: 519.8957, y: 58.769367, z: 775.99774}
+      rotation: {x: 0, y: -0.12079693, z: 0, w: -0.9926772}
+      scale: {x: 5.2824, y: 5.2824, z: 5.2824}
+      terrainHeight: 0
+      id: 200
+      hash: 76058
+      num: 0
+    - pos: {x: 528.18195, y: 57.67057, z: 775.8277}
+      rotation: {x: 0, y: 0.99999803, z: 0, w: 0.0019821671}
+      scale: {x: 4.4557676, y: 4.4557676, z: 4.4557676}
+      terrainHeight: 0
+      id: 201
+      hash: 76059
+      num: 0
+    - pos: {x: 525.1942, y: 58.058247, z: 775.81683}
+      rotation: {x: 0, y: 0.9882136, z: 0, w: 0.15308149}
+      scale: {x: 4.0450835, y: 4.0450835, z: 4.0450835}
+      terrainHeight: 0
+      id: 202
+      hash: 38029
+      num: 0
+    - pos: {x: 705.66626, y: 54.484123, z: 779.63495}
+      rotation: {x: 0, y: 0.104304425, z: 0, w: -0.9945454}
+      scale: {x: 4.7505674, y: 4.7505674, z: 4.7505674}
+      terrainHeight: 0
+      id: 203
+      hash: 108058
+      num: 0
+    MineralObList:
+    - {fileID: 3911768045438209316, guid: 537769969dd51644998db346f80cba40, type: 3}
+  - MineralType: 1
+    Drafts:
+    - pos: {x: 359.86066, y: 51.579628, z: 90.23963}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 1
+      hash: 12001
+      num: 0
+    - pos: {x: 496.95282, y: 52.87044, z: 100.07816}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 2
+      hash: 16001
+      num: 0
+    - pos: {x: 572.2629, y: 51.5745, z: 91.85781}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 3
+      hash: 18001
+      num: 0
+    - pos: {x: 369.24612, y: 56.77381, z: 169.23915}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 4
+      hash: 12002
+      num: 0
+    - pos: {x: 417.37076, y: 53.86494, z: 140.24138}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 5
+      hash: 14002
+      num: 0
+    - pos: {x: 459.50815, y: 50.90518, z: 113.92978}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 6
+      hash: 14001
+      num: 0
+    - pos: {x: 473.1332, y: 58.418938, z: 156.55263}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 7
+      hash: 16002
+      num: 0
+    - pos: {x: 575.7582, y: 58.31061, z: 137.03738}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 8
+      hash: 18002
+      num: 0
+    - pos: {x: 606.53595, y: 51.188137, z: 106.259605}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 9
+      hash: 20001
+      num: 0
+    - pos: {x: 625.9541, y: 55.068237, z: 135.35448}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 10
+      hash: 20002
+      num: 0
+    - pos: {x: 655.11365, y: 54.908012, z: 143.73663}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 11
+      hash: 22002
+      num: 0
+    - pos: {x: 697.8013, y: 51.691326, z: 158.81807}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 12
+      hash: 24002
+      num: 0
+    - pos: {x: 259.01575, y: 54.022198, z: 177.13586}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 13
+      hash: 8003
+      num: 0
+    - pos: {x: 349.50433, y: 54.481216, z: 205.51872}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 14
+      hash: 12003
+      num: 0
+    - pos: {x: 438.1482, y: 58.23416, z: 226.39323}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 15
+      hash: 14003
+      num: 0
+    - pos: {x: 496.5321, y: 67.8867, z: 188.59258}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 16
+      hash: 16003
+      num: 0
+    - pos: {x: 572.4571, y: 61.65884, z: 232.08923}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 17
+      hash: 18004
+      num: 0
+    - pos: {x: 603.6556, y: 57.820915, z: 195.80965}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 18
+      hash: 20003
+      num: 0
+    - pos: {x: 644.30426, y: 54.949818, z: 198.85182}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 19
+      hash: 22003
+      num: 0
+    - pos: {x: 656.7642, y: 52.393158, z: 235.42268}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 20
+      hash: 22004
+      num: 0
+    - pos: {x: 141.50356, y: 53.464745, z: 294.5186}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 21
+      hash: 4005
+      num: 0
+    - pos: {x: 179.82204, y: 54.95121, z: 286.9455}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 22
+      hash: 6004
+      num: 0
+    - pos: {x: 221.82997, y: 58.03465, z: 303.51566}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 23
+      hash: 6005
+      num: 0
+    - pos: {x: 241.05394, y: 56.158558, z: 284.90662}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 24
+      hash: 8004
+      num: 0
+    - pos: {x: 286.6866, y: 57.35007, z: 303.3862}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 25
+      hash: 8005
+      num: 0
+    - pos: {x: 343.4847, y: 54.976707, z: 285.13315}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 26
+      hash: 10004
+      num: 0
+    - pos: {x: 316.49347, y: 56.363174, z: 296.29858}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 27
+      hash: 10005
+      num: 0
+    - pos: {x: 349.8927, y: 53.773514, z: 239.62994}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 28
+      hash: 12004
+      num: 0
+    - pos: {x: 397.43478, y: 66.21949, z: 289.76114}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 29
+      hash: 12005
+      num: 0
+    - pos: {x: 406.78787, y: 56.334496, z: 247.72084}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 30
+      hash: 14004
+      num: 0
+    - pos: {x: 423.09912, y: 67.01007, z: 292.8033}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 31
+      hash: 14005
+      num: 0
+    - pos: {x: 491.807, y: 68.54216, z: 247.72084}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 32
+      hash: 16004
+      num: 0
+    - pos: {x: 595.2087, y: 57.037273, z: 240.24486}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 33
+      hash: 20004
+      num: 0
+    - pos: {x: 618.737, y: 60.992603, z: 300.0204}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 34
+      hash: 20005
+      num: 0
+    - pos: {x: 689.5809, y: 55.85106, z: 292.2855}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 35
+      hash: 22005
+      num: 0
+    - pos: {x: 743.6928, y: 52.993114, z: 283.0295}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 36
+      hash: 24004
+      num: 0
+    - pos: {x: 159.07698, y: 58.84264, z: 350.44287}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 37
+      hash: 4006
+      num: 0
+    - pos: {x: 205.97182, y: 62.005196, z: 356.1065}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 38
+      hash: 6006
+      num: 0
+    - pos: {x: 233.77214, y: 65.39864, z: 354.45596}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 39
+      hash: 8006
+      num: 0
+    - pos: {x: 343.87305, y: 66.82244, z: 358.30722}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 40
+      hash: 10006
+      num: 0
+    - pos: {x: 354.45596, y: 64.59573, z: 370.31412}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 41
+      hash: 12006
+      num: 0
+    - pos: {x: 529.8989, y: 93.905464, z: 325.7171}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 42
+      hash: 18005
+      num: 0
+    - pos: {x: 544.59204, y: 97.38182, z: 360.60504}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 43
+      hash: 18006
+      num: 0
+    - pos: {x: 706.6689, y: 65.39154, z: 368.8901}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 44
+      hash: 24006
+      num: 0
+    - pos: {x: 761.2015, y: 63.26466, z: 324.51962}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 45
+      hash: 26005
+      num: 0
+    - pos: {x: 763.9848, y: 62.902027, z: 361.1876}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 46
+      hash: 26006
+      num: 0
+    - pos: {x: 825.3461, y: 58.09469, z: 333.77563}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 47
+      hash: 28005
+      num: 0
+    - pos: {x: 882.75916, y: 54.944984, z: 325.32874}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 48
+      hash: 30005
+      num: 0
+    - pos: {x: 880.7526, y: 57.669502, z: 352.22287}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 49
+      hash: 30006
+      num: 0
+    - pos: {x: 273.8059, y: 55.812286, z: 426.4002}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 50
+      hash: 8007
+      num: 0
+    - pos: {x: 294.97168, y: 55.952095, z: 422.35477}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 51
+      hash: 10007
+      num: 0
+    - pos: {x: 358.43668, y: 60.937878, z: 415.4613}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 52
+      hash: 12007
+      num: 0
+    - pos: {x: 468.7965, y: 111.07116, z: 378.27554}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 53
+      hash: 16006
+      num: 0
+    - pos: {x: 506.79135, y: 109.20223, z: 406.36716}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 54
+      hash: 16007
+      num: 0
+    - pos: {x: 549.3495, y: 71.187904, z: 435.33255}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 55
+      hash: 18007
+      num: 0
+    - pos: {x: 636.7635, y: 66.91652, z: 389.63516}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 56
+      hash: 22006
+      num: 0
+    - pos: {x: 711.94415, y: 59.842438, z: 409.02097}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 57
+      hash: 24007
+      num: 0
+    - pos: {x: 860.3312, y: 53.495483, z: 436.85364}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 58
+      hash: 28007
+      num: 0
+    - pos: {x: 151.601, y: 51.402325, z: 459.2169}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 59
+      hash: 4007
+      num: 0
+    - pos: {x: 172.24896, y: 54.74631, z: 486.467}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 60
+      hash: 4008
+      num: 0
+    - pos: {x: 188.62494, y: 53.355278, z: 454.0387}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 61
+      hash: 6007
+      num: 0
+    - pos: {x: 195.4213, y: 51.70855, z: 485.30194}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 62
+      hash: 6008
+      num: 0
+    - pos: {x: 278.98407, y: 56.345604, z: 474.00705}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 63
+      hash: 8008
+      num: 0
+    - pos: {x: 310.7975, y: 59.26753, z: 498.0532}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 64
+      hash: 10008
+      num: 0
+    - pos: {x: 396.85226, y: 78.418175, z: 478.5703}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 65
+      hash: 12008
+      num: 0
+    - pos: {x: 549.3495, y: 78.99876, z: 489.34738}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 66
+      hash: 18008
+      num: 0
+    - pos: {x: 608.51013, y: 63.510365, z: 496.82336}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 67
+      hash: 20008
+      num: 0
+    - pos: {x: 649.15875, y: 57.58839, z: 456.04526}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 68
+      hash: 22007
+      num: 0
+    - pos: {x: 656.7642, y: 57.31066, z: 495.39938}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 69
+      hash: 22008
+      num: 0
+    - pos: {x: 746.5084, y: 55.79008, z: 462.1296}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 70
+      hash: 24008
+      num: 0
+    - pos: {x: 805.7985, y: 53.570736, z: 438.79547}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 71
+      hash: 26007
+      num: 0
+    - pos: {x: 158.49443, y: 56.282417, z: 545.07745}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 72
+      hash: 4009
+      num: 0
+    - pos: {x: 216.52235, y: 58.122524, z: 567.8938}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 73
+      hash: 6009
+      num: 0
+    - pos: {x: 286.3306, y: 58.345016, z: 530.35205}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 74
+      hash: 8009
+      num: 0
+    - pos: {x: 324.552, y: 77.19196, z: 564.9164}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 75
+      hash: 10009
+      num: 0
+    - pos: {x: 387.1108, y: 67.975624, z: 562.8451}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 76
+      hash: 12009
+      num: 0
+    - pos: {x: 413.8755, y: 67.53362, z: 561.8418}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 77
+      hash: 14009
+      num: 0
+    - pos: {x: 556.76074, y: 79.50984, z: 543.0062}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 78
+      hash: 18009
+      num: 0
+    - pos: {x: 591.45447, y: 68.74294, z: 571.3567}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 79
+      hash: 20009
+      num: 0
+    - pos: {x: 720.45575, y: 54.652756, z: 527.53644}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 80
+      hash: 24009
+      num: 0
+    - pos: {x: 791.2026, y: 53.557556, z: 512.0019}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 81
+      hash: 26008
+      num: 0
+    - pos: {x: 777.1244, y: 55.914402, z: 535.14185}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 82
+      hash: 26009
+      num: 0
+    - pos: {x: 837.7414, y: 53.535297, z: 562.00366}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 83
+      hash: 28009
+      num: 0
+    - pos: {x: 126.90758, y: 55.49025, z: 634.6599}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 84
+      hash: 4010
+      num: 0
+    - pos: {x: 179.8544, y: 55.23902, z: 627.993}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 85
+      hash: 6010
+      num: 0
+    - pos: {x: 250.40703, y: 60.463497, z: 623.0737}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 86
+      hash: 8010
+      num: 0
+    - pos: {x: 314.71347, y: 78.53641, z: 618.1868}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 87
+      hash: 10010
+      num: 0
+    - pos: {x: 347.01233, y: 77.61176, z: 638.25226}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 88
+      hash: 12011
+      num: 0
+    - pos: {x: 403.58386, y: 69.075066, z: 588.1858}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 89
+      hash: 12010
+      num: 0
+    - pos: {x: 484.55756, y: 82.61318, z: 630.45264}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 90
+      hash: 16010
+      num: 0
+    - pos: {x: 554.36584, y: 80.916374, z: 622.75006}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 91
+      hash: 18010
+      num: 0
+    - pos: {x: 689.5485, y: 59.42098, z: 593.9465}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 92
+      hash: 22010
+      num: 0
+    - pos: {x: 798.3549, y: 55.571392, z: 622.49115}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 93
+      hash: 26010
+      num: 0
+    - pos: {x: 829.7152, y: 55.313038, z: 635.469}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 94
+      hash: 28011
+      num: 0
+    - pos: {x: 857.22424, y: 55.11709, z: 606.9243}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 95
+      hash: 28010
+      num: 0
+    - pos: {x: 133.2832, y: 53.746025, z: 659.1268}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 96
+      hash: 4011
+      num: 0
+    - pos: {x: 213.99799, y: 55.855965, z: 648.7057}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 97
+      hash: 6011
+      num: 0
+    - pos: {x: 204.12709, y: 55.092743, z: 700.714}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 98
+      hash: 6012
+      num: 0
+    - pos: {x: 247.65611, y: 57.70151, z: 685.1147}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 99
+      hash: 8011
+      num: 0
+    - pos: {x: 295.71603, y: 65.36664, z: 698.3838}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 100
+      hash: 10012
+      num: 0
+    - pos: {x: 306.7844, y: 67.09968, z: 655.5991}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 101
+      hash: 10011
+      num: 0
+    - pos: {x: 409.18277, y: 77.58945, z: 675.2115}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 102
+      hash: 14011
+      num: 0
+    - pos: {x: 476.20776, y: 82.66239, z: 673.1402}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 103
+      hash: 16011
+      num: 0
+    - pos: {x: 555.3044, y: 97.22588, z: 691.2638}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 104
+      hash: 18011
+      num: 0
+    - pos: {x: 534.5917, y: 90.10661, z: 705.2125}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 105
+      hash: 18012
+      num: 0
+    - pos: {x: 606.9243, y: 84.140434, z: 683.4965}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 106
+      hash: 20011
+      num: 0
+    - pos: {x: 649.57947, y: 71.70903, z: 645.7606}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 107
+      hash: 22011
+      num: 0
+    - pos: {x: 759.19495, y: 68.2658, z: 660.03296}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 108
+      hash: 26011
+      num: 0
+    - pos: {x: 753.3695, y: 67.01942, z: 695.1798}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 109
+      hash: 26012
+      num: 0
+    - pos: {x: 863.8264, y: 58.21305, z: 693.8205}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 110
+      hash: 28012
+      num: 0
+    - pos: {x: 168.3006, y: 53.857784, z: 743.9841}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 111
+      hash: 4012
+      num: 0
+    - pos: {x: 183.57622, y: 52.34483, z: 759.93933}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 112
+      hash: 6013
+      num: 0
+    - pos: {x: 234.2576, y: 56.51034, z: 714.08014}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 113
+      hash: 8012
+      num: 0
+    - pos: {x: 286.36298, y: 53.736443, z: 766.57385}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 114
+      hash: 8013
+      num: 0
+    - pos: {x: 318.9531, y: 56.218792, z: 762.7873}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 115
+      hash: 10013
+      num: 0
+    - pos: {x: 400.6064, y: 82.06958, z: 711.6205}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 116
+      hash: 12012
+      num: 0
+    - pos: {x: 407.4675, y: 78.71418, z: 740.90955}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 117
+      hash: 14012
+      num: 0
+    - pos: {x: 682.2344, y: 60.66608, z: 767.1888}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 118
+      hash: 22013
+      num: 0
+    - pos: {x: 692.91437, y: 64.11021, z: 751.91315}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 119
+      hash: 24013
+      num: 0
+    - pos: {x: 708.54596, y: 75.5779, z: 710.4878}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 120
+      hash: 24012
+      num: 0
+    - pos: {x: 750.94226, y: 57.230587, z: 755.9586}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 121
+      hash: 26013
+      num: 0
+    - pos: {x: 841.5603, y: 54.686733, z: 767.48004}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 122
+      hash: 28013
+      num: 0
+    - pos: {x: 900.78564, y: 52.6079, z: 739.1943}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 123
+      hash: 30012
+      num: 0
+    - pos: {x: 882.306, y: 53.53596, z: 754.66406}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 124
+      hash: 30013
+      num: 0
+    - pos: {x: 323.16037, y: 51.284733, z: 810.4913}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 125
+      hash: 10014
+      num: 0
+    - pos: {x: 368.59885, y: 56.801807, z: 786.5746}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 126
+      hash: 12013
+      num: 0
+    - pos: {x: 412.28967, y: 64.37923, z: 782.04364}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 127
+      hash: 14013
+      num: 0
+    - pos: {x: 470.54413, y: 61.57263, z: 823.5985}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 128
+      hash: 16014
+      num: 0
+    - pos: {x: 512.55206, y: 57.250042, z: 805.0218}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 129
+      hash: 16013
+      num: 0
+    - pos: {x: 539.4786, y: 57.946365, z: 783.1764}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 130
+      hash: 18013
+      num: 0
+    - pos: {x: 529.93134, y: 55.368282, z: 818.2909}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 131
+      hash: 18014
+      num: 0
+    - pos: {x: 583.75195, y: 57.530235, z: 798.5167}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 132
+      hash: 20013
+      num: 0
+    - pos: {x: 579.7389, y: 55.732967, z: 820.7505}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 133
+      hash: 20014
+      num: 0
+    - pos: {x: 663.2693, y: 53.071697, z: 823.6956}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 134
+      hash: 22014
+      num: 0
+    - pos: {x: 591.19556, y: 50.7995, z: 915.2198}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 135
+      hash: 20015
+      num: 0
+    - pos: {x: 641.61804, y: 51.597057, z: 930.7867}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      terrainHeight: 0
+      id: 136
+      hash: 22016
+      num: 0
+    MineralObList:
+    - {fileID: 3614732284748458824, guid: 797dc69d8edbde84eb7440a5c81c6ce2, type: 3}
+  SpawnPos: {fileID: 5900922026975249338}
+--- !u!1 &3135427280635398158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4446394807084797477}
+  - component: {fileID: 7957679161657899314}
+  - component: {fileID: 2931503842486695776}
+  m_Layer: 6
+  m_Name: Terrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &4446394807084797477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135427280635398158}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5823858658092803396}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!218 &7957679161657899314
+Terrain:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135427280635398158}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_TerrainData: {fileID: 15600000, guid: 884836a8ac978ac4aa90e8119486627d, type: 2}
+  m_TreeDistance: 5000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMinimumLODSimplification: 0
+  m_HeightmapMaximumLOD: 0
+  m_ShadowCastingMode: 2
+  m_DrawHeightmap: 1
+  m_DrawInstanced: 0
+  m_DrawTreesAndFoliage: 1
+  m_StaticShadowCaster: 0
+  m_IgnoreQualitySettings: 0
+  m_ReflectionProbeUsage: 1
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
+  m_BakeLightProbesForTrees: 1
+  m_PreserveTreePrototypeLayers: 0
+  m_DeringLightProbesForTrees: 1
+  m_ReceiveGI: 1
+  m_ScaleInLightmap: 0.0256
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+  m_GroupingID: 0
+  m_RenderingLayerMask: 1
+  m_AllowAutoConnect: 1
+  m_EnableHeightmapRayTracing: 1
+  m_EnableTreesAndDetailsRayTracing: 0
+  m_TreeMotionVectorModeOverride: 3
+--- !u!154 &2931503842486695776
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135427280635398158}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_TerrainData: {fileID: 15600000, guid: 884836a8ac978ac4aa90e8119486627d, type: 2}
+  m_EnableTreeColliders: 1

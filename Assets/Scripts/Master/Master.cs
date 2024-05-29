@@ -9,6 +9,7 @@ using FishNet.Object.Synchronizing;
 
 namespace masterland.Master
 {
+    using Manager;
     public class Master : NetworkBehaviour
     {
         public static Master Local;

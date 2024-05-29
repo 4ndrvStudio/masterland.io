@@ -46,7 +46,7 @@ MonoBehaviour:
       - t: 255
         v: 299
       - t: 1
-        v: 3
+        v: 1
       - t: 255
         v: 327
       - t: 255
@@ -2779,7 +2779,7 @@ MonoBehaviour:
       - t: 11
         v: -2094660910378385169
       - t: 11
-        v: 692
+        v: 699
       - t: 255
         v: 110
       - t: 255
@@ -2837,13 +2837,13 @@ MonoBehaviour:
       - t: 255
         v: 108
       - t: 2
-        v: 1073741824
-      - t: 2
         v: 1065353216
+      - t: 2
+        v: 1069547520
       - t: 2
         v: 1061997773
       - t: 2
-        v: 1069547520
+        v: 1065353216
       - t: 1
         v: 0
       - t: 2
@@ -3209,7 +3209,7 @@ MonoBehaviour:
       - y
       values:
       - t: 2
-        v: 1148715008
+        v: 1148724541
       - t: 2
         v: 1135817523
       special: 
@@ -7315,7 +7315,7 @@ MonoBehaviour:
       - t: 11
         v: 7132412082615484418
       - t: 11
-        v: 286
+        v: 288
       - t: 255
         v: 290
       - t: 255
@@ -7345,7 +7345,7 @@ MonoBehaviour:
       fields: []
       values: []
       special: 
-      uniObj: {fileID: 2793364243118454616, guid: e4f558259734fe24589d47994d81d551, type: 3}
+      uniObj: {fileID: 2793364243118454616, guid: 797dc69d8edbde84eb7440a5c81c6ce2, type: 3}
     - refId: 289
       type: MapMagic.Nodes.PositioningSettings, MapMagic, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
