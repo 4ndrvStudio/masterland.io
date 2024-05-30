@@ -15,7 +15,7 @@ namespace masterland.Master
         public static Master Local;
         public Transform Body;
         public Animator Animator;
-        public MasterInput Input;
+        public Input Input;
         public Stats Stats;
         public AnimatorHook AnimatorHook;
         public Movement Movement;

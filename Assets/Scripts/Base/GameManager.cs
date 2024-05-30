@@ -54,7 +54,7 @@ namespace masterland.Manager
          
             if (_isDev)
             {
-                _networkManager.TransportManager.Transport.SetClientAddress("127.0.0.1");
+                _networkManager.TransportManager.Transport.SetClientAddress("192.168.1.5");
                 if (_isServer)
                 {
                     StartServer();
@@ -80,9 +80,6 @@ namespace masterland.Manager
                 _networkManager.ClientManager.OnClientConnectionState += ClientManager_OnClientConnectionState;
                 _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedStartScenes;
             }
-
-            Application.targetFrameRate = 61;
-
 
         }
 

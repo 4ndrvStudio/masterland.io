@@ -130,14 +130,14 @@ namespace masterland.Master
             }
             else if (base.IsServerInitialized)
             {
-                Move(default);
+                //Move(default);
             }
         }
 
         public override void OnPostTick()
         {
             base.OnPostTick();
-            //CreateReconcile();
+            CreateReconcile();
         }
 
         public override void CreateReconcile()

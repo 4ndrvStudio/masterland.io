@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using FishNet.CodeGenerating;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using JetBrains.Annotations;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 namespace masterland.Master
 {
@@ -85,7 +85,7 @@ namespace masterland.Master
                     && _master.Weapon.GetTypeId() != 0 && !_avoidMultiAttack)
             {
                 _master.Input.PlayAttack = false; 
-                await Task.Delay(100);
+                await UniTask.Delay(100);
                 if(_master.State.IsAction)
                    return;
                 StartCoroutine(AvoidMultiAttack());
@@ -136,13 +136,12 @@ namespace masterland.Master
 
 
             if (!_master.State.IsAction && _master.Input.PlayLockOn 
-                && CurrentTargetLockOn!= null  && _master.Input.PlayDodge
+                && CurrentTargetLockOn != null  && _master.Input.PlayDodge
                 && _master.Stats.MP.Value >45)
             {
-                _master.Input.PlayDodge = false;
                 
                 if (_master.Input.MoveDirection == Vector2.zero) return;
-
+                Debug.Log("PlayDodege");
                 DodgeType dodgeType = DodgeType.None;
 
                 if (_master.Input.MoveDirection.y > 0)

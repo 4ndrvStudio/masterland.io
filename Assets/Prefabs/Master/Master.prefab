@@ -46330,7 +46330,7 @@ GameObject:
   - component: {fileID: 8503931671326892889}
   - component: {fileID: 6950789222351605017}
   - component: {fileID: 2147024423803922459}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Sword
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -56383,7 +56383,7 @@ GameObject:
   - component: {fileID: -8469202331874335241}
   - component: {fileID: 928486734988500539}
   - component: {fileID: 6746803543011169952}
-  - component: {fileID: 4637901502446600583}
+  - component: {fileID: 1660651514022504267}
   m_Layer: 7
   m_Name: Master
   m_TagString: Untagged
@@ -56399,8 +56399,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6615697361846800458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.5091197, z: 0, w: -0.8606957}
-  m_LocalPosition: {x: 611.08246, y: 57.58, z: 879.72845}
+  m_LocalRotation: {x: 0, y: 0.9635654, z: 0, w: -0.26747304}
+  m_LocalPosition: {x: 609.4879, y: 57.58, z: 879.72845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56488,13 +56488,13 @@ MonoBehaviour:
   - {fileID: -8469202331874335241}
   - {fileID: 928486734988500539}
   - {fileID: 6746803543011169952}
-  - {fileID: 4637901502446600583}
+  - {fileID: 1660651514022504267}
   - {fileID: 892859245840518198}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
-    Position: {x: 216.82779, y: 76.43, z: -153.56636}
-    Rotation: {x: 0, y: 0.7149211, z: 0, w: -0.6992051}
+    Position: {x: 645.9395, y: 57.58, z: 879.72845}
+    Rotation: {x: 0, y: 0.6749525, z: 0, w: 0.73786116}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
   _isSpawnable: 1
@@ -56507,9 +56507,9 @@ MonoBehaviour:
   _graphicalObject: {fileID: 110760148712384616}
   _enableStateForwarding: 1
   _networkTransform: {fileID: 0}
-  _ownerInterpolation: 1
-  _enableTeleport: 0
-  _teleportThreshold: 1
+  _ownerInterpolation: 3
+  _enableTeleport: 1
+  _teleportThreshold: 10
   <PrefabId>k__BackingField: 0
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
@@ -56536,9 +56536,9 @@ MonoBehaviour:
     Position: 1
     Rotation: 1
     Scale: 0
-  _interpolation: 2
-  _extrapolation: 2
-  _enableTeleport: 1
+  _interpolation: 1
+  _extrapolation: 1
+  _enableTeleport: 0
   _teleportThreshold: 20
   _scaleThreshold: 0
   _clientAuthoritative: 1
@@ -56578,7 +56578,7 @@ MonoBehaviour:
   IgnoredParameters: []
   _animator: {fileID: 5269484128832073999}
   _smoothFloats: 1
-  _interpolation: 2
+  _interpolation: 1
   _clientAuthoritative: 1
   _sendToOwner: 1
 --- !u!114 &2714606748193244942
@@ -56604,6 +56604,7 @@ MonoBehaviour:
   PlayFastDodgeRight: 0
   PlayLockOn: 0
   PlayDodge: 0
+  PlayAI: 0
 --- !u!114 &8575488650261935804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56806,7 +56807,7 @@ MonoBehaviour:
   frontAnim: knockdown_front
   backAnim: knockdown_back
   _guardSpark: {fileID: 7687137611883537451}
-  _networkCollision: {fileID: 4637901502446600583}
+  _networkCollision: {fileID: 1660651514022504267}
 --- !u!114 &-8469202331874335241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56865,7 +56866,7 @@ MonoBehaviour:
   _swordHit: {fileID: 8300000, guid: 44aab1215b406de48949db0cddea3a1f, type: 3}
   _swordSlash: {fileID: 8300000, guid: 66a4bae5613c8664a99e49a2cf9f2fb6, type: 3}
   _audioSource: {fileID: 7637855814325981782}
---- !u!114 &4637901502446600583
+--- !u!114 &1660651514022504267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56880,7 +56881,7 @@ MonoBehaviour:
   _componentIndexCache: 14
   _addedNetworkObject: {fileID: 578991581174262709}
   _networkObjectCache: {fileID: 578991581174262709}
-  _maximumSimultaneousHits: 32
+  _maximumSimultaneousHits: 16
   _historyDuration: 1
   _additionalSize: 0.3
 --- !u!1 &6625024666331627447

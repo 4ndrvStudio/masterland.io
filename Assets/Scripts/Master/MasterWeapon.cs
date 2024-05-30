@@ -5,6 +5,7 @@ using FishNet.Transporting;
 using FishNet.Object.Synchronizing;
 using FishNet.Object;
 using FishNet.CodeGenerating;
+using UnityEngine.InputSystem;
 
 
 namespace masterland.Master
@@ -14,12 +15,38 @@ namespace masterland.Master
         
         [AllowMutableSyncType]
         public SyncVar<byte> WeaponId = new SyncVar<byte>(0,new SyncTypeSettings(WritePermission.ClientUnsynchronized, ReadPermission.ExcludeOwner));
-        [ServerRpc(RunLocally = true)] private void SetWeapon(byte value) => WeaponId.Value = value;
+        [ServerRpc(RunLocally = true)] private void SetWeapon(byte value) {
+            if (value != WeaponId.Value) 
+                WeaponId.Value = value;
+        }
 
         [SerializeField] private GameObject _weaponHolder;
         [SerializeField] private GameObject _Sword1ObTest;
 
         private Collider _currentWeaponCollider;
+
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            if(!IsOwner)
+                return;
+            _master.Input.MasterInput.Player.UseSlot1.performed += OnPerformUseSlot1;
+            _master.Input.MasterInput.Player.UnuseWeapon.performed += OnPerformUnuseWeapon;
+        }
+
+        public override void OnStopClient()
+        {
+            base.OnStopClient();
+             if(!IsOwner)
+                return;
+
+            _master.Input.MasterInput.Player.UseSlot1.performed -= OnPerformUseSlot1;
+            _master.Input.MasterInput.Player.UnuseWeapon.performed -= OnPerformUnuseWeapon;
+
+        }
+
+        private void OnPerformUseSlot1(InputAction.CallbackContext context) {SetWeapon(101);}
+        private void OnPerformUnuseWeapon(InputAction.CallbackContext context) {SetWeapon(0);}
 
 
         public override void Setup(Master master) 
@@ -61,11 +88,12 @@ namespace masterland.Master
    
         
 
-        private void GetInput() {
-            if(Input.GetKeyDown(KeyCode.X)) 
-                SetWeapon(0);
-            if(Input.GetKeyDown(KeyCode.Alpha1)) 
-                SetWeapon(101);
+        private void GetInput() 
+        {
+            // if(Input.GetKeyDown(KeyCode.X)) 
+            //     SetWeapon(0);
+            // if(Input.GetKeyDown(KeyCode.Alpha1)) 
+            //     SetWeapon(101);
         }
 
         private void EnableWeaponCollider() 

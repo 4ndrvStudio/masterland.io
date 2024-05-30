@@ -286,31 +286,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000013908107
+      value: 0.000063899555
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.4221435
+      value: -2.9600813
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.87892383
+      value: -3.6094096
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7667414
+      value: 0.9278691
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6419561
+      value: -0.3729062
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000601447
+      value: -0.00000819799
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000503563
+      value: -0.0000032947337
       objectReference: {fileID: 0}
     - target: {fileID: 8172712363684064962, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_ControllerManager.Controllers.Array.data[0].Input.Gain
@@ -5098,7 +5098,7 @@ MonoBehaviour:
   _timingType: 0
   _allowTickDropping: 0
   _maximumFrameTicks: 2
-  _tickRate: 61
+  _tickRate: 59
   _pingInterval: 1
   _physicsMode: 1
 --- !u!1 &5077215451385742049
@@ -5277,6 +5277,7 @@ GameObject:
   - component: {fileID: 1170714486240747625}
   - component: {fileID: 7843143035913308103}
   - component: {fileID: 7843143035913308107}
+  - component: {fileID: 7843143035913308108}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -5809,7 +5810,7 @@ MonoBehaviour:
   _remoteServerTimeout: 2
   _remoteServerTimeoutDuration: 60
   _changeFrameRate: 1
-  _frameRate: 61
+  _frameRate: 59
 --- !u!114 &7843143035913308105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5830,7 +5831,7 @@ MonoBehaviour:
     SslProtocol: 0
   _mtu: 1023
   _port: 7777
-  _maximumClients: 2000
+  _maximumClients: 100
   _clientAddress: localhost
 --- !u!114 &7843143035913308106
 MonoBehaviour:
@@ -5869,9 +5870,26 @@ MonoBehaviour:
     Rotation: 2
     Scale: 2
   _changeFrameRate: 1
-  _frameRate: 61
+  _frameRate: 59
   _shareIds: 1
   _startOnHeadless: 1
+--- !u!114 &7843143035913308108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445529876130908978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b185516acd802904383e2a5f1a666750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boundingBoxLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _maximumRollbackTime: 1.25
+  Interpolation: 2
 --- !u!224 &7904908816989827031
 RectTransform:
   m_ObjectHideFlags: 0

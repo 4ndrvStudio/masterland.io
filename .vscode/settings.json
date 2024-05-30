@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "masterland.io.sln"
+    "dotnet.defaultSolution": "masterland.io.sln",
+    "liveServer.settings.port": 5501
 }
