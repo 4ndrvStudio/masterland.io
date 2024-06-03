@@ -12,7 +12,7 @@ namespace masterland
         void Update()
         {
             if(TargetFollow != null) {
-                transform.position = Vector3.Lerp(transform.position, TargetFollow.transform.position + Vector3.up*1.2f , 30f * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, TargetFollow.transform.position + Vector3.up*1.8f , 30f * Time.deltaTime);
             }
         }
     }

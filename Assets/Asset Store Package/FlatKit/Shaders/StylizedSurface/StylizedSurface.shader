@@ -47,6 +47,7 @@
 
         [Space(10)]
         [Toggle(DR_OUTLINE_ON)] _OutlineEnabled("Enable Outline", Int) = 0
+        _OutlineEnabled2("[DR_OUTLINE_ON]", int) = 0
         _OutlineWidth("[DR_OUTLINE_ON]Width", Float) = 1.0
         _OutlineColor("[DR_OUTLINE_ON]Color", Color) = (1, 1, 1, 1)
     	_OutlineScale("[DR_OUTLINE_ON]Scale", Float) = 1.0

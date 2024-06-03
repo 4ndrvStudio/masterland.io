@@ -56383,6 +56383,7 @@ GameObject:
   - component: {fileID: -8469202331874335241}
   - component: {fileID: 928486734988500539}
   - component: {fileID: 6746803543011169952}
+  - component: {fileID: 5441636811649591012}
   - component: {fileID: 1660651514022504267}
   m_Layer: 7
   m_Name: Master
@@ -56399,8 +56400,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6615697361846800458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.09176762, z: 0, w: 0.99578047}
-  m_LocalPosition: {x: 613.48553, y: 57.58, z: 879.72845}
+  m_LocalRotation: {x: 0, y: 0.9419007, z: 0, w: 0.3358916}
+  m_LocalPosition: {x: 626.5215, y: 57.58, z: 879.72845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56493,8 +56494,8 @@ MonoBehaviour:
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
-    Position: {x: 645.9395, y: 57.58, z: 879.72845}
-    Rotation: {x: 0, y: 0.6749525, z: 0, w: 0.73786116}
+    Position: {x: 613.48553, y: 57.58, z: 879.72845}
+    Rotation: {x: 0, y: 0.09176762, z: 0, w: 0.99578047}
     LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
   _isSpawnable: 1
@@ -56715,7 +56716,7 @@ MonoBehaviour:
   GroundedRadius: 0.5
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   _verticalVelocity: 0
   _maxSlopeAngle: 40
   Controller: {fileID: 0}
@@ -56866,6 +56867,22 @@ MonoBehaviour:
   _swordHit: {fileID: 8300000, guid: 44aab1215b406de48949db0cddea3a1f, type: 3}
   _swordSlash: {fileID: 8300000, guid: 66a4bae5613c8664a99e49a2cf9f2fb6, type: 3}
   _audioSource: {fileID: 7637855814325981782}
+--- !u!114 &5441636811649591012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615697361846800458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4721527f33acce14bb2c42a7fc7af3aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  checkInterval: 0.1
 --- !u!114 &1660651514022504267
 MonoBehaviour:
   m_ObjectHideFlags: 0

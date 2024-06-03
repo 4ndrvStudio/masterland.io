@@ -70,6 +70,7 @@ namespace masterland.Master
         {
             //Setup Camera 
             _bodyMesh.material = _ownerMat;
+            _nameText.gameObject.SetActive(false);
             if(GameManager.Instance != null) {
                 MasterName.Value = string.IsNullOrEmpty(GameManager.Instance.PlayerName) ? "Player #"+gameObject.name : GameManager.Instance.PlayerName;
             }
