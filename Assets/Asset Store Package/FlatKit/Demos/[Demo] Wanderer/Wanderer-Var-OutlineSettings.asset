@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Effect Material
-  m_Shader: {fileID: -6465566751694194690, guid: f968e7540d632cc40b5ca8b340a3e718,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f968e7540d632cc40b5ca8b340a3e718, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -45,14 +44,15 @@ Material:
     - _ColorThresholdMin: 0
     - _DepthThresholdMax: 10
     - _DepthThresholdMin: 1
-    - _FadeRangeEnd: 50
-    - _FadeRangeStart: 10
+    - _FadeRangeEnd: 100
+    - _FadeRangeStart: 0
     - _NormalThresholdMax: 0.75
     - _NormalThresholdMin: 0.5
-    - _Thickness: 2
+    - _Thickness: 1
     m_Colors:
     - _EdgeColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,11 +66,11 @@ MonoBehaviour:
   m_Name: Wanderer-Var-OutlineSettings
   m_EditorClassIdentifier: 
   edgeColor: {r: 0, g: 0, b: 0, a: 1}
-  thickness: 2
+  thickness: 1
   resolutionInvariant: 0
   fadeWithDistance: 0
-  fadeRangeStart: 10
-  fadeRangeEnd: 50
+  fadeRangeStart: 0
+  fadeRangeEnd: 100
   useDepth: 1
   minDepthThreshold: 1
   maxDepthThreshold: 10
