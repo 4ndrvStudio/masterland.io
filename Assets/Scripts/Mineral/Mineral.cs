@@ -12,6 +12,6 @@ namespace masterland.Mineral
     public class Mineral : NetworkBehaviour
     {
         public MineralType Type;
-      
+        
     }
 }
