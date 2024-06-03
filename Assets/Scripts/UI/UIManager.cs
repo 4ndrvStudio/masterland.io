@@ -32,8 +32,8 @@ namespace masterland
         {
             GameManager.Instance.PlayerName = _nameInput.text;
             GameManager.Instance.Play();
-            // Cursor.lockState = CursorLockMode.Locked;
-            // Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     
         public void ToggleWaiting(bool isActive) => _waitingPanel.SetActive(isActive);

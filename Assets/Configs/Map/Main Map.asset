@@ -2297,7 +2297,7 @@ MonoBehaviour:
       - guiDebug
       values:
       - t: 1
-        v: 3
+        v: 0
       - t: 255
         v: 66
       - t: 255
@@ -2307,7 +2307,7 @@ MonoBehaviour:
       - t: 11
         v: -2094660910378385177
       - t: 11
-        v: 98
+        v: 108
       - t: 255
         v: 98
       - t: 255
@@ -2382,7 +2382,7 @@ MonoBehaviour:
       fields: []
       values: []
       special: 
-      uniObj: {fileID: 8574412962073106934, guid: d14d71d5eb3bd7d46909251ffcb9a0d5, type: 2}
+      uniObj: {fileID: 8574412962073106934, guid: ba9d148503605aa488995df4b6cd4b2c, type: 2}
     - refId: 82
       type: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
@@ -2677,7 +2677,7 @@ MonoBehaviour:
       - t: 2
         v: 1125515264
       - t: 2
-        v: 1137082368
+        v: 1134362624
       special: 
       uniObj: {fileID: 0}
     - refId: 100
@@ -2700,13 +2700,13 @@ MonoBehaviour:
       - t: 2
         v: 3197737370
       - t: 2
-        v: 1082130432
+        v: 1081585172
       - t: 3
         v: 1
       - t: 11
         v: -2094660910378385170
       - t: 11
-        v: 3
+        v: 0
       - t: 255
         v: 101
       - t: 255
@@ -2769,7 +2769,7 @@ MonoBehaviour:
       - t: 255
         v: 104
       - t: 2
-        v: 1065353216
+        v: 1063339950
       - t: 255
         v: 105
       - t: 255
@@ -2779,7 +2779,7 @@ MonoBehaviour:
       - t: 11
         v: -2094660910378385169
       - t: 11
-        v: 793
+        v: 700
       - t: 255
         v: 110
       - t: 255
@@ -2839,11 +2839,11 @@ MonoBehaviour:
       - t: 2
         v: 1065353216
       - t: 2
-        v: 1073741824
+        v: 1069547520
       - t: 2
         v: 1061997773
       - t: 2
-        v: 1069547520
+        v: 1065353216
       - t: 1
         v: 0
       - t: 2
@@ -2853,7 +2853,7 @@ MonoBehaviour:
       - t: 2
         v: 0
       - t: 1
-        v: 2
+        v: 0
       - t: 1
         v: 0
       - t: 1
@@ -2875,7 +2875,7 @@ MonoBehaviour:
       fields: []
       values: []
       special: 
-      uniObj: {fileID: 2800000, guid: cc7e7bd6e8649344dbadd965a58f1123, type: 3}
+      uniObj: {fileID: 2800000, guid: 30fd814816d861e4b8de1a2489667395, type: 3}
     - refId: 107
       type: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
@@ -2887,11 +2887,11 @@ MonoBehaviour:
       - a
       values:
       - t: 2
-        v: 1047813960
+        v: 1044131620
       - t: 2
-        v: 1058905502
+        v: 1056635643
       - t: 2
-        v: 1033410714
+        v: 1041799321
       - t: 2
         v: 1065353216
       special: 
@@ -2907,11 +2907,11 @@ MonoBehaviour:
       - a
       values:
       - t: 2
-        v: 1055788713
+        v: 1057063298
       - t: 2
-        v: 1058971295
+        v: 1059102881
       - t: 2
-        v: 1024495759
+        v: 0
       - t: 2
         v: 1065353216
       special: 
@@ -2924,7 +2924,7 @@ MonoBehaviour:
       - value__
       values:
       - t: 1
-        v: 0
+        v: 1
       special: 
       uniObj: {fileID: 0}
     - refId: 110
@@ -2936,9 +2936,9 @@ MonoBehaviour:
       - y
       values:
       - t: 2
-        v: 1154887625
+        v: 1154812881
       - t: 2
-        v: 3267530588
+        v: 3274718980
       special: 
       uniObj: {fileID: 0}
     - refId: 111
@@ -7628,8 +7628,6 @@ MonoBehaviour:
       - t: 255
         v: 100
       - t: 255
-        v: 103
-      - t: 255
         v: 123
       - t: 255
         v: 131
@@ -7750,8 +7748,6 @@ MonoBehaviour:
         v: 76
       - t: 255
         v: 80
-      - t: 255
-        v: 100
       - t: 255
         v: 112
       - t: 255
