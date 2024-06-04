@@ -13,6 +13,8 @@ namespace masterland.Manager
 {
     using FishNet.Transporting.Multipass;
     using Map;
+    using masterland.UI;
+
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
@@ -150,13 +152,13 @@ namespace masterland.Manager
 
         IEnumerator IEStartClient()
         {
-            UIManager.Instance.ToggleWaiting(true);
-            UIManager.Instance.ToggleLoginPanel(false);
+            UIManager.Instance.ShowPopup(PopupName.Waiting);
             yield return new WaitUntil(() => _clientState == LocalConnectionState.Stopped);
             _networkManager.ClientManager.StartConnection();
             yield return new WaitUntil(() => _clientState == LocalConnectionState.Started);
             yield return new WaitForSeconds(2f);
-            UIManager.Instance.ToggleWaiting(false);
+            UIManager.Instance.ToggleView(ViewName.Gameplay);
+            UIManager.Instance.HidePopup(PopupName.Waiting);
         }
 
         public void Play() => StartClient(_port);

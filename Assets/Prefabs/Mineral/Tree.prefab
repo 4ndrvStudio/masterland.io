@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 5648342975075702900}
   - component: {fileID: 8298170219587585822}
   - component: {fileID: 3614732284748458824}
+  - component: {fileID: 3258187529026402734}
   m_Layer: 10
   m_Name: Tree
   m_TagString: Untagged
@@ -319,6 +320,22 @@ MonoBehaviour:
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 13349156788078816888
+--- !u!114 &3258187529026402734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2793364243118454616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c87a02ef5028a2469e7368c8abb312e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractType: 2
+  _renderer: {fileID: 2283298606798423775}
+  _material: []
+  _rootColor: []
 --- !u!1 &4211453676928299896
 GameObject:
   m_ObjectHideFlags: 0

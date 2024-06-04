@@ -1,7 +1,18 @@
 using UnityEngine;
 
-namespace masterland.Master
+namespace masterland.Interact
 {
+    using Mineral;
+    using masterland.UI;
+    using System;
+   
+    public enum InteractType 
+    {
+        Mint_Stone = 1,
+        Mint_Wood = 2,
+    }
+
+
     public class Selector : MonoBehaviour
     {
         public LayerMask layerMask;
@@ -20,7 +31,7 @@ namespace masterland.Master
                 Ray ray = Camera.main.ScreenPointToRay(screenCenter);
                 RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit, 50f, layerMask))
+                if (Physics.Raycast(ray, out hit, 10f, layerMask))
                 {
                     SelectedObject newOutlineEffect = hit.collider.GetComponent<SelectedObject>();
 
@@ -35,6 +46,8 @@ namespace masterland.Master
 
                             newOutlineEffect.EnableOutline();
                             _currentOutlineEffect = newOutlineEffect;
+                          
+                            UIController.Instance.ShowInteractTutorial(_currentOutlineEffect.InteractType.ConvertEnumToStringWithSpace());
                         }
                     }
                     else
@@ -43,6 +56,7 @@ namespace masterland.Master
                         {
                             _currentOutlineEffect.DisableOutline();
                             _currentOutlineEffect = null;
+                            UIController.Instance.HideInteractTutorial();
                         }
                     }
                 }
@@ -51,6 +65,7 @@ namespace masterland.Master
                     if (_currentOutlineEffect != null)
                     {
                         _currentOutlineEffect.DisableOutline();
+                        UIController.Instance.HideInteractTutorial();
                         _currentOutlineEffect = null;
                     }
                 }

@@ -167,7 +167,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 17e3b2380fac3494e8dcc3affeb7e182, type: 3}
 --- !u!114 &4711626286473738340
@@ -182,6 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c87a02ef5028a2469e7368c8abb312e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteractType: 1
   _renderer: {fileID: 23000011289103614}
-  _material: {fileID: 0}
-  _rootColor: {r: 0, g: 0, b: 0, a: 0}
+  _material:
+  - {fileID: 0}
+  _rootColor: []
