@@ -104,7 +104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &142876641748971999
 Transform:
   m_ObjectHideFlags: 0
@@ -252,11 +252,11 @@ LODGroup:
   - screenRelativeHeight: 0.6014287
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 2283298606798423775}
+    - renderer: {fileID: 535285220479780072}
   - screenRelativeHeight: 0.25172478
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 6012622152816902706}
+    - renderer: {fileID: 535285220479780072}
   - screenRelativeHeight: 0.014625
     fadeTransitionWidth: 0
     renderers:
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractType: 2
-  _renderer: {fileID: 2283298606798423775}
+  _renderer: {fileID: 535285220479780072}
   _material: []
   _rootColor: []
 --- !u!1 &4211453676928299896
@@ -353,7 +353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3576542728854814204
 Transform:
   m_ObjectHideFlags: 0

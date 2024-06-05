@@ -79,10 +79,13 @@ namespace masterland.Master
         public void PlayActionObserver(string id) {
             NetworkAnimator.Play(id, 2, 0);
         }
+        public void ResetAnim(string id) {
+            NetworkAnimator.Play(id, 1, 0);
+        }
 
-        public void PlayCrossFadeAction(string id) 
+        public void PlayCrossFadeActionObserver(string id) 
         {
-            _animator.CrossFade(id, 0.2f, 2);
+            NetworkAnimator.CrossFade(id, 0.2f, 2);
         }
 
     }

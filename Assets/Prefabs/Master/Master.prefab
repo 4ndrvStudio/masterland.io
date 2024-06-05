@@ -45838,7 +45838,7 @@ MonoBehaviour:
   m_animatorIkPassLayerIndex: 0
   m_collisionLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   m_triggerCollisionInteraction: 1
   m_resetToDefaultValuesSpeed: 1
   m_activateCrouchSpecificBehaviour: 0
@@ -56400,8 +56400,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6615697361846800458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.048493106, z: 0, w: -0.9988235}
-  m_LocalPosition: {x: 631.78925, y: 57.58, z: 879.72845}
+  m_LocalRotation: {x: 0, y: 0.54332143, z: 0, w: -0.83952475}
+  m_LocalPosition: {x: 611.48615, y: 57.58, z: 879.72845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56726,6 +56726,7 @@ MonoBehaviour:
   CurrentSpeed: 0
   CurrentSpeedX: 0
   _slopeDirection: {x: 0, y: 0, z: 0}
+  _initRotateForward: {x: 0, y: 0, z: 0}
 --- !u!114 &7137762908412499955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56778,6 +56779,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 578991581174262709}
   NormalAttackIndex: 0
   NormalAttackList:
+  - sword_1_1
   - sword_1_2
   - sword_1_3
   NormalJumpAttack: sword_1_J

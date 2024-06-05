@@ -68,7 +68,7 @@ namespace masterland.Master
 
         IEnumerator IEAvoidMultiClick() {
             _avoidMultiClick = true;
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(0.5f);
             _avoidMultiClick = false;
         }
     }

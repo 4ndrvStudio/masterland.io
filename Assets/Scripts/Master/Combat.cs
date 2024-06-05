@@ -47,7 +47,6 @@ namespace masterland.Master
             {
                 NormalAttackState();
                 DodgeState();
-                LockOnState();
             }
 
         }
@@ -58,45 +57,28 @@ namespace masterland.Master
             NormalAttackIndex = 0;
         }
 
-        public void LockOnState() 
-        {
-            if(_master.Input.PlayLockOn) 
-            {
-                if(CurrentTargetLockOn == null)
-                    CurrentTargetLockOn = _master.AimAssist.GetTargetToAim();
-                
-                if(CurrentTargetLockOn == null) {
-                    _master.Input.PlayLockOn = false;
-                    return;
-                }
-                CameraManager.Instance.SetLockOn(true,CurrentTargetLockOn);
-            }
-            else 
-            {
-                CurrentTargetLockOn = null;
-                if(CameraManager.Instance != null)
-                    CameraManager.Instance.SetLockOn(false);
-            }
-        }
-
-        public async void NormalAttackState()
+        public void NormalAttackState()
         {
             if (!_master.State.IsAction && _master.Input.PlayAttack
                     && _master.Weapon.GetTypeId() != 0 && !_avoidMultiAttack)
             {
                 _master.Input.PlayAttack = false; 
-                await UniTask.Delay(100);
                 if(_master.State.IsAction)
                    return;
                 StartCoroutine(AvoidMultiAttack());
                 float targetRotation;
                 Vector3 inputDirection = new Vector3(_master.Input.MoveDirection.x, 0.0f, _master.Input.MoveDirection.y).normalized;
                 targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + CameraManager.Instance.GetAngle();
-                if(_master.Input.PlayLockOn &&  _master.AimAssist.SelectedNearest != null ) {
-                        Vector3 directionToTarget = _master.AimAssist.SelectedNearest.transform.position - transform.position;
-                        directionToTarget.y = 0;
-                        Quaternion targetRotationQuaternion = Quaternion.LookRotation(directionToTarget);
-                        targetRotation = targetRotationQuaternion.eulerAngles.y;
+
+                if(_master.Input.PlayLockOn) 
+                {
+                    /* Mobile */
+                    // Vector3 directionToTarget = _master.AimAssist.SelectedNearest.transform.position - transform.position;
+                    // directionToTarget.y = 0;
+                    // Quaternion targetRotationQuaternion = Quaternion.LookRotation(directionToTarget);
+                    // targetRotation = targetRotationQuaternion.eulerAngles.y;
+
+                    targetRotation = Mathf.Atan2(Camera.main.transform.forward.x, Camera.main.transform.forward.z) * Mathf.Rad2Deg;
                 }
 
                 if (_master.State.IsGrounded)

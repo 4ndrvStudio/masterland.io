@@ -5,6 +5,7 @@ using FishNet;
 using FishNet.Object;
 using FishNet.Object.Prediction;
 using FishNet.Transporting;
+using DG.Tweening;
 
 namespace masterland.Master
 {
@@ -18,10 +19,10 @@ namespace masterland.Master
             public bool Sprint;
             public bool Jump;
             public bool LockOn;
-            public Vector3 TargetLockOn;
+            public Vector3 CameraForward;
 
             public MoveData(Vector2 move, Vector3 deltaPostion, float cameraAngle,
-                                bool sprint, bool jump, bool lockOn, Vector3 targetLockOn) : this()
+                                bool sprint, bool jump, bool lockOn, Vector3 cameraForward) : this()
             {
                 Move = move;
                 DeltaPostion = deltaPostion;
@@ -29,7 +30,7 @@ namespace masterland.Master
                 Sprint = sprint;
                 Jump = jump;
                 LockOn = lockOn;
-                TargetLockOn = targetLockOn;
+                CameraForward = cameraForward;
             }
 
             private uint _tick;
@@ -98,6 +99,9 @@ namespace masterland.Master
         public float CurrentSpeed;
         public float CurrentSpeedX;
         [SerializeField] private Vector3 _slopeDirection;
+        [SerializeField] private Vector3 _initRotateForward;
+        Tween currentTween = null;
+        private bool _isTurning = false;
 
         public override void Awake()
         {
@@ -161,7 +165,7 @@ namespace masterland.Master
                 DeltaPostion = _master.State.IsAction ? _master.AnimatorHook.DeltaPosition : Vector3.zero,
                 CameraAngle = CameraManager.Instance.GetAngle(),
                 LockOn = _master.Input.PlayLockOn && Grounded,
-                TargetLockOn = _master.Combat.CurrentTargetLockOn == null ? Vector3.zero : _master.Combat.CurrentTargetLockOn.transform.position
+                CameraForward = Camera.main.transform.forward
             };
             _master.Input.PlayJump = false;
         }
@@ -179,8 +183,11 @@ namespace masterland.Master
             {
                 LocoMovement(md, (float)base.TimeManager.TickDelta);
                 JumpAndGravity(md, (float)base.TimeManager.TickDelta);
+                _initRotateForward = transform.forward;
             }
             _master.State.IsBlock = md.LockOn && Grounded;
+
+
             MasterMoveData = md;
         }
 
@@ -209,7 +216,6 @@ namespace masterland.Master
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, _targetRotation, 0.0f), RotationSmoothTime * deltaTime);
             }
 
-
             Vector3 targetDirection = _master.State.IsAction ? Vector3.zero : Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             Vector3 deltaPosition = _master.State.IsActionKeepSpeed ? (md.DeltaPostion * 2) + transform.forward * 0.1f : md.DeltaPostion;
@@ -218,7 +224,7 @@ namespace masterland.Master
 
             if (IsOnSteepSlope(out _, out Vector3 slopeDirection))
             {
-                Vector3 fallMovement = slopeDirection* -_verticalVelocity * deltaTime;
+                Vector3 fallMovement = slopeDirection * -_verticalVelocity * deltaTime;
                 deltaMovement = fallMovement;
 
             }
@@ -240,7 +246,7 @@ namespace masterland.Master
         {
             RunSpeedTime = 0;
 
-            float rootSpeed = md.Sprint ? SprintSpeed / 3 : MoveSpeed / 3;
+            float rootSpeed = md.Sprint ? SprintSpeed / 2.3f : MoveSpeed / 2.3f;
 
             CurrentSpeed = Mathf.Lerp(CurrentSpeed, rootSpeed * md.Move.y, deltaTime * 10f);
             CurrentSpeedX = Mathf.Lerp(CurrentSpeedX, rootSpeed * md.Move.x, deltaTime * 10f);
@@ -248,11 +254,46 @@ namespace masterland.Master
             _animationBlend = CurrentSpeed / (SprintSpeed / 3);
             _animationBlendX = CurrentSpeedX / (SprintSpeed / 3);
 
-            Vector3 from = md.TargetLockOn - transform.position;
-            from.y = 0;
-            Quaternion rotation = Quaternion.LookRotation(from);
-            if (!_master.State.IsDodge && !_master.State.IsHardAction)
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.2f);
+            Vector3 characterForward = _initRotateForward;
+            Vector3 cameraForward = md.CameraForward;
+
+            Vector2 characterForward2D = new Vector2(characterForward.x, characterForward.z).normalized;
+            Vector2 cameraForward2D = new Vector2(cameraForward.x, cameraForward.z).normalized;
+
+            float angleBetween = Vector2.Angle(characterForward2D, cameraForward2D);
+            float direction = Mathf.Sign(Vector3.Cross(characterForward, cameraForward).y);
+
+            md.CameraForward.y = 0f;
+            float targetRotation = Mathf.Atan2(md.CameraForward.x, md.CameraForward.z) * Mathf.Rad2Deg;
+
+            if (md.Move == Vector2.zero && angleBetween > 70 && !_isTurning && !_master.State.IsDodge && !_master.State.IsHardAction)
+            {
+                _isTurning = true;
+                string turnDirection = direction > 0 ? "TurnRight" : "TurnLeft";
+                if (IsOwner) _master.Animation.PlayActionObserver(turnDirection);
+                currentTween = transform.DORotate(new Vector3(0f, targetRotation, 0f), 0.8f)
+                    .SetEase(Ease.OutQuad)
+                    .OnStart(() => {  })
+                    .OnComplete(() =>
+                    {
+                        _isTurning = false;
+                        _initRotateForward = transform.forward;
+                    });
+            }
+            else if (md.Move != Vector2.zero)
+            {
+                if (currentTween != null && currentTween.IsActive() && !currentTween.IsComplete())
+                {
+                    currentTween.Kill();
+                    _isTurning = false;
+                 
+                    if(IsOwner)
+                        _master.Animation.PlayActionObserver("Empty");
+
+                }
+                _initRotateForward = transform.forward;
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, targetRotation, 0f), RotationSmoothTime * deltaTime);
+            }
 
             Vector3 moveDir = transform.forward * md.Move.y + transform.right * md.Move.x;
 
@@ -338,7 +379,7 @@ namespace masterland.Master
                 }
 
                 float jumpFactor = _master.Weapon.GetTypeId() != 0 ? JumpHeight * 1.5f : JumpHeight;
-                if (md.Jump && !_master.State.IsAction) 
+                if (md.Jump && !_master.State.IsAction)
                     _verticalVelocity = Mathf.Sqrt(jumpFactor * -2f * Gravity);
 
             }
@@ -355,7 +396,7 @@ namespace masterland.Master
 
             _master.Animation.SetSliding(IsSliding);
             _master.Animation.SetGrounded(Grounded);
-        
+
 
 
         }
