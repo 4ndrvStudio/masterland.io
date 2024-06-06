@@ -39,10 +39,10 @@ namespace masterland.Master
         public string DodgeBack;
         
         public Collider CurrentTargetLockOn;
-        public override void OnUpdate()
+        
+        public override void OnTick()
         {
-            base.OnUpdate();
-
+            base.OnTick();
             if (IsOwner)
             {
                 NormalAttackState();
@@ -104,26 +104,38 @@ namespace masterland.Master
 
         public void DodgeState() 
         {
-            if (!_master.State.IsAction && _master.State.IsGrounded && _master.Movement.RunSpeedTime > 0.8f)
+            if (!_master.State.IsAction && _master.State.IsGrounded )
             {
-
-                if (_master.Input.PlayFastDodgeLeft)
+               
+                if( _master.Stats.MP.Value <50 && _master.Movement.RunSpeedTime < 0.9f) 
+                {
+                    _master.Input.PlayFastDodgeLeft = false;
+                    _master.Input.PlayFastDodgeRight = false;
+                     return;
+                }
+                 
+                if (_master.Input.PlayFastDodgeLeft) {
+                     _master.Input.PlayFastDodgeLeft = false;
                     ProcessFastDodge(0);
-                if (_master.Input.PlayFastDodgeRight)
+                    _master.Stats.TakeMP(50);
+                }
+                   
+                if (_master.Input.PlayFastDodgeRight) {
+                    _master.Input.PlayFastDodgeRight = false;
                     ProcessFastDodge(1);
-
-                _master.Input.PlayFastDodgeLeft = false;
-                _master.Input.PlayFastDodgeRight = false;
+                    _master.Stats.TakeMP(50);
+                }
             }
 
 
-            if (!_master.State.IsAction && _master.Input.PlayLockOn 
-                && CurrentTargetLockOn != null  && _master.Input.PlayDodge
-                && _master.Stats.MP.Value >45)
+            if (!_master.State.IsAction 
+                && _master.Input.PlayDodge)
             {
+                _master.Input.PlayDodge = false;
+
+                if (_master.Input.MoveDirection == Vector2.zero || _master.Stats.MP.Value <45 )  
+                    return;
                 
-                if (_master.Input.MoveDirection == Vector2.zero) return;
-                Debug.Log("PlayDodege");
                 DodgeType dodgeType = DodgeType.None;
 
                 if (_master.Input.MoveDirection.y > 0)
@@ -141,8 +153,6 @@ namespace masterland.Master
                 float rotateFactor = dodgeType == DodgeType.Back ? 180 :0;
                 float targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + transform.eulerAngles.y + rotateFactor;
                 ProcessDodge(dodgeType, targetRotation);
-
-                _master.Input.PlayDodge = false;
             }
         }
 

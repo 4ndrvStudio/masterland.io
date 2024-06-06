@@ -17,9 +17,9 @@ namespace masterland.Master
         public bool IsBlock;
         
         
-        public void Update() 
+        public override void OnTick() 
         {
-            base.OnUpdate();
+            base.OnTick();
             IsGetHit =_master.Animator.GetCurrentAnimatorStateInfo(2).IsTag("GetHitState");
             IsGuard = _master.Animator.GetCurrentAnimatorStateInfo(2).IsTag("GuardState");
             IsHardAction = _master.Animator.GetCurrentAnimatorStateInfo(2).IsTag("HardAction") || IsGetHit || IsGuard;

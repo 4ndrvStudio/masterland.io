@@ -45,11 +45,15 @@ namespace masterland.Master
         { 
             if (!_avoidMultiClick) 
             {
-                PlayAttack = true;
-                StartCoroutine(IEAvoidMultiClick());
+                StartCoroutine(IEPlayAttack());
             }
         }
-        public void OnPerformJump(InputAction.CallbackContext context) { PlayJump = true; }
+        public void OnPerformJump(InputAction.CallbackContext context) { 
+            PlayJump =true;
+            if(PlayLockOn) 
+                StartCoroutine(IEPlayDodge());
+              
+        }
         public void OnPerformFastDodgeLeft(InputAction.CallbackContext context) { PlayFastDodgeLeft = true ; }
         public void OnPerformFastDodgeRight(InputAction.CallbackContext context) { PlayFastDodgeRight = true ; }
 
@@ -63,13 +67,18 @@ namespace masterland.Master
                 PlayLockOn = MasterInput.Player.LockOn.IsPressed();
             }   
             PlaySprint = MasterInput.Player.Sprint.IsPressed();
-            PlayDodge = PlayLockOn && PlayJump;
         }
 
-        IEnumerator IEAvoidMultiClick() {
-            _avoidMultiClick = true;
-            yield return new WaitForSeconds(0.5f);
-            _avoidMultiClick = false;
+        IEnumerator IEPlayAttack() {
+            PlayAttack =true;
+            yield return new WaitForSeconds(0.2f);
+            PlayAttack = false;
+        }
+
+        IEnumerator IEPlayDodge() {
+            PlayDodge =true;
+            yield return new WaitForSeconds(0.2f);
+            PlayDodge =false;
         }
     }
 }

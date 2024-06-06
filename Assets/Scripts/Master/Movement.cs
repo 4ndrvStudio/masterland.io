@@ -88,7 +88,7 @@ namespace masterland.Master
         [SerializeField] private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
         public float _maxSlopeAngle = 45f;
-
+      
 
         [HideInInspector] public CharacterController Controller;
 
@@ -98,10 +98,12 @@ namespace masterland.Master
         public float JumpTime;
         public float CurrentSpeed;
         public float CurrentSpeedX;
-        [SerializeField] private Vector3 _slopeDirection;
         [SerializeField] private Vector3 _initRotateForward;
         Tween currentTween = null;
         private bool _isTurning = false;
+        private bool _isJumping = false;
+        private bool _isDelayJump = false;
+        [SerializeField] private float _nearRoundCheck = 0.05f;
 
         public override void Awake()
         {
@@ -127,6 +129,7 @@ namespace masterland.Master
         public override void OnTick()
         {
             base.OnTick();
+
             if (base.IsOwner)
             {
                 CheckInput(out MoveData md);
@@ -134,7 +137,7 @@ namespace masterland.Master
             }
             else if (base.IsServerInitialized)
             {
-                //Move(default);
+                Move(default);
             }
         }
 
@@ -177,12 +180,12 @@ namespace masterland.Master
             GroundedCheck();
             if (md.LockOn && Grounded)
             {
-                LockOnMovement(md, (float)base.TimeManager.TickDelta);
+                LockOnMovement(md, (float) TimeManager.TickDelta);
             }
             else
             {
-                LocoMovement(md, (float)base.TimeManager.TickDelta);
-                JumpAndGravity(md, (float)base.TimeManager.TickDelta);
+                LocoMovement(md, (float) TimeManager.TickDelta);
+                JumpAndGravity(md, (float) TimeManager.TickDelta);
                 _initRotateForward = transform.forward;
             }
             _master.State.IsBlock = md.LockOn && Grounded;
@@ -196,7 +199,10 @@ namespace masterland.Master
         private void LocoMovement(MoveData md, float deltaTime)
         {
             //md.Sprint = md.Sprint && !_master.State.IsTired;
-            float rootSpeed = md.Sprint && !_master.State.IsAction ? SprintSpeed : MoveSpeed;
+            float rootSpeed = md.Sprint && !_master.State.IsAction? SprintSpeed : MoveSpeed;
+            if (md.Sprint && _isJumping)
+                rootSpeed = SprintSpeed/1.2f;
+
             CurrentSpeed = Mathf.Lerp(CurrentSpeed, rootSpeed, deltaTime * 5f);
             RunSpeedTime = md.Sprint && !_master.State.IsAction || _master.State.IsActionKeepSpeed ? RunSpeedTime += deltaTime : 0;
 
@@ -235,6 +241,9 @@ namespace masterland.Master
                                      new Vector3(0.0f, _verticalVelocity, 0.0f) * deltaTime;
             }
 
+            if(_master.State.IsHardAction)
+                RunSpeedTime =0;
+
             if (Controller.enabled)
                 Controller.Move(deltaMovement);
 
@@ -246,7 +255,7 @@ namespace masterland.Master
         {
             RunSpeedTime = 0;
 
-            float rootSpeed = md.Sprint ? SprintSpeed / 2.3f : MoveSpeed / 2.3f;
+            float rootSpeed = md.Sprint ? SprintSpeed / 2.3f : MoveSpeed / 2f;
 
             CurrentSpeed = Mathf.Lerp(CurrentSpeed, rootSpeed * md.Move.y, deltaTime * 10f);
             CurrentSpeedX = Mathf.Lerp(CurrentSpeedX, rootSpeed * md.Move.x, deltaTime * 10f);
@@ -273,21 +282,21 @@ namespace masterland.Master
                 if (IsOwner) _master.Animation.PlayActionObserver(turnDirection);
                 currentTween = transform.DORotate(new Vector3(0f, targetRotation, 0f), 0.8f)
                     .SetEase(Ease.OutQuad)
-                    .OnStart(() => {  })
+                    .OnStart(() => { })
                     .OnComplete(() =>
                     {
                         _isTurning = false;
                         _initRotateForward = transform.forward;
                     });
             }
-            else if (md.Move != Vector2.zero)
+            else if (md.Move != Vector2.zero && !_master.State.IsDodge)
             {
                 if (currentTween != null && currentTween.IsActive() && !currentTween.IsComplete())
                 {
                     currentTween.Kill();
                     _isTurning = false;
-                 
-                    if(IsOwner)
+
+                    if (IsOwner)
                         _master.Animation.PlayActionObserver("Empty");
 
                 }
@@ -296,10 +305,6 @@ namespace masterland.Master
             }
 
             Vector3 moveDir = transform.forward * md.Move.y + transform.right * md.Move.x;
-
-            if (md.Move.y != 0 && md.Move.x != 0)
-                rootSpeed = ((Mathf.Abs(md.Move.y) + Mathf.Abs(md.Move.x)) / 2 * rootSpeed);
-
             Vector3 deltaPosition = _master.State.IsAction ? md.DeltaPostion : Vector3.zero;
 
             Vector3 targetDirection = _master.State.IsAction ? Vector3.zero : (moveDir * rootSpeed * deltaTime);
@@ -333,13 +338,12 @@ namespace masterland.Master
         {
             // set sphere position, with offset
             Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
-            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers);
+            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers) && !_isDelayJump;
 
             if (Grounded && IsOnSteepSlope(out Vector3 slopeNormal, out Vector3 slopeDirection))
             {
                 IsSliding = true;
                 Grounded = false;
-                _slopeDirection = slopeDirection;
             }
             else
             {
@@ -352,11 +356,11 @@ namespace masterland.Master
             slopeNormal = Vector3.up;
             slopeDirection = Vector3.zero;
 
-            if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out RaycastHit hit, 5, GroundLayers))
+            if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out RaycastHit hit, 2f, GroundLayers))
             {
                 slopeNormal = hit.normal;
                 float angle = Vector3.Angle(Vector3.up, hit.normal);
-                if (angle >= Controller.slopeLimit)
+                if (angle >= Controller.slopeLimit && !_isJumping)
                 {
                     slopeDirection = Vector3.ProjectOnPlane(Vector3.down, slopeNormal);
                     return true;
@@ -371,17 +375,30 @@ namespace masterland.Master
             if (md.LockOn)
                 return;
 
+            float distanceToGround;
+
             if (Grounded)
             {
                 if (_verticalVelocity < 0.0f)
                 {
                     _verticalVelocity = -2f;
+
+                    if (_isJumping)
+                    {
+                        _isJumping = false;
+                       _master.Animation.SetJump(false);
+                       if(CurrentSpeed!=0) 
+                            CurrentSpeed =0; 
+                    }
                 }
 
-                float jumpFactor = _master.Weapon.GetTypeId() != 0 ? JumpHeight * 1.5f : JumpHeight;
                 if (md.Jump && !_master.State.IsAction)
-                    _verticalVelocity = Mathf.Sqrt(jumpFactor * -2f * Gravity);
-
+                {
+                    if (!_isJumping)
+                    {
+                        StartCoroutine(DelayedJump(JumpHeight, md.Move== Vector2.zero ? 0.2f : 0.1f));
+                    }
+                }
             }
             else
             {
@@ -389,16 +406,46 @@ namespace masterland.Master
                 {
                     _verticalVelocity += Gravity * delta;
                 }
+
+                if (IsNearGround(_nearRoundCheck, out distanceToGround))
+                {
+                    if (_isJumping)
+                    {
+                        _isJumping = false;
+                        Debug.Log("SetJump false when near ground, distance: " + distanceToGround);
+                        _master.Animation.SetJump(false);
+                    }
+                }
             }
 
 
             JumpTime = Grounded ? 0 : JumpTime += delta;
 
-            _master.Animation.SetSliding(IsSliding);
-            _master.Animation.SetGrounded(Grounded);
+            // _master.Animation.SetSliding(IsSliding);
+            // _master.Animation.SetGrounded(Grounded);
+        }
 
+        IEnumerator DelayedJump(float jumpFactor, float delayTime)
+        {
+            _isJumping = true;
+            _isDelayJump =true;
+            _master.Animation.SetJump(true);
+            yield return new WaitForSeconds(delayTime);
+            _isDelayJump =false;
+            _verticalVelocity = Mathf.Sqrt(jumpFactor * -2f * Gravity);
 
+        }
 
+        private bool IsNearGround(float threshold, out float distance)
+        {
+            Ray ray = new Ray(transform.position, Vector3.down);
+            if (Physics.Raycast(ray, out RaycastHit hit, threshold, GroundLayers))
+            {
+                distance = hit.distance;
+                return true;
+            }
+            distance = float.MaxValue;
+            return false;
         }
 
         private void OnDrawGizmosSelected()

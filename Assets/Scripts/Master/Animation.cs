@@ -6,6 +6,13 @@ using UnityEngine;
 
 namespace masterland.Master
 {
+    public enum JumpState 
+    {
+        Start, 
+        Loop,
+        End,
+    }
+
     public class Animation : MasterComponent
     {
         private Animator _animator;
@@ -14,10 +21,15 @@ namespace masterland.Master
         private int _animIDVertical;
         private int _animIDHorizontal;
         private int _animIDGrounded;
-         private int _animIDSliding;
+        private int _animIDSliding;
         private int _animIDSwordLM;
         private float _currentWeight;
         private float _smoothWeightTime =3f;
+
+        private int _animIDJumpRunningStart;
+        private int _animIDJumpRunningLoop;
+        private int _animIDJumpRunningEnd;
+
 
         public bool HasWeapon 
         {
@@ -40,6 +52,10 @@ namespace masterland.Master
             _animIDGrounded = Animator.StringToHash("grounded");
             _animIDSliding = Animator.StringToHash("sliding");
             _animIDSwordLM = Animator.StringToHash("sword");
+
+            _animIDJumpRunningStart = Animator.StringToHash("JumpRunningStart");
+            _animIDJumpRunningLoop = Animator.StringToHash("JumpRunningLoop");
+            _animIDJumpRunningEnd = Animator.StringToHash("JumpRunningEnd");
         }
 
         public void LocoMovement(float blend) 
@@ -62,6 +78,22 @@ namespace masterland.Master
             _animator.SetBool(_animIDGrounded, isActive);
         }
 
+        
+        public void SetJumpState(JumpState jumpState) 
+        {
+            Debug.Log(jumpState.ToString());
+            _animator.SetBool(_animIDJumpRunningStart, jumpState == JumpState.Start);
+            _animator.SetBool(_animIDJumpRunningLoop, jumpState == JumpState.Loop);
+            _animator.SetBool(_animIDJumpRunningEnd, jumpState == JumpState.End);
+        }
+
+        public void SetJump(bool isActive) 
+        {
+            _animator.SetBool("jump", isActive);
+
+        }
+
+
         public void SetSliding(bool isActive) {
             _animator.SetBool(_animIDSliding, isActive);
         }
@@ -83,10 +115,6 @@ namespace masterland.Master
             NetworkAnimator.Play(id, 1, 0);
         }
 
-        public void PlayCrossFadeActionObserver(string id) 
-        {
-            NetworkAnimator.CrossFade(id, 0.2f, 2);
-        }
 
     }
 }

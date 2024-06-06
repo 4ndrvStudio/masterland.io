@@ -3611,7 +3611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &776146866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4597,7 +4597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1083343837
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4667,6 +4667,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 259527107116664069, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 259527107116664069, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 259527107116664069, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 259527107116664069, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1848587505507185651, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalPosition.x
       value: 621.29474
@@ -7098,7 +7114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1930673048
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9771,8 +9787,8 @@ MonoBehaviour:
   _updateOrder: 0
   _timingType: 0
   _allowTickDropping: 0
-  _maximumFrameTicks: 2
-  _tickRate: 59
+  _maximumFrameTicks: 3
+  _tickRate: 60
   _pingInterval: 1
   _physicsMode: 1
 --- !u!1 &5077215451385742049
@@ -12844,7 +12860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _remoteServerTimeout: 2
   _remoteServerTimeoutDuration: 60
-  _changeFrameRate: 1
+  _changeFrameRate: 0
   _frameRate: 59
 --- !u!114 &7843143035913308105
 MonoBehaviour:
@@ -12905,7 +12921,7 @@ MonoBehaviour:
     Rotation: 2
     Scale: 2
   _changeFrameRate: 1
-  _frameRate: 59
+  _frameRate: 100
   _shareIds: 1
   _startOnHeadless: 1
 --- !u!114 &7843143035913308108

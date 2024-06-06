@@ -42,7 +42,7 @@ namespace masterland.Master
         {
             base.Setup(master);
             CurrentMP = _initMP;
-            _manaEffectImg.gameObject.SetActive(false);
+            _manaEffectImg.gameObject.SetActive(IsOwner);
 
             MP.OnChange += OnMPChange;
         }

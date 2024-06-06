@@ -16,12 +16,6 @@ namespace masterland
                 if (Singleton<T>.singleton == null)
                 {
                     Singleton<T>.singleton = (T)Object.FindFirstObjectByType(typeof(T));
-                    if (Singleton<T>.singleton == null)
-                    {
-                        GameObject obj = new GameObject();
-                        obj.name = "[@" + typeof(T).Name + "]";
-                        Singleton<T>.singleton = obj.AddComponent<T>();
-                    }
                 }
 
                 return Singleton<T>.singleton;
