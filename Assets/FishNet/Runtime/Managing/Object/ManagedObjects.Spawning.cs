@@ -24,19 +24,19 @@ namespace FishNet.Managing.Object
         protected void ReadTransformProperties(Reader reader, out Vector3? localPosition, out Quaternion? localRotation, out Vector3? localScale)
         {
             //Read changed.
-            ChangedTransformProperties ctp = (ChangedTransformProperties)reader.ReadByte();
+            TransformPropertiesFlag tpf = (TransformPropertiesFlag)reader.ReadByte();
             //Position.
-            if (ChangedTransformPropertiesEnum.Contains(ctp, ChangedTransformProperties.LocalPosition))
+            if (tpf.FastContains(TransformPropertiesFlag.Position))
                 localPosition = reader.ReadVector3();
             else
                 localPosition = null;
             //Rotation.
-            if (ChangedTransformPropertiesEnum.Contains(ctp, ChangedTransformProperties.LocalRotation))
+            if (tpf.FastContains(TransformPropertiesFlag.Rotation))
                 localRotation = reader.ReadQuaternion(NetworkManager.ServerManager.SpawnPacking.Rotation);
             else
                 localRotation = null;
             //Scale.
-            if (ChangedTransformPropertiesEnum.Contains(ctp, ChangedTransformProperties.LocalScale))
+            if (tpf.FastContains(TransformPropertiesFlag.LocalScale))
                 localScale = reader.ReadVector3();
             else
                 localScale = null;
@@ -213,28 +213,28 @@ namespace FishNet.Managing.Object
         protected void WriteChangedTransformProperties(NetworkObject nob, bool sceneObject, bool nested, Writer headerWriter)
         {
             /* Write changed transform properties. */
-            ChangedTransformProperties ctp;
+            TransformPropertiesFlag tpf;
             //If a scene object then get it from scene properties.
             if (sceneObject || nested)
             {
-                ctp = nob.GetTransformChanges(nob.SerializedTransformProperties);
+                tpf = nob.GetTransformChanges(nob.SerializedTransformProperties);
             }
             else
             {
                 PrefabObjects po = NetworkManager.GetPrefabObjects<PrefabObjects>(nob.SpawnableCollectionId, false);
-                ctp = nob.GetTransformChanges(po.GetObject(true, nob.PrefabId).gameObject);
+                tpf = nob.GetTransformChanges(po.GetObject(true, nob.PrefabId).gameObject);
             }
 
-            headerWriter.WriteByte((byte)ctp);
+            headerWriter.WriteByte((byte)tpf);
             //If properties have changed.
-            if (ctp != ChangedTransformProperties.Unset)
+            if (tpf != TransformPropertiesFlag.Unset)
             {
                 //Write any changed properties.
-                if (ChangedTransformPropertiesEnum.Contains(ctp, ChangedTransformProperties.LocalPosition))
+                if (tpf.FastContains(TransformPropertiesFlag.Position))
                     headerWriter.WriteVector3(nob.transform.localPosition);
-                if (ChangedTransformPropertiesEnum.Contains(ctp, ChangedTransformProperties.LocalRotation))
+                if (tpf.FastContains(TransformPropertiesFlag.Rotation))
                     headerWriter.WriteQuaternion(nob.transform.localRotation, NetworkManager.ServerManager.SpawnPacking.Rotation);
-                if (ChangedTransformPropertiesEnum.Contains(ctp, ChangedTransformProperties.LocalScale))
+                if (tpf.FastContains(TransformPropertiesFlag.LocalScale))
                     headerWriter.WriteVector3(nob.transform.localScale);
             }
 
@@ -288,7 +288,7 @@ namespace FishNet.Managing.Object
                 if (asServer)
                     spawner.Kick(KickReason.ExploitAttempt, LoggingType.Common, $"Connection {spawner.ClientId} tried to spawn an object {nob.name} which does not support predicted spawning.");
                 else
-                    NetworkManager.LogError($"Object {nob.name} does not support predicted spawning. Modify the NetworkObject component settings to allow predicted spawning.");
+                    NetworkManager.LogError($"Object {nob.name} does not support predicted spawning. Add a PredictedSpawn component to the object and configure appropriately.");
 
                 reader?.Clear();
                 return false;
@@ -368,7 +368,7 @@ namespace FishNet.Managing.Object
             }
             //Blocked by PredictedSpawn settings or user logic.
             if (
-                (asServer && !nob.PredictedSpawn.OnTryDepawnServer(despawner))
+                (asServer && !nob.PredictedSpawn.OnTryDespawnServer(despawner))
                 || (!asServer && !nob.PredictedSpawn.OnTryDespawnClient())
                 )
             {

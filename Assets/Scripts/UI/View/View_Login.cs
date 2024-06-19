@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace masterland.UI
 {
+    using Wallet;
     using Manager;
     public class View_Login : UIView
     {
@@ -11,9 +12,11 @@ namespace masterland.UI
 
         private void Start() 
         {
-            _startServerBtn.gameObject.SetActive(Application.isEditor);
-            _playBtn.onClick.AddListener(GameManager.Instance.Play);
-            _startServerBtn.onClick.AddListener(GameManager.Instance.StartServer);
+            //_startServerBtn.gameObject.SetActive(true);
+            //_playBtn.onClick.AddListener(WalletInteractor.Instance.Send_GetAddress);
+            //_startServerBtn.onClick.AddListener(GameManager.Instance.StartServer);
         }
+
+        
     }
 }

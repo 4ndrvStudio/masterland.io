@@ -7,8 +7,10 @@ namespace masterland.UI
     public enum ViewName
     {
         None,
-        Login,
-        Gameplay =100
+        Init = 1,
+        Login = 2,
+        Menu = 3,
+        Gameplay = 100
     }
     public class UIView : MonoBehaviour
     {

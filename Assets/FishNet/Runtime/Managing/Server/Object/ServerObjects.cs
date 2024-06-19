@@ -251,7 +251,7 @@ namespace FishNet.Managing.Server
             /* Only shuffle when NOT in editor and not
              * development build.
              * Debugging could be easier when Ids are ordered. */
-#if !UNITY_EDITOR && !DEVELOPMENT_BUILD
+#if !DEVELOPMENT
             shuffledCache.Shuffle();
 #endif
             //Add shuffled to objectIdCache.
@@ -373,7 +373,7 @@ namespace FishNet.Managing.Server
                 return;
 
             List<NetworkObject> sceneNobs = CollectionCaches<NetworkObject>.RetrieveList();
-            Scenes.GetSceneNetworkObjects(s, false, true, ref sceneNobs);
+            Scenes.GetSceneNetworkObjects(s, false, true, true, ref sceneNobs);
 
             //Sort the nobs based on initialization order.
             bool initializationOrderChanged = false;
@@ -458,7 +458,7 @@ namespace FishNet.Managing.Server
                     return;
                 }
                 //Server has predicted spawning disabled.
-                if (!NetworkManager.PredictionManager.GetAllowPredictedSpawning())
+                if (!NetworkManager.ServerManager.GetAllowPredictedSpawning())
                 {
                     base.NetworkManager.LogWarning("Cannot spawn object because server is not active and predicted spawning is not enabled.");
                     return;
@@ -809,7 +809,7 @@ namespace FishNet.Managing.Server
                     return;
                 }
                 //Server has predicted spawning disabled.
-                if (!NetworkManager.PredictionManager.GetAllowPredictedSpawning())
+                if (!NetworkManager.ServerManager.GetAllowPredictedSpawning())
                 {
                     base.NetworkManager.LogWarning("Cannot despawn object because server is not active and predicted spawning is not enabled.");
                     return;

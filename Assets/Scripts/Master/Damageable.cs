@@ -48,11 +48,11 @@ namespace masterland.Master
                 if(weapon.MasterOwner == null)
                     return;
 
-                if (weapon.MasterOwner.OwnerId == _master.OwnerId || _master.State.IsGetHit || _master.State.IsGuard )
+                if (weapon.MasterOwner.OwnerId == _master.OwnerId  || _master.State.IsGuard )
                     return;
 
 
-                if (_master.Movement.MasterMoveData.LockOn && !_master.State.IsAction && _master.Stats.MP.Value > 50f)
+                if (_master.Reconcile.ReplicateData.LockOn && !_master.State.IsAction && _master.Stats.MP.Value > 50f)
                 {
                     _master.Stats.CurrentMP -= 60f;
                     Block(weapon);
@@ -69,7 +69,7 @@ namespace masterland.Master
         IEnumerator IEAvoidTwiceHit() 
         {
             _avoidTwiceHit = true;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
             _avoidTwiceHit = false;
         }
 
@@ -79,9 +79,11 @@ namespace masterland.Master
             Vector3 targetPosition = transform.position - transform.forward * 2f;
             Vector3 direction = weapon.MasterOwner.transform.position - transform.position;
             _master.AnimatorHook.WeaponColliderEnable =false;
-            _master.Animation.PlayAction("guard");
-            RotatePlayer(direction, SideHitType.Front);
+            //RotatePlayer(direction, SideHitType.Front);
             Rpc_PlayBlock(direction);
+            _master.Animation.PlayAction("guard");
+            _master.Animation.Observers_PlayAction("guard");
+            
         }
 
         [ObserversRpc(ExcludeServer = true)]
@@ -98,28 +100,27 @@ namespace masterland.Master
                                     _master.Movement.Controller.enabled = true;
                                 }));                
             }
-            _master.Animation.PlayAction("guard");
+            //_master.Animation.PlayAction("guard");
             _master.Audio.PlayOneShot(AudioType.SwordHit);
             var spark = Instantiate(_guardSpark);
             spark.transform.position = _guardSpark.transform.position;
             spark.transform.rotation = _guardSpark.transform.rotation;
             spark.gameObject.SetActive(true);
-            Destroy(spark, 1.5f);
+            Destroy(spark, 1f);
         }
 
         public void GetAttack(Weapon weapon)
         {
             Vector3 direction = weapon.MasterOwner.transform.position - transform.position;
             Vector3 forward = transform.forward;
-            Vector3 backward = -transform.forward;
-            float angleFront = Vector3.Angle(forward, direction);
-            float angleBack = Vector3.Angle(backward, direction);
-            SideHitType sideHitType = angleFront < angleBack ? SideHitType.Front : SideHitType.Back;
+            float angle = Vector3.Angle(forward, direction);
+            SideHitType sideHitType = angle < 280f ? SideHitType.Front : SideHitType.Back;
             string target = sideHitType == SideHitType.Front ? frontAnim : backAnim;
             _master.AnimatorHook.WeaponColliderEnable =false;
-            RotatePlayer(direction, sideHitType);
             Rpc_PlayGetHit(direction, sideHitType);
+            //RotatePlayer(direction, sideHitType);
             _master.Animation.PlayAction(target);
+            _master.Animation.Observers_PlayAction(target);
         }
 
         public void RotatePlayer(Vector3 direction, SideHitType sideHitType)
@@ -138,7 +139,7 @@ namespace masterland.Master
             _master.AnimatorHook.WeaponColliderEnable =false;
             string target = sideHitType == SideHitType.Front ? frontAnim : backAnim;
             RotatePlayer(direction, sideHitType);
-            _master.Animation.PlayAction(target);
+            //_master.Animation.PlayAction(target);
             _master.Audio.PlayOneShot(AudioType.GetHit);
         }
 

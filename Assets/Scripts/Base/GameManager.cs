@@ -14,6 +14,8 @@ namespace masterland.Manager
     using FishNet.Transporting.Multipass;
     using Map;
     using masterland.UI;
+    using masterland.Wallet;
+    using Data;
 
     public class GameManager : MonoBehaviour
     {
@@ -34,10 +36,13 @@ namespace masterland.Manager
         public string PlayerName = "Player @";
 
         // Start is called before the first frame update
-        void Awake()
+        async void Awake()
         {
             if (Instance == null)
                 Instance = this;
+            //load data 
+            await Data.Instance.InitData();
+            UIManager.Instance.ToggleView(ViewName.Menu);
 
             _networkManager = _networkManager = FindFirstObjectByType<NetworkManager>();
             _mp = FindFirstObjectByType<Multipass>();       
@@ -84,6 +89,8 @@ namespace masterland.Manager
             }
 
         }
+
+
 
 
         private void ClientManager_OnClientConnectionState(ClientConnectionStateArgs obj)

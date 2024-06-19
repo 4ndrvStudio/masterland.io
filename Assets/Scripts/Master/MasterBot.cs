@@ -44,13 +44,8 @@ namespace masterland.Master
 
         public void PlayBotState() {
             _master.Input.PlayLockOn =true;
-            if(_master.AimAssist.SelectedNearest == null)
-                return;
-
-            float distaneToAnother = Vector3.Distance(_master.AimAssist.SelectedNearest.transform.position, this.transform.position);
-            _master.Input.MoveDirection = new Vector2(0,distaneToAnother>= 2.5f ? 1 : 0);
             
-            if(distaneToAnother < 2.5f && !_isCooldown) {
+            if(!_isCooldown) {
                 StartCoroutine(PlayAttack());
             }
         }

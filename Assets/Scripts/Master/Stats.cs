@@ -104,7 +104,7 @@ namespace masterland.Master
                 _manaInnerImg.enabled = !_master.State.IsTired;
                 if (!_isRequireManaEffect)
                 {
-                    _manaEffectImg.enabled = _master.Movement.MasterMoveData.Sprint || _master.State.IsTired;
+                    _manaEffectImg.enabled = _master.Reconcile.ReplicateData.Sprint || _master.State.IsTired;
                     float lerpSpeed = _master.State.IsTired ? 10f : 2f;
                     _manaEffectImg.fillAmount = Mathf.Lerp(_manaEffectImg.fillAmount, mp, lerpSpeed * (float)TimeManager.TickDelta);
 
@@ -114,8 +114,8 @@ namespace masterland.Master
             if (!IsServerInitialized)
                 return;
 
-            bool isSprint = _master.Movement.MasterMoveData.Sprint;
-            bool isLockOn = _master.Movement.MasterMoveData.LockOn;
+            bool isSprint = _master.Reconcile.ReplicateData.Sprint;
+            bool isLockOn = _master.Reconcile.ReplicateData.LockOn;
 
             float factor = ((float)TimeManager.TickDelta * 25f);
             CurrentMP = isSprint && !_master.State.IsAction && !_master.State.IsTired ? CurrentMP -= factor

@@ -103,18 +103,28 @@ namespace masterland.Master
              _animator.SetBool(_animIDSwordLM, typeId == 1);
         }
 
+        
         public void PlayAction(string id) 
         {
+            if(_animator.GetCurrentAnimatorStateInfo(2).IsName(id) && !_master.State.IsGetHit)
+                return;
             _animator.Play(id, 2, 0);
         }
 
-        public void PlayActionObserver(string id) {
-            NetworkAnimator.Play(id, 2, 0);
-        }
-        public void ResetAnim(string id) {
-            NetworkAnimator.Play(id, 1, 0);
+        [ServerRpc]
+        public void Server_PlayAction(string id) {
+        
+            PlayAction(id);
+            Observers_PlayAction(id);
         }
 
+        [ObserversRpc(ExcludeServer = true)]
+        public void Observers_PlayAction(string id) {
+            PlayAction(id);
+        }
+
+
+     
 
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Object.Prediction;
 using UnityEngine;
 
 namespace masterland.Master
@@ -15,7 +16,6 @@ namespace masterland.Master
         public bool IsGuard;
         public bool IsTired;
         public bool IsBlock;
-        
         
         public override void OnTick() 
         {

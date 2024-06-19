@@ -183,17 +183,17 @@ namespace masterland.Master
             if (string.IsNullOrEmpty(attackTarget))
                 return;
 
-            _master.Animation.PlayActionObserver(attackTarget);
+            _master.Animation.Server_PlayAction(attackTarget);
             
         }
 
-        public void ProcessFastDodge(int index) => _master.Animation.PlayActionObserver(index == 1 ? FastDodgeRight : FastDodgeLeft);
+        public void ProcessFastDodge(int index) => _master.Animation.Server_PlayAction(index == 1 ? FastDodgeRight : FastDodgeLeft);
 
         public void ProcessDodge(DodgeType dodgeType, float targetRotation)
         {
-            
             if(dodgeType != DodgeType.Left && dodgeType != DodgeType.Right)
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 1);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 1f);
+          
             string targetDodge = string.Empty;
             switch (dodgeType)
             {
@@ -211,7 +211,7 @@ namespace masterland.Master
                     break;
 
             }
-            _master.Animation.PlayActionObserver(targetDodge);
+            _master.Animation.Server_PlayAction(targetDodge);
             _master.Stats.TakeMP(45);
         }
 

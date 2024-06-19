@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: 4ndrv
   productName: masterland.io
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -493,7 +493,7 @@ PlayerSettings:
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
   m_TemplateCustomTags:
-    PRODUCT_DESCRIPTION: 
+    PRODUCT_DESCRIPTION: masterland.io
   mobileMTRendering:
     Android: 1
     VisionOS: 1

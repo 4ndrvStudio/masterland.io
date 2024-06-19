@@ -94,7 +94,7 @@ namespace FishNet.Managing.Client
                 {
                     foreach (NetworkObject n in Spawned.Values)
                     {
-                        n.InvokeStopCallbacks(false);
+                        n.InvokeStopCallbacks(false, true);
                         n.SetInitializedStatus(false, false);
                     }
                 }
@@ -263,7 +263,7 @@ namespace FishNet.Managing.Client
         private void RegisterAndDespawnSceneObjects(Scene s)
         {
             List<NetworkObject> nobs = CollectionCaches<NetworkObject>.RetrieveList();
-            Scenes.GetSceneNetworkObjects(s, false, true, ref nobs);
+            Scenes.GetSceneNetworkObjects(s, false, true, true, ref nobs);
 
             int nobsCount = nobs.Count;
             for (int i = 0; i < nobsCount; i++)
@@ -434,8 +434,9 @@ namespace FishNet.Managing.Client
             if (sceneObject)
             {
                 ReadSceneObject(reader, out sceneId);
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-                base.CheckReadSceneObjectDetails(reader, ref sceneName, ref objectName);
+#if DEVELOPMENT
+                if (NetworkManager.ClientManager.IsServerDevelopment)
+                    base.CheckReadSceneObjectDetails(reader, ref sceneName, ref objectName);
 #endif
             }
             else

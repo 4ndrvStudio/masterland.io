@@ -4,6 +4,7 @@ using FishNet.Managing.Timing;
 using UnityEngine;
 using FishNet.Object;
 using FishNet;
+using FishNet.Component.Animating;
 
 namespace masterland.Master
 {
@@ -12,20 +13,18 @@ namespace masterland.Master
         public Master Master;
         public Animator animator;
         public Vector3 DeltaPosition;
-        public Quaternion DeltaRotation;
         public bool WeaponColliderEnable;
         private Vector3 currentVelocity = Vector3.zero;
 
         [SerializeField] private List<GameObject> slashFx = new();
         [SerializeField] private List<GameObject> hitFx =new();
 
-
         private void OnAnimatorMove() 
         {
-            //DeltaPosition = Vector3.SmoothDamp(DeltaPosition, animator.deltaPosition, ref currentVelocity, 0.05f);
+
             DeltaPosition =  animator.deltaPosition;
-            DeltaRotation = Quaternion.Slerp(DeltaRotation, animator.deltaRotation, 1);
         }
+
         public void OnEnableWeapon(int index) 
         {
             WeaponColliderEnable = index == 1;

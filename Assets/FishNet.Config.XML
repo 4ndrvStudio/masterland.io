@@ -9,7 +9,9 @@
     <SaveChanges>true</SaveChanges>
     <DefaultPrefabObjectsPath>Assets\DefaultPrefabObjects.asset</DefaultPrefabObjectsPath>
     <SearchScope>0</SearchScope>
-    <ExcludedFolders />
+    <ExcludedFolders>
+      <string>Assets\Scripts\Sui</string>
+    </ExcludedFolders>
     <IncludedFolders />
   </PrefabGenerator>
   <CodeStripping>

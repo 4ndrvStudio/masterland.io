@@ -10,6 +10,7 @@ using FishNet.Object.Synchronizing;
 namespace masterland.Master
 {
     using Manager;
+
     public class Master : NetworkBehaviour
     {
         public static Master Local;
@@ -17,8 +18,9 @@ namespace masterland.Master
         public Animator Animator;
         public Input Input;
         public Stats Stats;
+        public Reconcile Reconcile;
         public AnimatorHook AnimatorHook;
-        public Movement Movement;
+        public MovementV2 Movement;
         public Animation Animation;
         public State State;
         public Combat Combat;

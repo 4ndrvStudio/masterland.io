@@ -279,7 +279,7 @@ namespace masterland.Master
             {
                 _isTurning = true;
                 string turnDirection = direction > 0 ? "TurnRight" : "TurnLeft";
-                if (IsOwner) _master.Animation.PlayActionObserver(turnDirection);
+                if (IsOwner) _master.Animation.Server_PlayAction(turnDirection);
                 currentTween = transform.DORotate(new Vector3(0f, targetRotation, 0f), 0.8f)
                     .SetEase(Ease.OutQuad)
                     .OnStart(() => { })
@@ -297,7 +297,7 @@ namespace masterland.Master
                     _isTurning = false;
 
                     if (IsOwner)
-                        _master.Animation.PlayActionObserver("Empty");
+                        _master.Animation.Server_PlayAction("Empty");
 
                 }
                 _initRotateForward = transform.forward;
