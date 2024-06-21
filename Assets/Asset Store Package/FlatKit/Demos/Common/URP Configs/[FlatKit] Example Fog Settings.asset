@@ -97,7 +97,6 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - FOG_CAMERA_RELATIVE
   - USE_DISTANCE_FOG
   - USE_HEIGHT_FOG
   m_InvalidKeywords: []
@@ -133,13 +132,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DistanceFogIntensity: 0
+    - _DistanceFogIntensity: 0.5
     - _DistanceHeightBlend: 0.5
-    - _Far: 82.6
-    - _HeightFogIntensity: 0.202
-    - _HighWorldY: 30
-    - _LowWorldY: -5
-    - _Near: 15.2
+    - _Far: 150
+    - _HeightFogIntensity: 0.5
+    - _HighWorldY: 35
+    - _LowWorldY: 5
+    - _Near: 30
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

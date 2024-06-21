@@ -17,7 +17,7 @@ namespace masterland.UI
         [SerializeField] private Button _mintBtn;
         [SerializeField] private GameObject _mintIcon;
         [SerializeField] private GameObject _mintLoadingIcon;
-        public List<MasterSlot> MasterSlots;
+        public List<MasterSlot> MasterSlots = new();
         [SerializeField] private GameObject _masterOb;
         [SerializeField] private GameObject _container;
        

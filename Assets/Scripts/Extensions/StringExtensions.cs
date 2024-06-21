@@ -18,7 +18,7 @@ namespace masterland
                 return input;
             
 
-            string shortAddress = input.Substring(0, 7) + "...." + input.Substring(input.Length - 5);
+            string shortAddress = input.Substring(0, 7) + "..." + input.Substring(input.Length - 5);
             return shortAddress;
         }
     }

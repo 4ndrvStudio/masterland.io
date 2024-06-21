@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Effect Material
-  m_Shader: {fileID: -6465566751694194690, guid: c77db07224d9f784d90d7eb0e84c57f7,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: c77db07224d9f784d90d7eb0e84c57f7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -57,6 +56,7 @@ Material:
     - _Near: 0
     m_Colors: []
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

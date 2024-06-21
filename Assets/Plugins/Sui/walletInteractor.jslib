@@ -16,7 +16,7 @@ mergeInto(LibraryManager.library, {
       console.log(e);
     }
   },
-  
+
   getMasters: function () {
     try {
       window.dispatchReactUnityEvent("getMasters");
@@ -27,11 +27,51 @@ mergeInto(LibraryManager.library, {
 
   checkMasterExist: function (id) {
     try {
-      window.dispatchReactUnityEvent("checkMasterExist",UTF8ToString(id));
+      window.dispatchReactUnityEvent("checkMasterExist", UTF8ToString(id));
     } catch (e) {
       console.log(e);
     }
   },
+
+  getLands: function () {
+    try {
+      window.dispatchReactUnityEvent("getLands");
+    } catch (e) {
+      console.log(e);
+    }
+  },
+  getLand: function (landAddress) {
+    try {
+      window.dispatchReactUnityEvent("getLand",UTF8ToString(landAddress));
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
+  getResidentLicense: function (master) {
+    try {
+      window.dispatchReactUnityEvent("getResidentLicense",UTF8ToString(master));
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
+  registerResidentLicense:function (master, landId) {
+    try {
+      window.dispatchReactUnityEvent("registerResidentLicense", UTF8ToString(master), UTF8ToString(landId));
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
+  unregisterResidentLicense:function (master) {
+    try {
+      window.dispatchReactUnityEvent("unregisterResidentLicense", UTF8ToString(master));
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
 });
 
 
