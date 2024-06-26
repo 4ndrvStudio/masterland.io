@@ -22,6 +22,12 @@ namespace masterland.Wallet
 
     public class WalletInteractor : Singleton<WalletInteractor>
     {
+        public static bool IsWebgl = 
+    #if UNITY_WEBGL && !UNITY_EDITOR
+        true;
+    #else
+        false;
+    #endif
 
         private UniTaskCompletionSource<string> tcs_GetAddress;
         private UniTaskCompletionSource<List<MasterData>> tcs_GetOwnedMasters;
@@ -212,11 +218,12 @@ namespace masterland.Wallet
         public async UniTask<string> GetAddress()
         {
             tcs_GetAddress = new UniTaskCompletionSource<string>();
-#if UNITY_EDITOR
-            Receive_GetAddress(m_address);
-#else
+            #if UNITY_WEBGL && !UNITY_EDITOR
                 getAddress();
-#endif
+                return await tcs_GetAddress.Task;
+            #endif
+
+            Receive_GetAddress(SuiWallet.GetActiveAddress());
             return await tcs_GetAddress.Task;
         }
 
@@ -233,11 +240,13 @@ namespace masterland.Wallet
         public async UniTask<ContractRespone> MintMaster()
         {
             tcs_MintMaster = new UniTaskCompletionSource<ContractRespone>();
-#if UNITY_EDITOR
-            Receive_MintMaster(m_masters);
-#else
+            #if UNITY_WEBGL && !UNITY_EDITOR
                 mintMaster();
-#endif
+                return await tcs_MintMaster.Task;
+            #endif
+            
+            Receive_MintMaster(await WalletInGame.MintMaster());
+
 
             return await tcs_MintMaster.Task;
         }
@@ -293,11 +302,11 @@ namespace masterland.Wallet
         public async UniTask<List<MasterData>> GetMasters()
         {
             tcs_GetOwnedMasters = new UniTaskCompletionSource<List<MasterData>>();
-#if UNITY_EDITOR
-            Receive_GetMasters(m_masters);
-#else
-                getMasters();
+#if UNITY_WEBGL && !UNITY_EDITOR
+            getMasters();
+            return await tcs_GetOwnedMasters.Task;
 #endif
+            Receive_GetMasters(await WalletInGame.GetMasters());
             return await tcs_GetOwnedMasters.Task;
         }
 
@@ -311,11 +320,11 @@ namespace masterland.Wallet
             {
                 var masterData = new MasterData
                 {
-                    Id = jsonObj["objectId"].ToString(),
-                    Name = jsonObj["display"]["data"]["name"].ToString(),
-                    Description = jsonObj["display"]["data"]["description"].ToString(),
-                    ImgUrl = jsonObj["display"]["data"]["image_url"].ToString(),
-                    Link = jsonObj["display"]["data"]["link"].ToString(),
+                    Id = jsonObj["objectId"]?.ToString(),
+                    Name = jsonObj["display"]?["data"]?["name"]?.ToString(),
+                    Description = jsonObj["display"]?["data"]?["description"]?.ToString(),
+                    ImgUrl = jsonObj["display"]?["data"]?["image_url"]?.ToString(),
+                    Link = jsonObj["display"]?["data"]?["link"]?.ToString(),
                     Hp = jsonObj["content"]["fields"]["hp"].ToObject<int>(),
                     Mp = jsonObj["content"]["fields"]["mana"].ToObject<int>()
                 };
@@ -334,11 +343,13 @@ namespace masterland.Wallet
             tcs_CheckMasterExist = new UniTaskCompletionSource<bool>();
             if (string.IsNullOrEmpty(masterId))
                 Receive_CheckMasterExist("false");
-#if UNITY_EDITOR
-            Receive_CheckMasterExist("true");
-#else
-                checkMasterExist(masterId);
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+            checkMasterExist(masterId);
+            return await tcs_CheckMasterExist.Task;
 #endif
+            Receive_CheckMasterExist(await WalletInGame.CheckMasterExist(masterId));
+
             return await tcs_CheckMasterExist.Task;
         }
 
@@ -355,11 +366,11 @@ namespace masterland.Wallet
         public async UniTask<List<LandData>> GetLands()
         {
             tcs_GetLands = new UniTaskCompletionSource<List<LandData>>();
-#if UNITY_EDITOR
-            Receive_GetLands(m_lands);
-#else
-                getLands();
+#if UNITY_WEBGL && !UNITY_EDITOR
+            getLands();
+             return await tcs_GetLands.Task;
 #endif
+            Receive_GetLands(await WalletInGame.GetLands()); 
             return await tcs_GetLands.Task;
         }
 
@@ -398,11 +409,11 @@ namespace masterland.Wallet
         public async UniTask<LandData> GetLand(string landAddress)
         {
             tcs_GetLand = new UniTaskCompletionSource<LandData>();
-#if UNITY_EDITOR
-            Receive_GetLand(m_lands);
-#else
+#if UNITY_WEBGL && !UNITY_EDITOR
             getLand(landAddress);
+            return await tcs_GetLand.Task;
 #endif
+            Receive_GetLand(await WalletInGame.GetLand(landAddress));
             return await tcs_GetLand.Task;
         }
 
@@ -412,7 +423,6 @@ namespace masterland.Wallet
                 tcs_GetLand.TrySetResult(null);
                 return; 
             }
-                
             JObject jsonObj = JObject.Parse(result);
             var landData = new LandData
             {
@@ -439,24 +449,24 @@ namespace masterland.Wallet
         public async UniTask<ResidentLicense> GetResidentLicense(string master)
         {
             tcs_GetResidentLicense = new UniTaskCompletionSource<ResidentLicense>();
-#if UNITY_EDITOR
-            Receive_GetResidentLicense(string.Empty);
-#else
-                getResidentLicense(master);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            getResidentLicense(master);
+            return await tcs_GetResidentLicense.Task;
 #endif
+            Receive_GetResidentLicense(await WalletInGame.GetResidentLicense(master));
             return await tcs_GetResidentLicense.Task;
         }
 
         public void Receive_GetResidentLicense(string result)
         {
-
+     
             if (string.IsNullOrEmpty(result) || result.Length <= 2)
             {
                 tcs_GetResidentLicense.TrySetResult(null);
             }
             else
             {
-
+                Debug.Log(result);
                 JObject jsonObj = JObject.Parse(result);
                 var residentLicense = new ResidentLicense
                 {
@@ -471,7 +481,7 @@ namespace masterland.Wallet
                     StoneLimitedPerDay = jsonObj["stone_limited_per_day"]?.ToString(),
                     WoodLimitedPerDay = jsonObj["wood_limited_per_day"]?.ToString(),
                 };
-
+                Debug.Log(residentLicense.Id);
                 tcs_GetResidentLicense.TrySetResult(residentLicense);
             }
 
@@ -486,16 +496,17 @@ namespace masterland.Wallet
         public async UniTask<ContractRespone> RegisterResidentLicense(string master, string land_id)
         {
             tcs_RegisterResidentLicense = new UniTaskCompletionSource<ContractRespone>();
-#if UNITY_EDITOR
-            Receive_RegisterResidentLicense(m_lands);
-#else
-               registerResidentLicense(master,land_id);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            registerResidentLicense(master,land_id);
+            return await tcs_RegisterResidentLicense.Task;
 #endif
+            Receive_RegisterResidentLicense(await WalletInGame.RegisterResidentLicense(master,land_id));
             return await tcs_RegisterResidentLicense.Task;
         }
 
         public void Receive_RegisterResidentLicense(string result)
         {
+            Debug.Log(result);
             ContractRespone contractRespone = new ContractRespone();
             try
             {
@@ -548,11 +559,11 @@ namespace masterland.Wallet
         public async UniTask<ContractRespone> UnregisterResidentLicense(string master)
         {
             tcs_UnregisterResidentLicense = new UniTaskCompletionSource<ContractRespone>();
-#if UNITY_EDITOR
-            Receive_UnregisterResidentLicense(m_lands);
-#else
-               unregisterResidentLicense(master);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            unregisterResidentLicense(master);
+            return await tcs_UnregisterResidentLicense.Task;
 #endif
+            Receive_UnregisterResidentLicense(await WalletInGame.UnresidentLicense(master));
             return await tcs_UnregisterResidentLicense.Task;
         }
 

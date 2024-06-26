@@ -36,14 +36,13 @@ namespace masterland.Manager
         public string PlayerName = "Player @";
 
         // Start is called before the first frame update
-        async void Awake()
+        void Awake()
         {
             if (Instance == null)
                 Instance = this;
-            //load data 
-            await Data.Instance.InitData();
-            UIManager.Instance.ToggleView(ViewName.Menu);
 
+            LoadGame();
+            
             _networkManager = _networkManager = FindFirstObjectByType<NetworkManager>();
             _mp = FindFirstObjectByType<Multipass>();       
             _tugboat = FindFirstObjectByType<Tugboat>();   
@@ -88,6 +87,23 @@ namespace masterland.Manager
                 _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedStartScenes;
             }
 
+        }
+
+        public async void LoadGame() {
+            #if UNITY_WEBGL && !UNITY_EDITOR
+                await Data.Instance.InitData();
+                UIManager.Instance.ToggleView(ViewName.Menu);
+            #else
+                //load data 
+                if(SuiWallet.GetActiveAddress() == "0x")
+                    UIManager.Instance.ToggleView(ViewName.Login);
+                else 
+                {
+                    WalletInGame.Setup();
+                    await Data.Instance.InitData();
+                    UIManager.Instance.ToggleView(ViewName.Menu);
+                }   
+            #endif
         }
 
 

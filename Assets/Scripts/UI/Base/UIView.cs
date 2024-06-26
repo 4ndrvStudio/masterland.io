@@ -25,16 +25,6 @@ namespace masterland.UI
         {
             gameObject.SetActive(true);
 
-            if(ViewName == ViewName.Login) 
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            } else 
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-
             //update element
             foreach(UIElement el in _elementList) {
                 el.Setup();

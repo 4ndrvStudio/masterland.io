@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using masterland.Wallet;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace masterland.Data
@@ -21,14 +22,20 @@ namespace masterland.Data
             await GetSelectedMaster();
         }
 
+        public void SignOutData() {
+            MasterData = null;
+            Land = null;
+            ResidentLicense = null;
+        }
+
         public async UniTask GetSelectedMaster()
         {
-            string selectedMaster = PlayerPrefs.GetString("selectedMaster");
+            string selectedMaster = PlayerPrefs.GetString($"{Address}-selectedMaster");
             bool isMasterExist = await WalletInteractor.Instance.CheckMasterExist(selectedMaster);
             MasterData = isMasterExist? OwnedMasters.Find(item => item.Id == selectedMaster): null;
             if(MasterData != null && !string.IsNullOrEmpty(MasterData.Id)) {
                 ResidentLicense = await WalletInteractor.Instance.GetResidentLicense(MasterData.Id);
-                if(!string.IsNullOrEmpty(ResidentLicense.Id)) {
+                if(ResidentLicense != null && !string.IsNullOrEmpty(ResidentLicense.Id)) {
                     var landAddress = Lands.Find(item => item.Name.Split("#")[1] == ResidentLicense.LandId).Id;
                     Land = await WalletInteractor.Instance.GetLand(landAddress);
                 } else  {
@@ -41,10 +48,10 @@ namespace masterland.Data
             bool isMasterExist = await WalletInteractor.Instance.CheckMasterExist(masterId);
             MasterData = isMasterExist? OwnedMasters.Find(item => item.Id == masterId): null;
             if(isMasterExist)
-                PlayerPrefs.SetString("selectedMaster", masterId);
+                PlayerPrefs.SetString($"{Address}-selectedMaster", masterId);
             if(MasterData != null && !string.IsNullOrEmpty(MasterData.Id)) {
                 ResidentLicense = await WalletInteractor.Instance.GetResidentLicense(MasterData.Id);
-                if(!string.IsNullOrEmpty(ResidentLicense.Id)) {
+                if( ResidentLicense != null && !string.IsNullOrEmpty(ResidentLicense.Id)) {
                     var landAddress = Lands.Find(item => item.Name.Split("#")[1] == ResidentLicense.LandId).Id;
                     Land = await WalletInteractor.Instance.GetLand(landAddress);
                 } else  {

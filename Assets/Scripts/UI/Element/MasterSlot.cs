@@ -28,8 +28,8 @@ namespace masterland.UI
             _tab_Master = tab_Master;
             _masterNameText.text = masterData.Name;
             _addressText.text = masterData.Id.ToShortAddress();
-            ChooseBtn.gameObject.SetActive(Data.Instance.MasterData.Id != masterData.Id);
-            ChoosedBtn.SetActive(Data.Instance.MasterData.Id == masterData.Id);
+            ChooseBtn.gameObject.SetActive(Data.Instance.MasterData == null || Data.Instance.MasterData.Id != masterData.Id);
+            ChoosedBtn.SetActive(Data.Instance.MasterData != null && Data.Instance.MasterData.Id == masterData.Id);
         }
 
         public async void Choose() 

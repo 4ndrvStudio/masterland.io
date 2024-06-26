@@ -73,8 +73,11 @@ namespace masterland.UI
 
         public void SetupCurrentPanel() {
             _currentMasterPanel.SetActive(Data.Instance.MasterData != null && !string.IsNullOrEmpty(Data.Instance.MasterData.Id));
-            _currentMasterNameText.text = Data.Instance.MasterData.Name;
-            _currentMasterAddressText.text = Data.Instance.MasterData.Id.ToShortAddress();
+            if(Data.Instance.MasterData != null) {
+                _currentMasterNameText.text = Data.Instance.MasterData.Name;
+                _currentMasterAddressText.text = Data.Instance.MasterData.Id.ToShortAddress();
+            }
+          
         }
 
 

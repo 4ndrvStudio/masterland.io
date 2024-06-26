@@ -21,5 +21,10 @@ namespace masterland
             string shortAddress = input.Substring(0, 7) + "..." + input.Substring(input.Length - 5);
             return shortAddress;
         }
+
+        public static string ToSuiCoinFormat(this string amount) {
+            decimal balanceValue = decimal.Parse(amount)/1000000000;
+            return  balanceValue.ToString("0.#########");
+        }
     }
 }

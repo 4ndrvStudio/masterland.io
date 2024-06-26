@@ -1,0 +1,10 @@
+C:\aldrin\suinet\src\Suinet.Faucet\bin\Debug\netstandard2.0\Suinet.Faucet.deps.json
+C:\aldrin\suinet\src\Suinet.Faucet\bin\Debug\netstandard2.0\Suinet.Faucet.dll
+C:\aldrin\suinet\src\Suinet.Faucet\bin\Debug\netstandard2.0\Suinet.Faucet.pdb
+C:\aldrin\suinet\src\Suinet.Faucet\obj\Debug\netstandard2.0\Suinet.Faucet.csproj.AssemblyReference.cache
+C:\aldrin\suinet\src\Suinet.Faucet\obj\Debug\netstandard2.0\Suinet.Faucet.GeneratedMSBuildEditorConfig.editorconfig
+C:\aldrin\suinet\src\Suinet.Faucet\obj\Debug\netstandard2.0\Suinet.Faucet.AssemblyInfoInputs.cache
+C:\aldrin\suinet\src\Suinet.Faucet\obj\Debug\netstandard2.0\Suinet.Faucet.AssemblyInfo.cs
+C:\aldrin\suinet\src\Suinet.Faucet\obj\Debug\netstandard2.0\Suinet.Faucet.csproj.CoreCompileInputs.cache
+C:\aldrin\suinet\src\Suinet.Faucet\obj\Debug\netstandard2.0\Suinet.Faucet.dll
+C:\aldrin\suinet\src\Suinet.Faucet\obj\Debug\netstandard2.0\Suinet.Faucet.pdb

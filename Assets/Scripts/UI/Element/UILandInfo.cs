@@ -55,9 +55,11 @@ namespace masterland.UI
         }
 
         public void UpdateRegisterBtnContent() {
+            if(_landData == null)
+                return;
             string currentLandId = _landData.Name.Split("#")[1];
-            _registerResidentBtn.GetComponentInChildren<TextMeshProUGUI>().text = !string.IsNullOrEmpty(Data.Instance.ResidentLicense.Id) && Data.Instance.ResidentLicense.LandId == currentLandId
-                                                                     ? "Unregister Resident" : "Register Resident";
+            _registerResidentBtn.GetComponentInChildren<TextMeshProUGUI>().text = Data.Instance.ResidentLicense ==null || !(!string.IsNullOrEmpty(Data.Instance.ResidentLicense.Id) && Data.Instance.ResidentLicense.LandId == currentLandId)
+                                                                     ? "Register Resident" : "Unregister Resident";
         }
 
         public async void ResgisterOrUnregister()
@@ -68,11 +70,11 @@ namespace masterland.UI
             string currentLandId = _landData.Name.Split("#")[1];
             var residentLicense = Data.Instance.ResidentLicense;
 
-            bool isRegister = !(!string.IsNullOrEmpty(Data.Instance.ResidentLicense.Id) && Data.Instance.ResidentLicense.LandId == currentLandId);
+            bool isRegister =  Data.Instance.ResidentLicense == null || !(!string.IsNullOrEmpty(Data.Instance.ResidentLicense.Id) && Data.Instance.ResidentLicense.LandId == currentLandId);
 
             if (isRegister)
             {
-                bool shouldUnregister =
+                bool shouldUnregister = Data.Instance.ResidentLicense != null &&
                                     !string.IsNullOrEmpty(residentLicense.Id) &&
                                     residentLicense.LandId != currentLandId;
                 if (shouldUnregister)

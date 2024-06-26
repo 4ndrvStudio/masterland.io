@@ -42,7 +42,9 @@ namespace masterland.UI
         }
 
         public void SetupCurrentPanel() {
-            _currentLandOb.gameObject.SetActive(!string.IsNullOrEmpty(Data.Instance.Land.Id));
+            _currentLandOb.gameObject.SetActive(Data.Instance.Land != null && !string.IsNullOrEmpty(Data.Instance.Land.Id));
+            if(Data.Instance.Land == null)
+                return;
             _currentLandNameText.text = Data.Instance.Land.Name;
             _currentLandAddressText.text = Data.Instance.Land.Id.ToShortAddress();
         }

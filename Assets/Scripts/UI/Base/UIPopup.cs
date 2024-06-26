@@ -1,14 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace masterland.UI
 {
     public enum PopupName
     {
-        None,
-        Waiting,
+        None=0,
+        Waiting=1,
+        SuiWallet=2,
     }
 
     public class UIPopup : MonoBehaviour
