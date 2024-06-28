@@ -56416,8 +56416,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6615697361846800458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.91974866, z: 0, w: 0.3925078}
-  m_LocalPosition: {x: 610.8005, y: 57.58, z: 879.72845}
+  m_LocalRotation: {x: 0, y: 0.99936455, z: 0, w: 0.035643492}
+  m_LocalPosition: {x: 625.4861, y: 57.58, z: 879.72845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56522,14 +56522,18 @@ MonoBehaviour:
   _enablePrediction: 0
   _predictionType: 0
   _graphicalObject: {fileID: 110760148712384616}
+  _detachGraphicalObject: 0
   _enableStateForwarding: 0
   _networkTransform: {fileID: 3857029263935317608}
   _ownerInterpolation: 6
+  _ownerSmoothedProperties: 255
+  _adaptiveInterpolation: 3
+  _spectatorSmoothedProperties: 255
+  _spectatorInterpolation: 2
   _enableTeleport: 1
   _teleportThreshold: 10
   <PrefabId>k__BackingField: 0
   <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 5149249012087252414
 --- !u!114 &3857029263935317608
@@ -56594,6 +56598,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 578991581174262709}
   IgnoredParameters: []
   _animator: {fileID: 5269484128832073999}
+  _synchronizeWhenDisabled: 0
   _smoothFloats: 1
   _interpolation: 1
   _clientAuthoritative: 1
@@ -56937,6 +56942,9 @@ MonoBehaviour:
   _maximumSimultaneousHits: 16
   _historyDuration: 1
   _additionalSize: 0.3
+  _layers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6625024666331627447
 GameObject:
   m_ObjectHideFlags: 0

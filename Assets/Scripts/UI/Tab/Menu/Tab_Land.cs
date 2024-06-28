@@ -5,6 +5,7 @@ using System;
 namespace masterland.UI
 {
     using Data;
+    using masterland.Manager;
     using TMPro;
     using UnityEngine.UI;
     using Wallet;
@@ -19,11 +20,14 @@ namespace masterland.UI
         [SerializeField] private TextMeshProUGUI _currentLandNameText;
         [SerializeField] private TMP_InputField _currentLandAddressText;
         [SerializeField] private Button _unregisterLandBtn;
+        [SerializeField] private Button _enterLandBtn;
 
         public UILandInfo LandInfo;
         
-        public void Start() {
+        public void Start() 
+        {
             _unregisterLandBtn.onClick.AddListener(Unregister);
+            _enterLandBtn.onClick.AddListener(GameManager.Instance.EnterMap);
         }
 
         public override void Show()

@@ -74,7 +74,7 @@ namespace masterland.Master
             _bodyMesh.material = _ownerMat;
             _nameText.gameObject.SetActive(false);
             if(GameManager.Instance != null) {
-                MasterName.Value = string.IsNullOrEmpty(GameManager.Instance.PlayerName) ? "Player #"+gameObject.name : GameManager.Instance.PlayerName;
+               // MasterName.Value = string.IsNullOrEmpty(Address.Instance.PlayerName) ? "Player #"+gameObject.name : GameManager.Instance.PlayerName;
             }
             
             CameraManager.Instance.Setup(Body.transform);
