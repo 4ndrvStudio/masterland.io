@@ -73,7 +73,6 @@ namespace masterland.Master
         {
             base.OnUpdate();
 
-
             if(IsOwner) {
                 GetInput();
             };
@@ -81,12 +80,7 @@ namespace masterland.Master
             if(IsServerInitialized) {
                 EnableWeaponCollider();
             }
-                
-                
         }
-
-   
-        
 
         private void GetInput() 
         {

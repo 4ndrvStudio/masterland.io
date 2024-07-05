@@ -21,7 +21,6 @@ namespace masterland.Master
 
         private void OnAnimatorMove() 
         {
-
             DeltaPosition =  animator.deltaPosition;
         }
 
@@ -60,7 +59,8 @@ namespace masterland.Master
             fx.SetActive(true);
             Destroy(fx,1f);
         }
-        IEnumerator DisableWeapon() {
+        IEnumerator DisableWeapon() 
+        {
             yield return new WaitForSeconds(0.7f);
         }
       

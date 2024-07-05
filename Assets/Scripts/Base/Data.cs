@@ -61,6 +61,8 @@ namespace masterland.Data
             return MasterData.Id;
         }
 
+       // public void GetLand() Ơ
+
     }
 
     [System.Serializable]

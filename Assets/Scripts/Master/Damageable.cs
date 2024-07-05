@@ -30,7 +30,8 @@ namespace masterland.Master
             _networkCollision.OnEnter += HandleWeaponCollide;
         }
 
-        public override void OnDestroy() {
+        public override void OnDestroy() 
+        {
             base.OnDestroy();
             if(_networkCollision != null) {
                 _networkCollision.OnEnter -= HandleWeaponCollide;

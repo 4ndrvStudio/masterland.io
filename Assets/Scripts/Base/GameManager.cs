@@ -36,7 +36,8 @@ namespace masterland.Manager
             }
         }
 
-        public async void LoadGame() {
+        public async void LoadGame() 
+        {
             #if UNITY_WEBGL && !UNITY_EDITOR
                 await Data.Instance.InitData();
                 UIManager.Instance.ToggleView(ViewName.Menu);

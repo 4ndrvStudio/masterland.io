@@ -33,7 +33,6 @@ namespace masterland.Master
         private float _terminalVelocity = 53.0f;
         public float _maxSlopeAngle = 45f;
 
-
         [HideInInspector] public CharacterController Controller;
 
         public float ActionTime = 0.5f;
@@ -52,13 +51,13 @@ namespace masterland.Master
         {
             base.Awake();
             Controller = GetComponent<CharacterController>();
-
         }
 
         public override void OnStartClient()
         {
             Controller.enabled = (base.IsServerInitialized || base.IsOwner);
         }
+
         public override void OnStartServer()
         {
             base.OnStartServer();
@@ -91,7 +90,6 @@ namespace masterland.Master
             if ((rd.Move == Vector2.zero || _master.State.IsAction) && !_master.State.IsActionKeepSpeed) CurrentSpeed = 0.0f;
             if (_master.State.IsActionKeepSpeed)
                 CurrentSpeed = MoveSpeed;
-
 
             AnimationBlend = Mathf.Lerp(AnimationBlend, CurrentSpeed / SprintSpeed, deltaTime * SpeedChangeRate);
             if (AnimationBlend < 0.01f) AnimationBlend = 0f;
@@ -169,8 +167,6 @@ namespace masterland.Master
             if (IsClientInitialized)
                 _master.Animation.LockOnMovement(AnimationBlend, AnimationBlendX);
         }
-
-
 
         public void GroundedCheck()
         {
@@ -258,12 +254,8 @@ namespace masterland.Master
                 }
             }
 
-
             JumpTime = Grounded ? 0 : JumpTime += delta;
-
         }
-
-     
 
         private bool IsNearGround(float threshold, out float distance)
         {

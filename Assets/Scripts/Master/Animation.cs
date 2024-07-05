@@ -30,7 +30,6 @@ namespace masterland.Master
         private int _animIDJumpRunningLoop;
         private int _animIDJumpRunningEnd;
 
-
         public bool HasWeapon 
         {
             set {
@@ -65,6 +64,7 @@ namespace masterland.Master
             _animator.SetLayerWeight(1,_currentWeight);
             _animator.SetFloat(_animIDVertical, blend,0.05f,(float) TimeManager.TickDelta);
         }
+
         public void LockOnMovement(float vertical, float horizontal) 
         {
             if(_animator == null) return;
@@ -74,14 +74,13 @@ namespace masterland.Master
             _animator.SetFloat(_animIDHorizontal, horizontal,0.001f,(float) TimeManager.TickDelta);
         }
 
-        public void SetGrounded(bool isActive) {
+        public void SetGrounded(bool isActive) 
+        {
             _animator.SetBool(_animIDGrounded, isActive);
         }
 
-        
         public void SetJumpState(JumpState jumpState) 
         {
-            Debug.Log(jumpState.ToString());
             _animator.SetBool(_animIDJumpRunningStart, jumpState == JumpState.Start);
             _animator.SetBool(_animIDJumpRunningLoop, jumpState == JumpState.Loop);
             _animator.SetBool(_animIDJumpRunningEnd, jumpState == JumpState.End);
@@ -90,11 +89,10 @@ namespace masterland.Master
         public void SetJump(bool isActive) 
         {
             _animator.SetBool("jump", isActive);
-
         }
 
-
-        public void SetSliding(bool isActive) {
+        public void SetSliding(bool isActive) 
+        {
             _animator.SetBool(_animIDSliding, isActive);
         }
 
@@ -102,7 +100,6 @@ namespace masterland.Master
         {
              _animator.SetBool(_animIDSwordLM, typeId == 1);
         }
-
         
         public void PlayAction(string id) 
         {
@@ -112,19 +109,17 @@ namespace masterland.Master
         }
 
         [ServerRpc]
-        public void Server_PlayAction(string id) {
-        
+        public void Server_PlayAction(string id) 
+        {
             PlayAction(id);
             Observers_PlayAction(id);
         }
 
         [ObserversRpc(ExcludeServer = true)]
-        public void Observers_PlayAction(string id) {
+        public void Observers_PlayAction(string id) 
+        {
             PlayAction(id);
         }
-
-
-     
 
     }
 }

@@ -119,7 +119,6 @@ namespace masterland.Manager
         {
             yield return new WaitUntil(() => _serverState == LocalConnectionState.Stopped);
             _networkManager.ServerManager.StartConnection();
-        
         }
 
         public void StartClient()
