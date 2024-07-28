@@ -27,12 +27,23 @@ namespace masterland.UI
             this._customProperties = customProperties;
             gameObject.SetActive(true);
             
+            if(UIManager.Instance.CurrentView.ViewName == ViewName.Gameplay) 
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
 
         public virtual void Hide()
         {
             _customProperties = null;
             gameObject.SetActive(false);
+           
+            if(UIManager.Instance.CurrentView.ViewName == ViewName.Gameplay) 
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
     }
 

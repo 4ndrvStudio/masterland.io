@@ -72,6 +72,14 @@ mergeInto(LibraryManager.library, {
     }
   },
 
+  mintMineral:function (master, type) {
+    try {
+      window.dispatchReactUnityEvent("mintMineral", UTF8ToString(master), UTF8ToString(type));
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
 });
 
 

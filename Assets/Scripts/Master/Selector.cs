@@ -5,7 +5,7 @@ namespace masterland.Interact
     using Mineral;
     using masterland.UI;
     using System;
-   
+
     public enum InteractType 
     {
         Mint_Stone = 1,
@@ -15,11 +15,12 @@ namespace masterland.Interact
 
     public class Selector : MonoBehaviour
     {
+        [HideInInspector]
+        public SelectedObject CurrentSelectedObject;
         public LayerMask layerMask;
         public float checkInterval = 0.1f;
         private float timer = 0f;
-        private SelectedObject _currentOutlineEffect;
-
+      
         void FixedUpdate()
         {
             timer += Time.fixedDeltaTime;
@@ -37,36 +38,35 @@ namespace masterland.Interact
 
                     if (newOutlineEffect != null)
                     {
-                        if (_currentOutlineEffect != newOutlineEffect)
+                        if (CurrentSelectedObject != newOutlineEffect)
                         {
-                            if (_currentOutlineEffect != null)
+                            if (CurrentSelectedObject != null)
                             {
-                                _currentOutlineEffect.DisableOutline();
+                                CurrentSelectedObject.DisableOutline();
                             }
 
                             newOutlineEffect.EnableOutline();
-                            _currentOutlineEffect = newOutlineEffect;
-                          
-                            UIController.Instance.ShowInteractTutorial(_currentOutlineEffect.InteractType.ConvertEnumToStringWithSpace());
+                            CurrentSelectedObject = newOutlineEffect;
+                            UIController.Instance.ShowInteractTutorial(CurrentSelectedObject.InteractType.ConvertEnumToStringWithSpace());
                         }
                     }
                     else
                     {
-                        if (_currentOutlineEffect != null)
+                        if (CurrentSelectedObject != null)
                         {
-                            _currentOutlineEffect.DisableOutline();
-                            _currentOutlineEffect = null;
+                            CurrentSelectedObject.DisableOutline();
+                            CurrentSelectedObject = null;
                             UIController.Instance.HideInteractTutorial();
                         }
                     }
                 }
                 else
                 {
-                    if (_currentOutlineEffect != null)
+                    if (CurrentSelectedObject != null)
                     {
-                        _currentOutlineEffect.DisableOutline();
+                        CurrentSelectedObject.DisableOutline();
                         UIController.Instance.HideInteractTutorial();
-                        _currentOutlineEffect = null;
+                        CurrentSelectedObject = null;
                     }
                 }
             }

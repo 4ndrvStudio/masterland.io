@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using Den.Tools;
 using FishNet.Object;
-using masterland.Mineral;
 using UnityEngine;
 
 namespace masterland.Map
 {
+    using Mineral;
 
     [System.Serializable]
     public class TransitionData 

@@ -16,6 +16,7 @@ namespace masterland.Master
         public bool PlayLockOn;
         public bool PlayDodge;
         public bool PlayAI;
+        public bool PlayMint;
 
         private bool _avoidMultiClick = false;
 
@@ -30,8 +31,9 @@ namespace masterland.Master
             MasterInput.Player.Jump.performed += OnPerformJump;
             MasterInput.Player.FastDodgeLeft.performed += OnPerformFastDodgeLeft;
             MasterInput.Player.FastDodgeRight.performed += OnPerformFastDodgeRight;
-        }
+            MasterInput.Player.Interact.performed += OnPerformInteract;
 
+        }
         public override void OnStopClient()
         {
             MasterInput.Player.Disable();
@@ -39,6 +41,7 @@ namespace masterland.Master
             MasterInput.Player.Jump.performed -= OnPerformJump;
             MasterInput.Player.FastDodgeLeft.performed -= OnPerformFastDodgeLeft;
             MasterInput.Player.FastDodgeRight.performed -= OnPerformFastDodgeRight;
+            MasterInput.Player.Interact.performed -= OnPerformInteract;
         }
 
         public void OnPerformAttack(InputAction.CallbackContext context) 
@@ -48,7 +51,8 @@ namespace masterland.Master
                 StartCoroutine(IEPlayAttack());
             }
         }
-        public void OnPerformJump(InputAction.CallbackContext context) { 
+        public void OnPerformJump(InputAction.CallbackContext context) 
+        { 
             PlayJump =true;
             if(PlayLockOn) 
                 StartCoroutine(IEPlayDodge());
@@ -56,6 +60,13 @@ namespace masterland.Master
         }
         public void OnPerformFastDodgeLeft(InputAction.CallbackContext context) { PlayFastDodgeLeft = true ; }
         public void OnPerformFastDodgeRight(InputAction.CallbackContext context) { PlayFastDodgeRight = true ; }
+
+        public void OnPerformInteract(InputAction.CallbackContext context) 
+        { 
+            if(_master.Selector.CurrentSelectedObject == null ) return;
+
+            _master.Selector.CurrentSelectedObject.CurrentSelectedObject.Interact(_master.Owner);
+        }
 
         private void Update()
         {
@@ -67,6 +78,8 @@ namespace masterland.Master
                 PlayLockOn = MasterInput.Player.LockOn.IsPressed();
             }   
             PlaySprint = MasterInput.Player.Sprint.IsPressed();
+
+
         }
 
         IEnumerator IEPlayAttack() {

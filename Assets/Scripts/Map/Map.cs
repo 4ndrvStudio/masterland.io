@@ -6,6 +6,8 @@ using GameKit.Dependencies.Utilities;
 
 namespace masterland.Map
 {
+    using Mineral;
+
     [System.Serializable]
     public class MineralSpawner 
     {
@@ -69,8 +71,8 @@ namespace masterland.Map
 
         void InitMineralSpawn() 
         {
-            var stoneData = MapData.TransitionDatas.Find(item => item.MineralType == Mineral.MineralType.Stone);
-            var treeData = MapData.TransitionDatas.Find(item => item.MineralType == Mineral.MineralType.Wood);
+            var stoneData = MapData.TransitionDatas.Find(item => item.MineralType == MineralType.Stone);
+            var treeData = MapData.TransitionDatas.Find(item => item.MineralType == MineralType.Wood);
             
             //instantiate data
 

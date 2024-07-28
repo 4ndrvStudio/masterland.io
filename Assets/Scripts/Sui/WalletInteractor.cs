@@ -40,6 +40,9 @@ namespace masterland.Wallet
         private UniTaskCompletionSource<ContractRespone> tcs_RegisterResidentLicense;
         private UniTaskCompletionSource<ContractRespone> tcs_UnregisterResidentLicense;
 
+        private UniTaskCompletionSource<ContractRespone> tcs_MintMineral;
+
+
         #region fake data
         string m_address = "";
         string m_masters = @"[
@@ -594,6 +597,53 @@ namespace masterland.Wallet
                 contractRespone.IsSucess = false;
                 contractRespone.Message = "";
                 tcs_UnregisterResidentLicense.TrySetResult(contractRespone);
+            }
+        }
+        #endregion
+
+
+        #region MintWood 
+        [DllImport("__Internal")]
+        private static extern void mintMineral(string master,string type);
+
+        public async UniTask<ContractRespone> MintMineral(string master, string type)
+        {
+            tcs_MintMineral = new UniTaskCompletionSource<ContractRespone>();
+#if UNITY_WEBGL && !UNITY_EDITOR
+            mintMineral(master,type);
+            return await tcs_MintWood.Task;
+#endif
+            Receive_MintMineral(await WalletInGame.MintMineral(master,type));
+            return await tcs_MintMineral.Task;
+        }
+
+        public void Receive_MintMineral(string result)
+        {
+            ContractRespone contractRespone = new ContractRespone();
+            try
+            {
+                JObject jsonObj = JObject.Parse(result);
+                bool isSuccess = jsonObj["isSuccess"]?.ToObject<bool>() ?? false;
+
+                if (isSuccess)
+                {
+                    contractRespone.IsSucess = true;
+                    contractRespone.Message = "";
+                }
+                else
+                {
+                    contractRespone.IsSucess = false;
+                    contractRespone.Message = "";
+                }
+                tcs_MintMineral.TrySetResult(contractRespone);
+
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Failed to parse result: {ex.Message}");
+                contractRespone.IsSucess = false;
+                contractRespone.Message = "";
+                tcs_MintMineral.TrySetResult(contractRespone);
             }
         }
         #endregion

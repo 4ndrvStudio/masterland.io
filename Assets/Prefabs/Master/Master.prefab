@@ -45938,13 +45938,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4307880474140036736}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25d86bd66b9b4404ab33627ac722a283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: {fileID: -1562230280327315146}
   parentTransform: {fileID: 3799347325945339494}
-  smoothSpeed: 0.125
+  smoothSpeed: 0.1
 --- !u!1 &4310747320579411983
 GameObject:
   m_ObjectHideFlags: 0
@@ -56416,8 +56417,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6615697361846800458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.9598019, z: 0, w: -0.28067845}
-  m_LocalPosition: {x: 636.8432, y: 57.58, z: 879.72845}
+  m_LocalRotation: {x: 0, y: 0.9234295, z: 0, w: 0.3837681}
+  m_LocalPosition: {x: 624.3427, y: 57.58, z: 879.72845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56627,6 +56628,7 @@ MonoBehaviour:
   PlayLockOn: 0
   PlayDodge: 0
   PlayAI: 0
+  PlayMint: 0
 --- !u!114 &8575488650261935804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56657,9 +56659,7 @@ MonoBehaviour:
   AimAssist: {fileID: -8469202331874335241}
   Audio: {fileID: 6746803543011169952}
   MasterBot: {fileID: 928486734988500539}
-  _ownerMat: {fileID: 2100000, guid: a3c8bb5c13a28a544befdc20536f7c3b, type: 2}
-  _enemyMat: {fileID: 2100000, guid: dbe0e6a684f6d0045aa54742d126b729, type: 2}
-  _bodyMesh: {fileID: 5459651052079966073}
+  Selector: {fileID: 5441636811649591012}
   _nameText: {fileID: 8676032098027113385}
   MasterName:
     _value: I'm Idiot
@@ -56696,7 +56696,7 @@ MonoBehaviour:
   HP:
     _value: 0
   MP:
-    _value: 100
+    _value: 255
   CurrentMP: 0
   _manaInnerImg: {fileID: 3430077493486005673}
   _manaEffectImg: {fileID: 5613800747757450611}
@@ -56816,7 +56816,21 @@ MonoBehaviour:
   _componentIndexCache: 10
   _addedNetworkObject: {fileID: 578991581174262709}
   _networkObjectCache: {fileID: 578991581174262709}
-  NormalAttackIndex: 0
+  AttackIndex: 0
+  ComboAttackList:
+  - Id: 1
+    Name: 
+    AttackList:
+    - combo_01_1
+    - combo_01_2
+    - combo_01_3
+  - Id: 2
+    Name: 
+    AttackList:
+    - combo_02_1
+    - combo_02_2
+    - combo_02_3
+    - combo_02_4
   NormalAttackList:
   - sword_1_1
   - sword_1_2
@@ -56831,6 +56845,10 @@ MonoBehaviour:
   DodgeFront: sword_dg_front
   DodgeBack: sword_dg_back
   CurrentTargetLockOn: {fileID: 0}
+  _currentCombo:
+    Id: 0
+    Name: 
+    AttackList: []
 --- !u!114 &-5979356188506539374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56920,6 +56938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4721527f33acce14bb2c42a7fc7af3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentSelectedObject: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 1024

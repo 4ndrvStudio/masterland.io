@@ -83,6 +83,15 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae3255f8-8da2-40ee-9dde-7d41dcf3233f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""FastDodgeLeft"",
                     ""type"": ""Button"",
                     ""id"": ""23508fe2-e0a3-408c-9978-468bed585b9c"",
@@ -365,6 +374,17 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""78b9cb19-9f42-4cc6-8e69-1cb66e310fa7"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c68df8c9-3831-4d15-b985-62f61d5bbffa"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
@@ -525,6 +545,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
         m_Player_LockOn = m_Player.FindAction("LockOn", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_FastDodgeLeft = m_Player.FindAction("FastDodgeLeft", throwIfNotFound: true);
         m_Player_FastDodgeRight = m_Player.FindAction("FastDodgeRight", throwIfNotFound: true);
         m_Player_UseSlot1 = m_Player.FindAction("UseSlot1", throwIfNotFound: true);
@@ -609,6 +630,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LockOn;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_FastDodgeLeft;
     private readonly InputAction m_Player_FastDodgeRight;
     private readonly InputAction m_Player_UseSlot1;
@@ -628,6 +650,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
         public InputAction @LockOn => m_Wrapper.m_Player_LockOn;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @FastDodgeLeft => m_Wrapper.m_Player_FastDodgeLeft;
         public InputAction @FastDodgeRight => m_Wrapper.m_Player_FastDodgeRight;
         public InputAction @UseSlot1 => m_Wrapper.m_Player_UseSlot1;
@@ -664,6 +687,9 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
             @FastDodgeLeft.started += instance.OnFastDodgeLeft;
             @FastDodgeLeft.performed += instance.OnFastDodgeLeft;
             @FastDodgeLeft.canceled += instance.OnFastDodgeLeft;
@@ -713,6 +739,9 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
             @FastDodgeLeft.started -= instance.OnFastDodgeLeft;
             @FastDodgeLeft.performed -= instance.OnFastDodgeLeft;
             @FastDodgeLeft.canceled -= instance.OnFastDodgeLeft;
@@ -803,6 +832,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
         void OnLockOn(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnFastDodgeLeft(InputAction.CallbackContext context);
         void OnFastDodgeRight(InputAction.CallbackContext context);
         void OnUseSlot1(InputAction.CallbackContext context);

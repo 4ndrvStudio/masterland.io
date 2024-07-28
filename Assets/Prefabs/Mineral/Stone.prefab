@@ -106,6 +106,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 3911768045438209316}
   _networkObjectCache: {fileID: 3911768045438209316}
   Type: 0
+  State:
+    _value: 0
 --- !u!114 &3911768045438209316
 MonoBehaviour:
   m_ObjectHideFlags: 0

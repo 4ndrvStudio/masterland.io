@@ -419,7 +419,7 @@ namespace masterland.Wallet
             return JsonConvert.SerializeObject(contractRespone);
         }
 
-         public static async UniTask<string> UnresidentLicense(string master)
+        public static async UniTask<string> UnresidentLicense(string master)
         {
             tcs_TxResult = new UniTaskCompletionSource<ContractRespone>();
             _moveCallTransaction.Module = "master";
@@ -475,10 +475,69 @@ namespace masterland.Wallet
 
             return JsonConvert.SerializeObject(contractRespone);
         }
-
-        
-
-
         #endregion
+   
+        #region  Mint Mineral
+        public static async UniTask<string> MintMineral(string master, string type)
+        {
+            tcs_TxResult = new UniTaskCompletionSource<ContractRespone>();
+            _moveCallTransaction.Module = "master";
+            _moveCallTransaction.Function = type;
+            _moveCallTransaction.Arguments = new object[] {
+                LAND_ADDRESS,
+                master,
+                ClockAddress
+            };
+            var tx_response = await SuiApi.Client.MoveCallAsync(_moveCallTransaction);
+            Debug.Log("stat 1 " +tx_response.IsSuccess);
+            if (tx_response.IsSuccess)
+            {
+                var dry_tx = await SuiApi.Client.DryRunTransactionBlockAsync(tx_response.Result.TxBytes);
+                Debug.Log("stat 1 " +dry_tx.IsSuccess);
+                ConfirmTxData confirmTxData = new ConfirmTxData
+                {
+                    Title = "Mint this Tree?",
+                    Tx = tx_response.Result.TxBytes,
+                    Tcs = tcs_TxResult,
+                    Gas = GetGasFee(dry_tx.RawRpcResponse),
+                    Fee = "0",
+                    BalanceChange = GetBalanceChange(dry_tx.RawRpcResponse)
+
+                };
+
+                UIManager.Instance.ShowPopup(PopupName.SuiWallet, new Dictionary<string, object>{
+                    {"isConfirmTx", true},
+                    {"confirmTxData", confirmTxData},
+                });
+            }
+            else
+            {
+                tcs_TxResult.TrySetResult(new ContractRespone
+                {
+                    IsSucess = false,
+                    Data = null,
+                    Message = tx_response.ErrorMessage
+                });
+                Debug.Log(tx_response.ErrorMessage);
+            }
+
+            var tcs_result = await tcs_TxResult.Task;
+            Debug.Log(tcs_result.IsSucess);
+            ContractRespone contractRespone = new ContractRespone();
+           
+            if (tcs_result.IsSucess)
+            {
+                contractRespone.IsSucess = true;
+                var data = tcs_result.Data as RpcResult<TransactionBlockResponse>;
+                Debug.Log(data.RawRpcResponse);
+            } else {
+                contractRespone.IsSucess = false;
+                contractRespone.Message = tcs_result.Message;
+            }
+
+            return JsonConvert.SerializeObject(contractRespone);
+        }
+
     }
+    #endregion
 }

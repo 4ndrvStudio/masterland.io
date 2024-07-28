@@ -92,7 +92,7 @@ namespace masterland.Master
 
         private void EnableWeaponCollider() 
         {
-            _Sword1ObTest.GetComponent<Collider>().enabled = _master.AnimatorHook.WeaponColliderEnable;
+           // _Sword1ObTest.GetComponent<Collider>().enabled = _master.AnimatorHook.WeaponColliderEnable;
         }
         public void EnableWeaponCollider(bool isEnable) 
         {

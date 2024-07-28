@@ -6,6 +6,7 @@ using FishNet.Object.Synchronizing;
 using JetBrains.Annotations;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using System;
 
 namespace masterland.Master
 {
@@ -24,9 +25,18 @@ namespace masterland.Master
         Right
     }
 
+    [Serializable]
+    public class ComboAttack 
+    {
+        public int Id;
+        public string Name;
+        public List<string> AttackList;
+    }
+
     public class Combat : MasterComponent
     {
-        public int NormalAttackIndex;
+        public int AttackIndex;
+        public List<ComboAttack> ComboAttackList = new();
         public List<string> NormalAttackList;
         public string NormalJumpAttack;
         public string RunAttack;
@@ -39,7 +49,14 @@ namespace masterland.Master
         public string DodgeBack;
         
         public Collider CurrentTargetLockOn;
-        
+
+        [SerializeField] private ComboAttack _currentCombo;
+
+        public void Start() 
+        {
+            _currentCombo = ComboAttackList[UnityEngine.Random.Range(0, ComboAttackList.Count)];
+        }
+
         public override void OnTick()
         {
             base.OnTick();
@@ -54,7 +71,7 @@ namespace masterland.Master
         public void ResetCombat()
         {
             _master.Input.PlayAttack = false;
-            NormalAttackIndex = 0;
+            AttackIndex = 0;
         }
 
         public void NormalAttackState()
@@ -66,20 +83,19 @@ namespace masterland.Master
                 if(_master.State.IsAction)
                    return;
                 StartCoroutine(AvoidMultiAttack());
+              
                 float targetRotation;
-                Vector3 inputDirection = new Vector3(_master.Input.MoveDirection.x, 0.0f, _master.Input.MoveDirection.y).normalized;
-                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + CameraManager.Instance.GetAngle();
 
                 if(_master.Input.PlayLockOn) 
-                {
                     /* Mobile */
                     // Vector3 directionToTarget = _master.AimAssist.SelectedNearest.transform.position - transform.position;
                     // directionToTarget.y = 0;
                     // Quaternion targetRotationQuaternion = Quaternion.LookRotation(directionToTarget);
                     // targetRotation = targetRotationQuaternion.eulerAngles.y;
-
                     targetRotation = Mathf.Atan2(Camera.main.transform.forward.x, Camera.main.transform.forward.z) * Mathf.Rad2Deg;
-                }
+                 else 
+                    targetRotation = Mathf.Infinity;
+                
 
                 if (_master.State.IsGrounded)
                 {
@@ -88,10 +104,14 @@ namespace masterland.Master
                         ProcessAttack(1, AttackType.Run, targetRotation);
                     }
                     else
-                    {
-                        
-                        ProcessAttack(NormalAttackIndex, AttackType.Normal, targetRotation);
-                        NormalAttackIndex = NormalAttackIndex >= NormalAttackList.Count - 1 ? 0 : NormalAttackIndex + 1;
+                    {                       
+                        //random combo attack
+                        if(AttackIndex >= _currentCombo.AttackList.Count) {
+                            AttackIndex = 0;
+                            _currentCombo = ComboAttackList[UnityEngine.Random.Range(0, ComboAttackList.Count)];
+                        }
+                        ProcessAttack(AttackIndex, AttackType.Normal, targetRotation);
+                        AttackIndex = AttackIndex + 1;
                     }
                 }
                 else
@@ -159,18 +179,21 @@ namespace masterland.Master
         private IEnumerator AvoidMultiAttack()
         {
             _avoidMultiAttack = true;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.3f);
             _avoidMultiAttack = false;
         }
         
-        public void ProcessAttack(int index, AttackType type, float targetRotation)
+        public void ProcessAttack(int index, AttackType type, float targetRotation = Mathf.Infinity)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 1);
+            if(targetRotation != Mathf.Infinity)
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, targetRotation, 0.0f), 1);
+            
+            Debug.Log(_currentCombo.AttackList[index]);
             string attackTarget = string.Empty;
             switch (type)
             {
                 case AttackType.Normal:
-                    attackTarget = NormalAttackList[index];
+                    attackTarget = _currentCombo.AttackList[index];
                     break;
                 case AttackType.Run:
                     attackTarget = RunAttack;
@@ -184,7 +207,6 @@ namespace masterland.Master
                 return;
 
             _master.Animation.Server_PlayAction(attackTarget);
-            
         }
 
         public void ProcessFastDodge(int index) => _master.Animation.Server_PlayAction(index == 1 ? FastDodgeRight : FastDodgeLeft);

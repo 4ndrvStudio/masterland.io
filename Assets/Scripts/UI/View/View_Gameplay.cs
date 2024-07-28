@@ -7,7 +7,6 @@ namespace masterland.UI
 {
     public class View_Gameplay : UIView
     {
-
         public override void Show(Dictionary<string, object> customProperties = null)
         {
             base.Show(customProperties);

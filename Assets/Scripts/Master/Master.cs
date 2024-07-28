@@ -10,6 +10,7 @@ using FishNet.Object.Synchronizing;
 namespace masterland.Master
 {
     using Manager;
+    using masterland.Interact;
 
     public class Master : NetworkBehaviour
     {
@@ -29,11 +30,8 @@ namespace masterland.Master
         public AimAssist AimAssist;
         public Audio Audio;
         public MasterBot MasterBot;
+        public Selector Selector;
         private List<MasterComponent> _masterComponentList = new();
-
-        [SerializeField] private Material _ownerMat;
-        [SerializeField] private Material _enemyMat;
-        [SerializeField] private SkinnedMeshRenderer _bodyMesh;
         
         [SerializeField] private TextMeshPro _nameText;
     
@@ -44,7 +42,6 @@ namespace masterland.Master
         public override void OnStartClient()
         {
             base.OnStartClient();
-            _bodyMesh.material = _enemyMat;
             if(IsOwner) 
             {
                 if(Local == null) 
@@ -52,7 +49,7 @@ namespace masterland.Master
                 SetupOwner();
             }
             SetupMasterComponent();
-            gameObject.name = ObjectId.ToString();
+            gameObject.name = ObjectId.ToString();  
 
             MasterName.OnChange += OnNameChanged;
        
@@ -71,7 +68,6 @@ namespace masterland.Master
         private void SetupOwner() 
         {
             //Setup Camera 
-            _bodyMesh.material = _ownerMat;
             _nameText.gameObject.SetActive(false);
             if(GameManager.Instance != null) {
                // MasterName.Value = string.IsNullOrEmpty(Address.Instance.PlayerName) ? "Player #"+gameObject.name : GameManager.Instance.PlayerName;
