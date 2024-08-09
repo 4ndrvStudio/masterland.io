@@ -57,9 +57,13 @@ namespace masterland.UI
              _unregisterLandBtn.interactable = false;
              _unregisterLandBtn.GetComponentInChildren<TextMeshProUGUI>().text = "Processing..";
                 ContractRespone contractRespone = await WalletInteractor.Instance.UnregisterResidentLicense(Data.Instance.MasterData.Id);
-                if (!contractRespone.IsSucess)
+                if (!contractRespone.IsSuccess)
                 {
-                    Debug.Log("Can't Unregister");
+                    UIToast.Instance.Show(new ToastModel{
+                        IsSuccess = false,
+                        Title = "Error!",
+                        Description = "Can't Unregister"
+                    });
                 }
 
         

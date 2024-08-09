@@ -64,6 +64,18 @@ namespace masterland.UI
 
         public async void ResgisterOrUnregister()
         {
+            if(Data.Instance.MasterData == null || string.IsNullOrEmpty(Data.Instance.MasterData.Id))
+            {
+                UIToast.Instance.Show(new ToastModel {
+                    IsSuccess = false,
+                    Title = "Action Fail",
+                    Description = "You must select a master to play!"
+                });
+
+                return;
+            }
+
+
             _registerResidentBtn.interactable = false;
             _registerResidentBtn.GetComponentInChildren<TextMeshProUGUI>().text = "Processing...";
 
@@ -85,7 +97,7 @@ namespace masterland.UI
                 {
                     //register
                     ContractRespone contractRespone = await WalletInteractor.Instance.RegisterResidentLicense(Data.Instance.MasterData.Id, currentLandId);
-                    if (!contractRespone.IsSucess)
+                    if (!contractRespone.IsSuccess)
                     {
                         Debug.Log("Can't Register");
                     }
@@ -95,7 +107,7 @@ namespace masterland.UI
             {
                 //unregister
                 ContractRespone contractRespone = await WalletInteractor.Instance.UnregisterResidentLicense(Data.Instance.MasterData.Id);
-                if (!contractRespone.IsSucess)
+                if (!contractRespone.IsSuccess)
                 {
                     Debug.Log("Can't Unregister");
                 }
@@ -104,7 +116,7 @@ namespace masterland.UI
             await Data.Instance.GetSelectedMaster();
             _tab_Land.SetupCurrentPanel();
             _registerResidentBtn.interactable = true;
-             UpdateRegisterBtnContent();   
+            UpdateRegisterBtnContent();   
         }
 
 

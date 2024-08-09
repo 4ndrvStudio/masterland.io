@@ -15,9 +15,10 @@ namespace masterland.Wallet
 
     public class ContractRespone
     {
-        public bool IsSucess;
+        public bool IsSuccess;
         public string Message;
         public object Data;
+        public object Effects = null;
     }
 
     public class WalletInteractor : Singleton<WalletInteractor>
@@ -259,6 +260,7 @@ namespace masterland.Wallet
             ContractRespone contractRespone = new ContractRespone();
             try
             {
+                Debug.Log(result);
                 JObject jsonObj = JObject.Parse(result);
                 bool isSuccess = jsonObj["isSuccess"]?.ToObject<bool>() ?? false;
 
@@ -274,15 +276,15 @@ namespace masterland.Wallet
                         Hp = data["content"]?["fields"]?["hp"]?.ToObject<int>() ?? 0,
                         Mp = data["content"]?["fields"]?["mana"]?.ToObject<int>() ?? 0
                     };
-                    contractRespone.IsSucess = true;
+                    contractRespone.IsSuccess = true;
                     contractRespone.Message = "Success";
                     contractRespone.Data = masterData;
                     tcs_MintMaster.TrySetResult(contractRespone);
                 }
                 else
                 {
-                    contractRespone.IsSucess = false;
-                    contractRespone.Message = "Mint Fail";
+                    contractRespone.IsSuccess = false;
+                    contractRespone.Message = jsonObj["message"]?.ToString();
                     tcs_MintMaster.TrySetResult(contractRespone);
 
                 }
@@ -290,7 +292,7 @@ namespace masterland.Wallet
             catch (Exception ex)
             {
                 Debug.LogError($"Failed to parse result: {ex.Message}");
-                contractRespone.IsSucess = false;
+                contractRespone.IsSuccess = false;
                 contractRespone.Message = "Mint Fail";
                 tcs_MintMaster.TrySetResult(contractRespone);
             }
@@ -531,15 +533,15 @@ namespace masterland.Wallet
                         StoneLimitedPerDay = data["stone_limited_per_day"]?.ToString(),
                         WoodLimitedPerDay = data["wood_limited_per_day"]?.ToString(),
                     };
-                    contractRespone.IsSucess = true;
+                    contractRespone.IsSuccess = true;
                     contractRespone.Message = "Success";
                     contractRespone.Data = residentLicense;
                     tcs_RegisterResidentLicense.TrySetResult(contractRespone);
                 }
                 else
                 {
-                    contractRespone.IsSucess = false;
-                    contractRespone.Message = "Mint Fail";
+                    contractRespone.IsSuccess = false;
+                    contractRespone.Message = jsonObj["message"].ToString();
                     tcs_RegisterResidentLicense.TrySetResult(contractRespone);
 
                 }
@@ -547,7 +549,7 @@ namespace masterland.Wallet
             catch (Exception ex)
             {
                 Debug.LogError($"Failed to parse result: {ex.Message}");
-                contractRespone.IsSucess = false;
+                contractRespone.IsSuccess = false;
                 contractRespone.Message = "Mint Fail";
                 tcs_RegisterResidentLicense.TrySetResult(contractRespone);
             }
@@ -580,13 +582,13 @@ namespace masterland.Wallet
 
                 if (isSuccess)
                 {
-                    contractRespone.IsSucess = true;
+                    contractRespone.IsSuccess = true;
                     contractRespone.Message = "";
                 }
                 else
                 {
-                    contractRespone.IsSucess = false;
-                    contractRespone.Message = "";
+                    contractRespone.IsSuccess = false;
+                    contractRespone.Message = jsonObj["message"].ToString();;
                 }
                 tcs_UnregisterResidentLicense.TrySetResult(contractRespone);
 
@@ -594,7 +596,7 @@ namespace masterland.Wallet
             catch (Exception ex)
             {
                 Debug.LogError($"Failed to parse result: {ex.Message}");
-                contractRespone.IsSucess = false;
+                contractRespone.IsSuccess = false;
                 contractRespone.Message = "";
                 tcs_UnregisterResidentLicense.TrySetResult(contractRespone);
             }
@@ -624,16 +626,15 @@ namespace masterland.Wallet
             {
                 JObject jsonObj = JObject.Parse(result);
                 bool isSuccess = jsonObj["isSuccess"]?.ToObject<bool>() ?? false;
-
                 if (isSuccess)
                 {
-                    contractRespone.IsSucess = true;
-                    contractRespone.Message = "";
+                    contractRespone.IsSuccess = true;
+                    contractRespone.Message = jsonObj["message"].ToString();
                 }
                 else
                 {
-                    contractRespone.IsSucess = false;
-                    contractRespone.Message = "";
+                    contractRespone.IsSuccess = false;
+                    contractRespone.Message = jsonObj["message"].ToString();
                 }
                 tcs_MintMineral.TrySetResult(contractRespone);
 
@@ -641,7 +642,7 @@ namespace masterland.Wallet
             catch (Exception ex)
             {
                 Debug.LogError($"Failed to parse result: {ex.Message}");
-                contractRespone.IsSucess = false;
+                contractRespone.IsSuccess = false;
                 contractRespone.Message = "";
                 tcs_MintMineral.TrySetResult(contractRespone);
             }

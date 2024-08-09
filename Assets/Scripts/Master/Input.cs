@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using masterland.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace masterland.Master
@@ -32,6 +33,7 @@ namespace masterland.Master
             MasterInput.Player.FastDodgeLeft.performed += OnPerformFastDodgeLeft;
             MasterInput.Player.FastDodgeRight.performed += OnPerformFastDodgeRight;
             MasterInput.Player.Interact.performed += OnPerformInteract;
+            MasterInput.Player.ResidentLicense.performed += OnPerformResidentLicense;
 
         }
         public override void OnStopClient()
@@ -42,6 +44,7 @@ namespace masterland.Master
             MasterInput.Player.FastDodgeLeft.performed -= OnPerformFastDodgeLeft;
             MasterInput.Player.FastDodgeRight.performed -= OnPerformFastDodgeRight;
             MasterInput.Player.Interact.performed -= OnPerformInteract;
+            MasterInput.Player.ResidentLicense.performed -= OnPerformResidentLicense;
         }
 
         public void OnPerformAttack(InputAction.CallbackContext context) 
@@ -67,6 +70,8 @@ namespace masterland.Master
 
             _master.Selector.CurrentSelectedObject.CurrentSelectedObject.Interact(_master.Owner);
         }
+
+        public void OnPerformResidentLicense(InputAction.CallbackContext context) { UIManager.Instance.ShowPopup(PopupName.ResidentLicense);}
 
         private void Update()
         {

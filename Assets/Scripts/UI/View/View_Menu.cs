@@ -25,7 +25,6 @@ namespace masterland.UI
                 if(GameManager.Instance.IsDev)
                     Network.Instance.StartServer();
             });
-
         }
         
         public override void Show(Dictionary<string, object> customProperties = null)

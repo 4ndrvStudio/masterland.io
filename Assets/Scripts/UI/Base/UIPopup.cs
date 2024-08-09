@@ -12,6 +12,7 @@ namespace masterland.UI
         None=0,
         Waiting=1,
         SuiWallet=2,
+        ResidentLicense=3,
     }
 
     public class UIPopup : MonoBehaviour

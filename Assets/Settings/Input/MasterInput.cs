@@ -171,6 +171,15 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResidentLicense"",
+                    ""type"": ""Button"",
+                    ""id"": ""947e2c8a-b153-46cc-82b8-d25cba33c053"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -418,6 +427,17 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ca8570e3-e87d-46cf-b55b-23ab1f93bb31"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ResidentLicense"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d0ba9e66-574b-4df7-ba1a-8de40f1ffe4c"",
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
@@ -555,6 +575,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
         m_Player_NormalMode = m_Player.FindAction("NormalMode", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
         m_Player_Cancel = m_Player.FindAction("Cancel", throwIfNotFound: true);
+        m_Player_ResidentLicense = m_Player.FindAction("ResidentLicense", throwIfNotFound: true);
         // All
         m_All = asset.FindActionMap("All", throwIfNotFound: true);
     }
@@ -640,6 +661,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_NormalMode;
     private readonly InputAction m_Player_Zoom;
     private readonly InputAction m_Player_Cancel;
+    private readonly InputAction m_Player_ResidentLicense;
     public struct PlayerActions
     {
         private @MasterInput m_Wrapper;
@@ -660,6 +682,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
         public InputAction @NormalMode => m_Wrapper.m_Player_NormalMode;
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
         public InputAction @Cancel => m_Wrapper.m_Player_Cancel;
+        public InputAction @ResidentLicense => m_Wrapper.m_Player_ResidentLicense;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -717,6 +740,9 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
             @Cancel.started += instance.OnCancel;
             @Cancel.performed += instance.OnCancel;
             @Cancel.canceled += instance.OnCancel;
+            @ResidentLicense.started += instance.OnResidentLicense;
+            @ResidentLicense.performed += instance.OnResidentLicense;
+            @ResidentLicense.canceled += instance.OnResidentLicense;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -769,6 +795,9 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
             @Cancel.started -= instance.OnCancel;
             @Cancel.performed -= instance.OnCancel;
             @Cancel.canceled -= instance.OnCancel;
+            @ResidentLicense.started -= instance.OnResidentLicense;
+            @ResidentLicense.performed -= instance.OnResidentLicense;
+            @ResidentLicense.canceled -= instance.OnResidentLicense;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -842,6 +871,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
         void OnNormalMode(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnResidentLicense(InputAction.CallbackContext context);
     }
     public interface IAllActions
     {

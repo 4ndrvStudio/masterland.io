@@ -147,9 +147,10 @@ namespace masterland.UI
         {
             ExecutingUI(true);
             var rpcResult = await WalletInGame.Execute(_confirmTxData.Tx);
+
             ExecutingUI(false);
             if(rpcResult.IsSuccess) {
-                ReturnResult(true,  rpcResult);
+                ReturnResult(true, rpcResult);
             } else 
                 ReturnResult(false, null, rpcResult.ErrorMessage);
         }
@@ -157,9 +158,9 @@ namespace masterland.UI
         public void ReturnResult(bool isSuccess, object data, string message = null) 
         {
                 ContractRespone contractRespone = new ContractRespone() {
-                    IsSucess = isSuccess,
+                    IsSuccess = isSuccess,
                     Data = data,
-                    Message = message
+                    Message = message,
                 };
                 _confirmTxData.Tcs.TrySetResult(contractRespone);
                 Hide();

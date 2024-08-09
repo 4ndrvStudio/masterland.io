@@ -56,7 +56,25 @@ namespace masterland.UI
             _mintBtn.interactable = false;
             _mintIcon.SetActive(false);
             _mintLoadingIcon.SetActive(true);
-            await WalletInteractor.Instance.MintMaster();
+            var result =  await WalletInteractor.Instance.MintMaster();
+            if(result.IsSuccess) 
+            {
+                var masterData = result.Data as MasterData;
+                UIToast.Instance.Show(new ToastModel {
+                    IsSuccess = true,
+                    Title = "Mint Master Success",
+                    Description = masterData.Id
+                });
+            } 
+            else
+            {
+
+                UIToast.Instance.Show(new ToastModel {
+                    IsSuccess = false,
+                    Title = "Mint Master Fail",
+                    Description = result.Message
+                }, 3000);
+            }
             _mintBtn.interactable = true;
             _mintIcon.SetActive(true);
             _mintLoadingIcon.SetActive(false);

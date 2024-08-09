@@ -72,7 +72,6 @@ public class UnityWebRequestRpcClient : IRpcClient
             else
             {
                 var errorRes = JsonConvert.DeserializeObject<JsonRpcErrorResponse>(result.RawRpcResponse);
-                 Debug.Log("Call xcv" );
                 if (errorRes != null)
                 {
                     Debug.Log(errorRes.Error.Message);

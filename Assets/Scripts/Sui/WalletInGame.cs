@@ -14,6 +14,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace masterland.Wallet
 {
+    using System.Text.RegularExpressions;
     using Data;
     using Suinet.Rpc.Types.MoveTypes;
 
@@ -186,7 +187,7 @@ namespace masterland.Wallet
             {
                 tcs_TxResult.TrySetResult(new ContractRespone
                 {
-                    IsSucess = false,
+                    IsSuccess = false,
                     Data = null,
                     Message = tx_response.ErrorMessage
                 });
@@ -196,9 +197,9 @@ namespace masterland.Wallet
             var tcs_result = await tcs_TxResult.Task;
            
             ContractRespone contractRespone = new ContractRespone();
-            if (tcs_result.IsSucess)
+            if (tcs_result.IsSuccess)
             {
-                contractRespone.IsSucess = true;
+                contractRespone.IsSuccess = true;
                 var data = tcs_result.Data as RpcResult<TransactionBlockResponse>;
                 string nftCreatedId = string.Empty;
                 Debug.Log(data.RawRpcResponse);
@@ -224,11 +225,11 @@ namespace masterland.Wallet
                 contractRespone.Data = objectResut.IsSuccess? objectResut.Result.Data : null;
           
             } else {
-                contractRespone.IsSucess = false;
+                contractRespone.IsSuccess = false;
                 contractRespone.Message = tcs_result.Message;
             }
 
-            return JsonConvert.SerializeObject(contractRespone);
+            return JsonConvert.SerializeObject(contractRespone,jsonSettings);
         }
 
         public static async UniTask<string> GetMasters()
@@ -373,7 +374,7 @@ namespace masterland.Wallet
             {
                 tcs_TxResult.TrySetResult(new ContractRespone
                 {
-                    IsSucess = false,
+                    IsSuccess = false,
                     Data = null,
                     Message = tx_response.ErrorMessage
                 });
@@ -383,9 +384,9 @@ namespace masterland.Wallet
             var tcs_result = await tcs_TxResult.Task;
            
             ContractRespone contractRespone = new ContractRespone();
-            if (tcs_result.IsSucess)
+            if (tcs_result.IsSuccess)
             {
-                contractRespone.IsSucess = true;
+                contractRespone.IsSuccess = true;
                 var data = tcs_result.Data as RpcResult<TransactionBlockResponse>;
                 string mutatedNft = string.Empty;
                 Debug.Log(data.RawRpcResponse);
@@ -412,11 +413,11 @@ namespace masterland.Wallet
                 contractRespone.Data = objectResut.IsSuccess? resident_license : null;
           
             } else {
-                contractRespone.IsSucess = false;
+                contractRespone.IsSuccess = false;
                 contractRespone.Message = tcs_result.Message;
             }
 
-            return JsonConvert.SerializeObject(contractRespone);
+            return JsonConvert.SerializeObject(contractRespone,jsonSettings);
         }
 
         public static async UniTask<string> UnresidentLicense(string master)
@@ -454,7 +455,7 @@ namespace masterland.Wallet
             {
                 tcs_TxResult.TrySetResult(new ContractRespone
                 {
-                    IsSucess = false,
+                    IsSuccess = false,
                     Data = null,
                     Message = tx_response.ErrorMessage
                 });
@@ -464,16 +465,16 @@ namespace masterland.Wallet
             var tcs_result = await tcs_TxResult.Task;
            
             ContractRespone contractRespone = new ContractRespone();
-            if (tcs_result.IsSucess)
+            if (tcs_result.IsSuccess)
             {
-                contractRespone.IsSucess = true;
+                contractRespone.IsSuccess = true;
           
             } else {
-                contractRespone.IsSucess = false;
+                contractRespone.IsSuccess = false;
                 contractRespone.Message = tcs_result.Message;
             }
 
-            return JsonConvert.SerializeObject(contractRespone);
+            return JsonConvert.SerializeObject(contractRespone,jsonSettings);
         }
         #endregion
    
@@ -489,20 +490,17 @@ namespace masterland.Wallet
                 ClockAddress
             };
             var tx_response = await SuiApi.Client.MoveCallAsync(_moveCallTransaction);
-            Debug.Log("stat 1 " +tx_response.IsSuccess);
             if (tx_response.IsSuccess)
             {
                 var dry_tx = await SuiApi.Client.DryRunTransactionBlockAsync(tx_response.Result.TxBytes);
-                Debug.Log("stat 1 " +dry_tx.IsSuccess);
                 ConfirmTxData confirmTxData = new ConfirmTxData
                 {
-                    Title = "Mint this Tree?",
+                    Title = type == "mint_wood"? "Mint this Tree?":"Mint this Stone?" ,
                     Tx = tx_response.Result.TxBytes,
                     Tcs = tcs_TxResult,
                     Gas = GetGasFee(dry_tx.RawRpcResponse),
                     Fee = "0",
                     BalanceChange = GetBalanceChange(dry_tx.RawRpcResponse)
-
                 };
 
                 UIManager.Instance.ShowPopup(PopupName.SuiWallet, new Dictionary<string, object>{
@@ -514,30 +512,53 @@ namespace masterland.Wallet
             {
                 tcs_TxResult.TrySetResult(new ContractRespone
                 {
-                    IsSucess = false,
+                    IsSuccess = false,
                     Data = null,
                     Message = tx_response.ErrorMessage
                 });
-                Debug.Log(tx_response.ErrorMessage);
             }
 
             var tcs_result = await tcs_TxResult.Task;
-            Debug.Log(tcs_result.IsSucess);
-            ContractRespone contractRespone = new ContractRespone();
-           
-            if (tcs_result.IsSucess)
-            {
-                contractRespone.IsSucess = true;
-                var data = tcs_result.Data as RpcResult<TransactionBlockResponse>;
-                Debug.Log(data.RawRpcResponse);
-            } else {
-                contractRespone.IsSucess = false;
-                contractRespone.Message = tcs_result.Message;
-            }
+        
+            ContractRespone contractResponse = new ContractRespone();
+            var data = tcs_result.Data as RpcResult<TransactionBlockResponse>;
 
-            return JsonConvert.SerializeObject(contractRespone);
+            if (tcs_result.IsSuccess)
+            {
+                contractResponse.IsSuccess = data.Result.Effects.Status.Status.ToString() == "Success";
+                if(!contractResponse.IsSuccess) 
+                {
+                    string message  = "Something error"; 
+                    switch(GetFailureCode(data.Result.Effects.Status.Error)) 
+                    {
+                        case "1": 
+                            message = "You don't have license resident";
+                            break;
+                        case "2": 
+                            message = $"You have reached the daily limit for minting {(type == "mint_wood" ? "wood" : "stone")}. \n Please try again tomorrow.";
+                            break;
+                    }
+                    contractResponse.Message = message;
+                }
+ 
+            } else {
+                contractResponse.IsSuccess = false;
+                contractResponse.Message = tcs_result.Message;
+
+            }
+            return JsonConvert.SerializeObject(contractResponse,jsonSettings);
         }
 
+        #endregion
+
+        public static string GetFailureCode(string input) 
+        {
+            string pattern = @"Some\(""[^""]+""\) }, (\d+)";
+            Match match = Regex.Match(input, pattern);
+            return  match.Success ? match.Groups[1].Value : "666";
+        }
     }
-    #endregion
+
+
+
 }

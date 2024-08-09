@@ -9,6 +9,9 @@ namespace masterland.Mineral
     using InteractObject;
     using masterland.Wallet;
     using Data;
+    using masterland.UI;
+    using Master;
+    using System.Collections;
 
     public enum MineralType 
     {
@@ -34,12 +37,13 @@ namespace masterland.Mineral
         [ServerRpc(RequireOwnership = false)]
         private void Server_RequireMint(NetworkConnection conn) 
         {
-            Debug.Log("mint Call");
+   
             if(State.Value == MineralState.Minting)
               return;
             _currentMiner = conn;
             State.Value = MineralState.Minting;
             Client_AllowMint(conn);
+            StartCoroutine(ResetTree());
         }
 
         [ServerRpc(RequireOwnership = false)]
@@ -47,39 +51,74 @@ namespace masterland.Mineral
         {
             if(_currentMiner != conn)
                 return;
-
             if(isComplete) 
             {
                 NetworkManager.ServerManager.Despawn(this.gameObject);
-
-            } else {
-                _currentMiner = null;
-                State.Value = MineralState.None;
             }
+            _currentMiner = null;
+            State.Value = MineralState.None;
         }
 
         [ObserversRpc][TargetRpc]
         private void Client_AllowMint(NetworkConnection target)
         {
-            ExecuteMint();
+            ExecuteMint(target);
         }
 
-        public async void ExecuteMint() 
+        public async void ExecuteMint(NetworkConnection conn) 
         {
-            ContractRespone contractRespone = await WalletInteractor.Instance.MintMineral(Data.Instance.MasterData.Id,"mint_wood");
+            ContractRespone contractRespone = await WalletInteractor.Instance.MintMineral(Data.Instance.MasterData.Id, Type == MineralType.Wood ?"mint_wood" : "mint_stone");
+            if(contractRespone.IsSuccess) 
+            {   
+                Server_MintResult(conn, true);
+                var toastModel = new ToastModel 
+                {
+                    IsSuccess = true,
+                    Title = Type  == MineralType.Wood ? "Mint Wood Complete" : "Mint Stone Complete",
+                    Description = Type == MineralType.Wood ?  "+10 Wood" : "+10 Stone"
+                };
 
+                UIToast.Instance.Show(toastModel);
+            } 
+            else 
+            {
+                Server_MintResult(conn, false);
+                var toastModel = new ToastModel 
+                {
+                    IsSuccess = false,
+                    Title = "Mint Fail!",
+                    Description = contractRespone.Message
+                };
+                UIToast.Instance.Show(toastModel, 3500);
+            }
         }
 
         public void Interact(NetworkConnection connection)  
         {
-            Debug.Log("Mintt");
+            if(connection != Master.Local.Owner)
+                return;
+
             if(State.Value == MineralState.Minting) 
             {
-                Debug.Log("Someone Minting This Tree");
+               var toastModel = new ToastModel 
+                {
+                    IsSuccess = false,
+                    Title = "Mint Fail!",
+                    Description = "Someone minting this tree"
+                };
+                UIToast.Instance.Show(toastModel);
                 return;
             }
 
             Server_RequireMint(connection);
+        }
+
+
+        IEnumerator ResetTree() 
+        {
+            yield return new WaitForSeconds(10f);
+            _currentMiner = null;
+            State.Value = MineralState.None;
         }
 
     }

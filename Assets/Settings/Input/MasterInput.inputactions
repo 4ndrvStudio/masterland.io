@@ -148,6 +148,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ResidentLicense",
+                    "type": "Button",
+                    "id": "947e2c8a-b153-46cc-82b8-d25cba33c053",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -390,6 +399,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "UseSlot1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca8570e3-e87d-46cf-b55b-23ab1f93bb31",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ResidentLicense",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
