@@ -123,10 +123,11 @@ MonoBehaviour:
   <IsNested>k__BackingField: 0
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
+  <PredictedOwner>k__BackingField: {fileID: 0}
   _networkBehaviours:
   - {fileID: 2646486783461839479}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
-  <NestedRootNetworkBehaviours>k__BackingField: []
+  <SerializedNestedNetworkObjects>k__BackingField: []
   SerializedTransformProperties:
     Position: {x: -0, y: 0, z: 0}
     Rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}

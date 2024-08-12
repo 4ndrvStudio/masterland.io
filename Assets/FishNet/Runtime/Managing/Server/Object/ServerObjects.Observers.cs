@@ -212,7 +212,7 @@ namespace FishNet.Managing.Server
 
             void AddChildNetworkObjects(NetworkObject n, ref int index)
             {
-                foreach (NetworkObject childObject in n.NestedRootNetworkBehaviours)
+                foreach (NetworkObject childObject in n.SerializedNestedNetworkObjects)
                 {
                     cache.Insert(++index, childObject);
                     AddChildNetworkObjects(childObject, ref index);

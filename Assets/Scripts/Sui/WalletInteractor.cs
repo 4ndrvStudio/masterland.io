@@ -18,7 +18,6 @@ namespace masterland.Wallet
         public bool IsSuccess;
         public string Message;
         public object Data;
-        public object Effects = null;
     }
 
     public class WalletInteractor : Singleton<WalletInteractor>
@@ -42,177 +41,6 @@ namespace masterland.Wallet
         private UniTaskCompletionSource<ContractRespone> tcs_UnregisterResidentLicense;
 
         private UniTaskCompletionSource<ContractRespone> tcs_MintMineral;
-
-
-        #region fake data
-        string m_address = "";
-        string m_masters = @"[
-    {
-        ""objectId"": ""0x07b54e72b543c62fd1af316f336ff790466d6e52a2a2c964d4a150d163a583b5"",
-        ""version"": ""50330514"",
-        ""digest"": ""76y8Pq7kErqs2f9fbxHqamHTUhcvVrStV18fghYChyex"",
-        ""type"": ""0xca1c7449e88c3507b851218c4845f10e3f5c101d3a7fd081a4046331376e2908::master::MasterNFT"",
-        ""display"": {
-            ""data"": {
-                ""creator"": ""4ndrv Studio"",
-                ""description"": ""A character of the MasterLand.io game!"",
-                ""image_url"": ""ipfs://masterland.io"",
-                ""link"": ""https://masterland.io/master/0x07b54e72b543c62fd1af316f336ff790466d6e52a2a2c964d4a150d163a583b5"",
-                ""name"": ""Master #7"",
-                ""project_url"": ""https://masterland.io""
-            },
-            ""error"": null
-        },
-        ""content"": {
-            ""dataType"": ""moveObject"",
-            ""type"": ""0xca1c7449e88c3507b851218c4845f10e3f5c101d3a7fd081a4046331376e2908::master::MasterNFT"",
-            ""hasPublicTransfer"": true,
-            ""fields"": {
-                ""hp"": 3,
-                ""id"": {
-                    ""id"": ""0x07b54e72b543c62fd1af316f336ff790466d6e52a2a2c964d4a150d163a583b5""
-                },
-                ""image_url"": ""masterland.io"",
-                ""mana"": 100,
-                ""name"": ""Master #7"",
-                ""resident_license"": null
-            }
-        }
-    },
-    {
-        ""objectId"": ""0x1580b275f9adfd2a9606c3d69a03c1bf857c63a9d9e20d05bb32923ba5579438"",
-        ""version"": ""50330513"",
-        ""digest"": ""AKxYD2jX52AeTVwLC5n9cq9KqUHgW7G8BjsAKXpqAphA"",
-        ""type"": ""0xca1c7449e88c3507b851218c4845f10e3f5c101d3a7fd081a4046331376e2908::master::MasterNFT"",
-        ""display"": {
-            ""data"": {
-                ""creator"": ""4ndrv Studio"",
-                ""description"": ""A character of the MasterLand.io game!"",
-                ""image_url"": ""ipfs://masterland.io"",
-                ""link"": ""https://masterland.io/master/0x1580b275f9adfd2a9606c3d69a03c1bf857c63a9d9e20d05bb32923ba5579438"",
-                ""name"": ""Master #6"",
-                ""project_url"": ""https://masterland.io""
-            },
-            ""error"": null
-        },
-        ""content"": {
-            ""dataType"": ""moveObject"",
-            ""type"": ""0xca1c7449e88c3507b851218c4845f10e3f5c101d3a7fd081a4046331376e2908::master::MasterNFT"",
-            ""hasPublicTransfer"": true,
-            ""fields"": {
-                ""hp"": 3,
-                ""id"": {
-                    ""id"": ""0x1580b275f9adfd2a9606c3d69a03c1bf857c63a9d9e20d05bb32923ba5579438""
-                },
-                ""image_url"": ""masterland.io"",
-                ""mana"": 100,
-                ""name"": ""Master #6"",
-                ""resident_license"": null
-            }
-        }
-    },
-    {
-        ""objectId"": ""0x4114559a233fc46233e48e2940bf82c544134f17149f0a84ad890798e0c4feef"",
-        ""version"": ""50330508"",
-        ""digest"": ""2X3b1K679Kvw5AMUm6gJka94Yo7YbhnmdNpQsBQoL8P1"",
-        ""type"": ""0xca1c7449e88c3507b851218c4845f10e3f5c101d3a7fd081a4046331376e2908::master::MasterNFT"",
-        ""display"": {
-            ""data"": {
-                ""creator"": ""4ndrv Studio"",
-                ""description"": ""A character of the MasterLand.io game!"",
-                ""image_url"": ""ipfs://masterland.io"",
-                ""link"": ""https://masterland.io/master/0x4114559a233fc46233e48e2940bf82c544134f17149f0a84ad890798e0c4feef"",
-                ""name"": ""Master #1"",
-                ""project_url"": ""https://masterland.io""
-            },
-            ""error"": null
-        },
-        ""content"": {
-            ""dataType"": ""moveObject"",
-            ""type"": ""0xca1c7449e88c3507b851218c4845f10e3f5c101d3a7fd081a4046331376e2908::master::MasterNFT"",
-            ""hasPublicTransfer"": true,
-            ""fields"": {
-                ""hp"": 3,
-                ""id"": {
-                    ""id"": ""0x4114559a233fc46233e48e2940bf82c544134f17149f0a84ad890798e0c4feef""
-                },
-                ""image_url"": ""masterland.io"",
-                ""mana"": 100,
-                ""name"": ""Master #1"",
-                ""resident_license"": {
-                    ""type"": ""0xca1c7449e88c3507b851218c4845f10e3f5c101d3a7fd081a4046331376e2908::master::ResidentLicense"",
-                    ""fields"": {
-                        ""id"": {
-                            ""id"": ""0xf89a482933fada1a0823e598679627609ad3c65f433b9d34ad4e734d1244608d""
-                        },
-                        ""land_id"": ""2"",
-                        ""next_time_mint_stone"": ""1718261825471"",
-                        ""next_time_mint_wood"": ""1718261825471"",
-                        ""stone_balance"": ""10"",
-                        ""stone_limited_per_day"": ""3"",
-                        ""stone_minted_per_day"": ""1"",
-                        ""wood_balance"": ""30"",
-                        ""wood_limited_per_day"": ""3"",
-                        ""wood_minted_per_day"": ""1""
-                    }
-                }
-            }
-        }
-    }]";
-        string m_lands = @"
-[
-    {
-        ""building_store_address"": ""0x0e87c3eb3ec7ab199bdce0bfedddc3feb1d5f5ee65f5ad7546fae298f30ec4c5"",
-        ""crafting_store_address"": ""0xc7ee4aa26e9acda2e2d0f66a51ea00d5912535459012a510bf8eb3e9feccaf80"",
-        ""has_leased"": false,
-        ""id"": {
-            ""id"": ""0x447768027b3b66af6266589a3aa7b69c3a27447b231c4efd922152b36f42f9e8""
-        },
-        ""land_tenant"": ""0x4a546acc0fcf4462cb1db23a3731a1eec1d24db2124c0e924a8027447b3ff4b7"",
-        ""leasing_time"": ""0"",
-        ""name"": ""Land #2"",
-        ""next_pay_tax_time"": ""0"",
-        ""resident_license_num_provided"": ""1"",
-        ""resident_license_provided"": [
-            ""0xf89a482933fada1a0823e598679627609ad3c65f433b9d34ad4e734d1244608d""
-        ],
-        ""stone_balance"": ""990"",
-        ""wood_balance"": ""970""
-    },
-    {
-        ""building_store_address"": ""0xd5617c54c13a7182a45d5058022495db7a447ce814673b212b1a43edb6fd5ee3"",
-        ""crafting_store_address"": ""0x3e0a2755cfbe7cba8ff08671eb4da280845f63e18b59776bcb76c8f35c9e2d7b"",
-        ""has_leased"": false,
-        ""id"": {
-            ""id"": ""0xc8841056b0ee7fd7e677d4266760df6e119fba321b19aa6a50dd1a58b472ee94""
-        },
-        ""land_tenant"": ""0x4a546acc0fcf4462cb1db23a3731a1eec1d24db2124c0e924a8027447b3ff4b7"",
-        ""leasing_time"": ""0"",
-        ""name"": ""Land #3"",
-        ""next_pay_tax_time"": ""0"",
-        ""resident_license_num_provided"": ""0"",
-        ""resident_license_provided"": [],
-        ""stone_balance"": ""1000"",
-        ""wood_balance"": ""1000""
-    },
-    {
-        ""building_store_address"": ""0x82b1eb89e9f6bed35d8aaa2babd80335c6d46d5ea22f223d8a0a36b63f4c5fe2"",
-        ""crafting_store_address"": ""0xaa65670a2d89a00a73c2471482a8489eef4fe20078f90a7f5a1dda192da5546a"",
-        ""has_leased"": false,
-        ""id"": {
-            ""id"": ""0x3093d72dd1e55f56a13e9a2a370c808af819d864e2064dc0f687a5bb534774b0""
-        },
-        ""land_tenant"": ""0x4a546acc0fcf4462cb1db23a3731a1eec1d24db2124c0e924a8027447b3ff4b7"",
-        ""leasing_time"": ""0"",
-        ""name"": ""Land #1"",
-        ""next_pay_tax_time"": ""0"",
-        ""resident_license_num_provided"": ""0"",
-        ""resident_license_provided"": [],
-        ""stone_balance"": ""1000"",
-        ""wood_balance"": ""1000""
-    }
-]";
-        #endregion
 
         #region Get Address
         [DllImport("__Internal")]
@@ -604,7 +432,7 @@ namespace masterland.Wallet
         #endregion
 
 
-        #region MintWood 
+        #region Mint mineral
         [DllImport("__Internal")]
         private static extern void mintMineral(string master,string type);
 
@@ -613,7 +441,7 @@ namespace masterland.Wallet
             tcs_MintMineral = new UniTaskCompletionSource<ContractRespone>();
 #if UNITY_WEBGL && !UNITY_EDITOR
             mintMineral(master,type);
-            return await tcs_MintWood.Task;
+            return await tcs_MintMineral.Task;
 #endif
             Receive_MintMineral(await WalletInGame.MintMineral(master,type));
             return await tcs_MintMineral.Task;

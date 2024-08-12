@@ -22,34 +22,46 @@ namespace FishNet.Object
         /// </summary>
         [field: SerializeField, HideInInspector]
         public ushort PrefabId { get; internal set; } = 0;
+
         /// <summary>
         /// Spawn collection to use assigned to this Prefab.
         /// </summary>
         [field: SerializeField, HideInInspector]
         public ushort SpawnableCollectionId { get; internal set; } = 0;
+
         /// <summary>
         /// Network Id for this scene object.
         /// </summary>
         [field: SerializeField, HideInInspector]
         internal ulong SceneId { get; private set; }
+
+        /// <summary>
+        /// Sets SceneId value. This is not synchronized automatically.
+        /// </summary>
+        /// <param name="sceneId"></param>
+        public void SetSceneId(ulong sceneId) => SceneId = sceneId;
+
         /// <summary>
         /// Hash for the path which this asset resides. This value is set during edit time.
         /// </summary> 
         [field: SerializeField, HideInInspector]
         public ulong AssetPathHash { get; private set; }
+
         /// <summary>
         /// Sets AssetPathhash value.
         /// </summary>
         /// <param name="value">Value to use.</param>
         public void SetAssetPathHash(ulong value) => AssetPathHash = value;
+
         #endregion
 
         #region Private.
+
         /// <summary>
         /// Last time sceneIds were built automatically.
         /// </summary>
-        [System.NonSerialized]
-        private static double _lastSceneIdAutomaticRebuildTime;
+        [System.NonSerialized] private static double _lastSceneIdAutomaticRebuildTime;
+
         #endregion
 
         /// <summary>
@@ -64,10 +76,15 @@ namespace FishNet.Object
                 return;
             }
 
-            SceneId = 0;
+            SceneId = NetworkObject.UNSET_SCENEID_VALUE;
         }
 
 #if UNITY_EDITOR
+        private void OnApplicationQuit()
+        {
+            _lastSceneIdAutomaticRebuildTime = 0;
+        }
+
         /// <summary>
         /// Tries to generate a SceneIds for NetworkObjects in a scene.
         /// </summary>
@@ -97,19 +114,22 @@ namespace FishNet.Object
             {
                 /* If an Id has not been generated yet or if it
                  * already exist then rebuild for this object. */
-                if (!item.IsSceneObject || !setIds.Add(item.SceneId))
+                if (!item.IsSceneObject || !setIds.Add(item.SceneId) || item.SerializeTransformProperties())
+                {
+                    item.SceneId = NetworkObject.UNSET_SCENEID_VALUE;
                     rebuildingNobs.Add(item);
+                }
             }
 
             foreach (NetworkObject item in rebuildingNobs)
             {
-                ulong startSceneId = item.SceneId;
-                ulong nextSceneId = 0;
-                while (nextSceneId == 0 || setIds.Contains(nextSceneId))
+                ulong nextSceneId = NetworkObject.UNSET_SCENEID_VALUE;
+                while (nextSceneId == NetworkObject.UNSET_SCENEID_VALUE || setIds.Contains(nextSceneId))
                 {
                     uint rndId = (uint)(rnd.Next(int.MinValue, int.MaxValue) + int.MaxValue);
                     nextSceneId = CombineHashes(scenePathHash, rndId);
                 }
+
                 ulong CombineHashes(uint a, uint b)
                 {
                     return (b << 32 | a);
@@ -135,7 +155,7 @@ namespace FishNet.Object
             //Not a scene object.
             if (string.IsNullOrEmpty(gameObject.scene.name))
             {
-                SceneId = 0;
+                SceneId = NetworkObject.UNSET_SCENEID_VALUE;
                 return;
             }
 
@@ -146,11 +166,10 @@ namespace FishNet.Object
             {
                 //If prefab or part of a prefab, not a scene object.            
                 if (PrefabUtility.IsPartOfPrefabAsset(this) || IsEditingInPrefabMode() ||
-                 //Not in a scene, another prefab check.
-                 !gameObject.scene.IsValid() ||
-                 //Stored on disk, so is a prefab. Somehow prefabutility missed it.
-                 EditorUtility.IsPersistent(this))
-
+                    //Not in a scene, another prefab check.
+                    !gameObject.scene.IsValid() ||
+                    //Stored on disk, so is a prefab. Somehow prefabutility missed it.
+                    EditorUtility.IsPersistent(this))
                     //If here this is a sceneObject, but sceneId is not set.
                     if (!IsSceneObject)
                         throw new InvalidOperationException($"Networked GameObject {gameObject.name} in scene {gameObject.scene.path} is missing a SceneId. Open the scene, select the Fish-Networking menu, and choose Rebuild SceneIds. If the problem persist ensures {gameObject.name} does not have any missing script references on it's prefab or in the scene. Also ensure that you have any prefab changes for the object applied.");
@@ -167,28 +186,13 @@ namespace FishNet.Object
                 //Stored on disk, so is a prefab. Somehow prefabutility missed it.
                 if (PrefabUtility.IsPartOfPrefabAsset(this) || IsEditingInPrefabMode() || !gameObject.scene.IsValid() || EditorUtility.IsPersistent(this))
                     return;
+
                 _lastSceneIdAutomaticRebuildTime = realtime;
 
                 CreateSceneId(gameObject.scene, out _, out _);
             }
         }
 
-        /// <summary>
-        /// Returns if this networkObject is currently in a scene, rather than a prefab.
-        /// </summary>
-        /// <returns></returns>
-        private bool CurrentlyInAScene()
-        {
-            //If prefab or part of a prefab, not a scene object.            
-            if (PrefabUtility.IsPartOfPrefabAsset(this) || IsEditingInPrefabMode() ||
-             //Not in a scene, another prefab check.
-             !gameObject.scene.IsValid() ||
-             //Stored on disk, so is a prefab. Somehow prefabutility missed it.
-             EditorUtility.IsPersistent(this))
-                return false;
-
-            return true;
-        }
         private bool IsEditingInPrefabMode()
         {
             if (EditorUtility.IsPersistent(this))
@@ -210,24 +214,7 @@ namespace FishNet.Object
                     }
                 }
             }
-            return false;
 
-        }
-
-        /// <summary>
-        /// Returns if the Id used is a sceneId already belonging to another object.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        private bool IsDuplicateSceneId(ulong id)
-        {
-            NetworkObject[] nobs = GameObject.FindObjectsOfType<NetworkObject>(true);
-            foreach (NetworkObject n in nobs)
-            {
-                if (n != null && n != this && n.SceneId == id)
-                    return true;
-            }
-            //If here all checks pass.
             return false;
         }
 
@@ -235,12 +222,11 @@ namespace FishNet.Object
         {
             CreateSceneId();
         }
+
         private void ReferenceIds_Reset()
         {
             CreateSceneId();
         }
 #endif
     }
-
 }
-

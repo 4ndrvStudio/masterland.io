@@ -20,14 +20,15 @@ namespace masterland.Wallet
 
     public static class WalletInGame
     {
-        public static string PACKAGE_ID_ADDRESS = "0xca1c7449e88c3507b851218c4845f10e3f5c101d3a7fd081a4046331376e2908";
-        public static string BANK_ADDRESS = "0x5014aad4e542b753d261cd43ea6ac8f517224788c3576c5de9d218698155196a";
-        public static string LAND_CAP_ADDRESS = "0x8af6d37fa7c71ba0033f71b224b834c4fb85df603e584f7e42ebc42d695b2ee5";
-        public static string LAND_ADDRESS = "0xfb3af20ef01ea6c3dd845674719161fa68b1e15ad6b02c7c17ffacb849fdc82d";
-        public static string STONE_ADDRESS = "0xceb81f3be84d88043596b2f164df8b7c85695718b9ba4d26c73001f396c54a2e";
-        public static string WOOD_ADDRESS = "0x07f5453b9c20f06e54742be1f254805919ddd6a7abced7332f4059f1d87e3541";
-        public static string MASTER_ADDRESS = "0xe56fa24ce838b8f16266d56d045fc8b55cb52fff6a498cfd45c55b4d6e6cfd57";
-        public static string BOOK_ADDRESS = "0xf767479f0e60f35501af69cd766aee55492128f6afac74a10d56e3e8435da65e";
+        //transaction digets : A1WnijRWhpt4KRse6voSzZedyovoZTrH9vvT7un7MRAM
+        public static string PACKAGE_ID_ADDRESS = "0x1d718d3ff43b2705956deee66a500c9ac308a5d5850d96f372fad803fdb748ee";
+        public static string BANK_ADDRESS = "0x93ab7ed5dce535c1152d1f393f934a69ae51a70b67d8ca9f3ca08f292a13a949";
+        public static string LAND_CAP_ADDRESS = "0x90467b87add942a491d037249240e47a35338bca52abdc1dcfa6ac769bcceb35";
+        public static string LAND_ADDRESS = "0xe1cb9b96e4e2cca15a9f370434c0a24af0d9762d0edfdac405d2ada2dfcc72b4";
+        public static string STONE_ADDRESS = "0x5aeffdc9494264dafb14992a50760007ba830ff74aca49c0d5cffac89bb8bdab";
+        public static string WOOD_ADDRESS = "0xe70b5e0083b7b414967f8be2af62d1977aa2a7662c85eab36781519f87775cb1";
+        public static string MASTER_ADDRESS = "0x83766255bcd7ac9df4d585ce4106213981896274e1b54fad3ea4d71cbfca8f31";
+        public static string BOOK_ADDRESS = "0x85220b2343a63f048dcb5f7428c7de0348c961ed15ffa4f8c4fe676156600cc8";
         public static string ClockAddress = "0x0000000000000000000000000000000000000000000000000000000000000006";
 
         public static ulong MINT_MASTER_FEE = 0;
@@ -489,6 +490,8 @@ namespace masterland.Wallet
                 master,
                 ClockAddress
             };
+
+
             var tx_response = await SuiApi.Client.MoveCallAsync(_moveCallTransaction);
             if (tx_response.IsSuccess)
             {

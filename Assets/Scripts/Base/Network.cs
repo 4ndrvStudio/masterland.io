@@ -49,7 +49,7 @@ namespace masterland.Manager
 
             _uiManager.SetActive(!GameManager.Instance.IsServer);
 
-            _networkManager.TransportManager.Transport.SetClientAddress(GameManager.Instance.IsDev ? "localhost" :Sanitize(_serverIpAddress));
+            _networkManager.TransportManager.Transport.SetClientAddress(GameManager.Instance.IsDev ? "192.168.1.4" :Sanitize(_serverIpAddress));
            
             if (GameManager.Instance.IsServer || GameManager.Instance.IsDev)
             {

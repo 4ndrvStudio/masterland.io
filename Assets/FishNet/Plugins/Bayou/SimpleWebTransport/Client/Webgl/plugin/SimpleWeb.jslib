@@ -29,13 +29,13 @@ function IsConnected(index) {
 
 function Connect(addressPtr, openCallbackPtr, closeCallBackPtr, messageCallbackPtr, errorCallbackPtr) {
     // fix for unity 2021 because unity bug in .jslib
-    if (typeof Runtime === "undefined") {
-        // if unity doesn't create Runtime, then make it here
-        // dont ask why this works, just be happy that it does
-        Runtime = {
-            dynCall: dynCall
-        }
-    }
+    // if (typeof Runtime === "undefined") {
+    //     // if unity doesn't create Runtime, then make it here
+    //     // dont ask why this works, just be happy that it does
+    //     Runtime = {
+    //         dynCall: dynCall
+    //     }
+    // }
 
     const address = UTF8ToString(addressPtr);
     console.log("Connecting to " + address);
@@ -47,11 +47,13 @@ function Connect(addressPtr, openCallbackPtr, closeCallBackPtr, messageCallbackP
     // Connection opened
     webSocket.addEventListener('open', function (event) {
         console.log("Connected to " + address);
-        Runtime.dynCall('vi', openCallbackPtr, [index]);
+        //Runtime.dynCall('vi', openCallbackPtr, [index]);
+        {{{ makeDynCall('vi', 'openCallbackPtr') }}}(index);
     });
     webSocket.addEventListener('close', function (event) {
         console.log("Disconnected from " + address);
-        Runtime.dynCall('vi', closeCallBackPtr, [index]);
+        //Runtime.dynCall('vi', closeCallBackPtr, [index]);
+        {{{ makeDynCall('vi', 'closeCallBackPtr') }}}(index);
     });
 
     // Listen for messages
@@ -65,7 +67,8 @@ function Connect(addressPtr, openCallbackPtr, closeCallBackPtr, messageCallbackP
             var dataBuffer = new Uint8Array(HEAPU8.buffer, bufferPtr, arrayLength);
             dataBuffer.set(array);
 
-            Runtime.dynCall('viii', messageCallbackPtr, [index, bufferPtr, arrayLength]);
+            //Runtime.dynCall('viii', messageCallbackPtr, [index, bufferPtr, arrayLength]);
+            {{{ makeDynCall('viii', 'messageCallbackPtr') }}}(index, bufferPtr, arrayLength);
             _free(bufferPtr);
         }
         else {
@@ -76,7 +79,8 @@ function Connect(addressPtr, openCallbackPtr, closeCallBackPtr, messageCallbackP
     webSocket.addEventListener('error', function (event) {
         console.error('Socket Error', event);
 
-        Runtime.dynCall('vi', errorCallbackPtr, [index]);
+        //Runtime.dynCall('vi', errorCallbackPtr, [index]);
+        {{{ makeDynCall('vi', 'errorCallbackPtr') }}}(index);
     });
 
     return index;

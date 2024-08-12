@@ -43,32 +43,9 @@ namespace masterland.UI
             if (_timer >= _updateInterval)
             {
                 _timer = 0f; // Reset the timer
-
-                  
-               TimeSpan woodRemainingTime = DateTimeOffset.FromUnixTimeSeconds(long.Parse(Data.Instance.ResidentLicense.NextTimeMintWood)/1000).UtcDateTime - DateTimeOffset.UtcNow;
-               TimeSpan stoneRemainingTime = DateTimeOffset.FromUnixTimeSeconds(long.Parse(Data.Instance.ResidentLicense.NextTimeMintStone)/1000).UtcDateTime - DateTimeOffset.UtcNow;
-                if(woodRemainingTime.Milliseconds > 0)
-                    _canMintWoodText.text = $"Can mint in {woodRemainingTime.Hours}:{woodRemainingTime.Minutes}:{woodRemainingTime.Seconds}";
-                else 
-                {
-                    if(int.Parse(Data.Instance.ResidentLicense.WoodMintedPerDay)==int.Parse(Data.Instance.ResidentLicense.WoodLimitedPerDay)) {
-                        _woodPerDayText.text = "0/"+Data.Instance.ResidentLicense.WoodLimitedPerDay;
-                    }
-                }
-
-                if(stoneRemainingTime.Milliseconds > 0) 
-                    _canMintStoneText.text = $"Can mint in {stoneRemainingTime.Hours}:{stoneRemainingTime.Minutes}:{stoneRemainingTime.Seconds}";
-                else 
-                {
-                    if(int.Parse(Data.Instance.ResidentLicense.StoneMintedPerDay)==int.Parse(Data.Instance.ResidentLicense.StoneLimitedPerDay)) 
-                        _stonePerDayText.text = "0/"+Data.Instance.ResidentLicense.StoneLimitedPerDay;
-                }
-                
-                if (!_canMintWoodText.gameObject.activeSelf)
-                    _canMintWoodText.gameObject.SetActive(woodRemainingTime.Milliseconds > 0 && Data.Instance.ResidentLicense.WoodMintedPerDay == Data.Instance.ResidentLicense.WoodLimitedPerDay);
-                if (!_canMintStoneText.gameObject.activeSelf)
-                    _canMintStoneText.gameObject.SetActive(stoneRemainingTime.Milliseconds > 0 && Data.Instance.ResidentLicense.StoneMintedPerDay == Data.Instance.ResidentLicense.StoneLimitedPerDay);
+                CheckLimit();
             }
+            
         }
 
         public override void Show(Dictionary<string, object> customProperties = null)
@@ -87,10 +64,38 @@ namespace masterland.UI
             _stoneBalanceText.text = Data.Instance.ResidentLicense.StoneBalance;
             _woodPerDayText.text = $"{Data.Instance.ResidentLicense.WoodMintedPerDay}/{Data.Instance.ResidentLicense.WoodLimitedPerDay}";
             _stonePerDayText.text = $"{Data.Instance.ResidentLicense.StoneMintedPerDay}/{Data.Instance.ResidentLicense.StoneLimitedPerDay}";
-
+            
+            CheckLimit();
+            
             _loadingOb.SetActive(false);
             _contentOb.SetActive(true);
+        }
 
+        public void CheckLimit() {
+            TimeSpan woodRemainingTime = DateTimeOffset.FromUnixTimeSeconds(long.Parse(Data.Instance.ResidentLicense.NextTimeMintWood)/1000).UtcDateTime - DateTimeOffset.UtcNow;
+            TimeSpan stoneRemainingTime = DateTimeOffset.FromUnixTimeSeconds(long.Parse(Data.Instance.ResidentLicense.NextTimeMintStone)/1000).UtcDateTime - DateTimeOffset.UtcNow;
+            if(woodRemainingTime.Milliseconds > 0)
+                _canMintWoodText.text = $"Can mint in {woodRemainingTime.Hours}:{woodRemainingTime.Minutes}:{woodRemainingTime.Seconds}";
+            else 
+            {
+                if(int.Parse(Data.Instance.ResidentLicense.WoodMintedPerDay)==int.Parse(Data.Instance.ResidentLicense.WoodLimitedPerDay)) {
+                    _woodPerDayText.text = "0/"+Data.Instance.ResidentLicense.WoodLimitedPerDay;
+                }
+            }
+
+            if(stoneRemainingTime.Milliseconds > 0) 
+                _canMintStoneText.text = $"Can mint in {stoneRemainingTime.Hours}:{stoneRemainingTime.Minutes}:{stoneRemainingTime.Seconds}";
+            else 
+            {
+                if(int.Parse(Data.Instance.ResidentLicense.StoneMintedPerDay)==int.Parse(Data.Instance.ResidentLicense.StoneLimitedPerDay)) 
+                    _stonePerDayText.text = "0/"+Data.Instance.ResidentLicense.StoneLimitedPerDay;
+            }
+            
+            if (!_canMintWoodText.gameObject.activeSelf)
+                _canMintWoodText.gameObject.SetActive(woodRemainingTime.Milliseconds > 0 && Data.Instance.ResidentLicense.WoodMintedPerDay == Data.Instance.ResidentLicense.WoodLimitedPerDay);
+            if (!_canMintStoneText.gameObject.activeSelf)
+                _canMintStoneText.gameObject.SetActive(stoneRemainingTime.Milliseconds > 0 && Data.Instance.ResidentLicense.StoneMintedPerDay == Data.Instance.ResidentLicense.StoneLimitedPerDay);
+            
         }
 
     }

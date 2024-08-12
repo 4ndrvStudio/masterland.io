@@ -15115,7 +15115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &405975489
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17027,9 +17027,9 @@ RectTransform:
   - {fileID: 1801770205}
   m_Father: {fileID: 1110821783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -830}
   m_SizeDelta: {x: 150, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &615720201
@@ -23643,9 +23643,9 @@ RectTransform:
   - {fileID: 1413149308}
   m_Father: {fileID: 1110821783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -550}
   m_SizeDelta: {x: 150, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1067304928
@@ -26477,9 +26477,9 @@ RectTransform:
   - {fileID: 1877267085}
   m_Father: {fileID: 1110821783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -410}
   m_SizeDelta: {x: 150, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280501490
@@ -27514,9 +27514,9 @@ RectTransform:
   - {fileID: 1913796294}
   m_Father: {fileID: 1110821783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -690}
   m_SizeDelta: {x: 150, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1328856735
@@ -31996,9 +31996,9 @@ RectTransform:
   - {fileID: 894085436}
   m_Father: {fileID: 1110821783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -270}
   m_SizeDelta: {x: 150, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1636260348
@@ -34857,7 +34857,7 @@ MonoBehaviour:
   _playerPrefab: {fileID: 578991581174262709, guid: bb7db3bc5f7f3ce4c9720ed4cd8cd714, type: 3}
   _uiManager: {fileID: 2201813500946275297}
   _serverIpAddress: 171.244.143.28
-  _port: 7778
+  _port: 7779
   _spawnPos: {fileID: 0}
   PlayerName: Player @
 --- !u!1 &1801770204
@@ -38600,7 +38600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2014602284
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40961,10 +40961,11 @@ MonoBehaviour:
   <IsNested>k__BackingField: 0
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
+  <PredictedOwner>k__BackingField: {fileID: 0}
   _networkBehaviours:
   - {fileID: 2146042331}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
-  <NestedRootNetworkBehaviours>k__BackingField: []
+  <SerializedNestedNetworkObjects>k__BackingField: []
   SerializedTransformProperties:
     Position: {x: 414.7522, y: 58.439873, z: 221.21873}
     Rotation: {x: -0, y: -0, z: -0, w: 1}
@@ -42423,7 +42424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca43cf6f20e77c4f8fcc078fd85081f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _remoteServerTimeout: 2
+  _remoteServerTimeout: 0
   _remoteServerTimeoutDuration: 60
   _changeFrameRate: 1
   _frameRate: 61

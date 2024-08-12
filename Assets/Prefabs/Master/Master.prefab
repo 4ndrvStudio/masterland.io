@@ -56417,8 +56417,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6615697361846800458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.36113933, z: 0, w: -0.9325119}
-  m_LocalPosition: {x: 624.8568, y: 57.58, z: 879.72845}
+  m_LocalRotation: {x: 0, y: 0.38102028, z: 0, w: 0.9245667}
+  m_LocalPosition: {x: 616.1148, y: 57.58, z: 879.72845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56490,6 +56490,7 @@ MonoBehaviour:
   <IsNested>k__BackingField: 0
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
+  <PredictedOwner>k__BackingField: {fileID: 0}
   _networkBehaviours:
   - {fileID: 3857029263935317608}
   - {fileID: 113903629729980709}
@@ -56509,7 +56510,7 @@ MonoBehaviour:
   - {fileID: 1660651514022504267}
   - {fileID: 892859245840518198}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
-  <NestedRootNetworkBehaviours>k__BackingField: []
+  <SerializedNestedNetworkObjects>k__BackingField: []
   SerializedTransformProperties:
     Position: {x: 632.49036, y: 57.58, z: 879.72845}
     Rotation: {x: 0, y: 0.8467204, z: 0, w: 0.5320381}
