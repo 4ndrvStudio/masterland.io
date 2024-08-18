@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Weapon
   - CinemachineTarget
+  - Foundation
+  - Stairs
+  - Door
+  - Wall
+  - Roof
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -18,8 +24,8 @@ TagManager:
   - Weapon
   - Damageable
   - Mineral
-  - 
-  - 
+  - Buildable
+  - BaseFloor
   - 
   - 
   - 

@@ -11,4 +11,11 @@ namespace masterland.Building
         public Image ButtonBackground;
         public Sprite ButtonIcon;
     }
+
+    [System.Serializable]
+    public class MainCircularMenuElement 
+    {
+
+    }
+
 }

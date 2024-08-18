@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4134b20b3cd0e64dbd2b02a39b47961, type: 3}
+  m_Name: Wall
+  m_EditorClassIdentifier: 
+  PreviewPrefab: {fileID: 2078671525222134316, guid: 4cea7690f74e1b341a17c1c36acf36a4, type: 3}
+  BuildingElementPrefab: {fileID: 5557881017394167895, guid: 7f504c0842e99c343a40488ebf5d8b87, type: 3}
+  MenuElement:
+    Name: Wall
+    Description: A wall for building...
+    ButtonBackground: {fileID: 0}
+    ButtonIcon: {fileID: 21300000, guid: d7a1bef1c033df84596f07030c5436a1, type: 3}

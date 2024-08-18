@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace masterland.Building
 {
-    [CreateAssetMenu(fileName = "New BuildingComponent", menuName = "BuildingComponent", order = 1)]
+    [CreateAssetMenu(fileName = "New BuildingComponent", menuName = "masterland/BuildingComponent")]
     public class BuildingComponent : ScriptableObject
     {
         public GameObject PreviewPrefab;

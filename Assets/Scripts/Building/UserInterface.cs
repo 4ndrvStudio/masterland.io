@@ -7,49 +7,48 @@ namespace masterland.Building
     public class UserInterface : Singleton<UserInterface>
     {
         [Header("GENERAL")]
-        public Camera UICamera;
-        public GameObject BackgroundPanel;
-        public GameObject CircleMenuElementPrefab;
-        public bool UseGradient;
+        [SerializeField] private GameObject _backgroundPanel;
+        [SerializeField] private GameObject _circleMenuElementPrefab;
+        [SerializeField] private bool _useGradient;
 
         [Header("BUTTONS")]
-        public Color NormalButtonColor;
-        public Color HighlightedButtonColor;
-        public Gradient HighlightedButtonGradient = new Gradient();
+        [SerializeField] private Color _normalButtonColor;
+        [SerializeField] private Color _highlightedButtonColor;
+        [SerializeField] private Gradient _highlightedButtonGradient = new Gradient();
 
         [Header("INFORMAL CENTER")]
-        public Image InformalCenterBackground;
-        public Text ItemName;
-        public Text ItemDescription;
-        public Image ItemIcon;
+        [SerializeField] private Image _informalCenterBackground;
+        [SerializeField] private Text _itemName;
+        [SerializeField] private Text _itemDescription;
+        [SerializeField] private Image _itemIcon;
 
 
-        private int currentMenuItemIndex;
-        private int previousMenuItemIndex;
-        private float calculatedMenuIndex;
-        private float currentSelectionAngle;
-        private Vector3 currentMousePosition;
-        private List<CircularMenuElement> menuElements = new List<CircularMenuElement>();
+        private int _currentMenuItemIndex;
+        private int _previousMenuItemIndex;
+        private float _calculatedMenuIndex;
+        private float _currentSelectionAngle;
+        private Vector3 _currentMousePosition;
+        private List<CircularMenuElement> _menuElements = new List<CircularMenuElement>();
 
-        public bool Active { get { return BackgroundPanel.activeSelf; } }
+        public bool Active { get { return _backgroundPanel.activeSelf; } }
         public List<CircularMenuElement> MenuElements
         {
-            get { return menuElements; }
-            set { menuElements = value; }
+            get { return _menuElements; }
+            set { _menuElements = value; }
         }
 
         public void Initialize()
         {
 
-            float rotationalIncrementalValue = 360f / menuElements.Count;
+            float rotationalIncrementalValue = 360f / MenuElements.Count;
             float currentRotationValue = 0;
-            float fillPercentageValue = 1f / menuElements.Count;
+            float fillPercentageValue = 1f / MenuElements.Count;
 
-            for (int i = 0; i < menuElements.Count; i++)
+            for (int i = 0; i < MenuElements.Count; i++)
             {
-                GameObject menuElementGameObject = Instantiate(CircleMenuElementPrefab);
+                GameObject menuElementGameObject = Instantiate(_circleMenuElementPrefab);
                 menuElementGameObject.name = i + ": " + currentRotationValue;
-                menuElementGameObject.transform.SetParent(BackgroundPanel.transform);
+                menuElementGameObject.transform.SetParent(_backgroundPanel.transform);
 
                 MenuButton menuButton = menuElementGameObject.GetComponent<MenuButton>();
 
@@ -59,13 +58,13 @@ namespace masterland.Building
                 currentRotationValue += rotationalIncrementalValue;
 
                 menuButton.Background.fillAmount = fillPercentageValue + 0.001f;
-                menuElements[i].ButtonBackground = menuButton.Background;
+                MenuElements[i].ButtonBackground = menuButton.Background;
 
-                menuButton.Icon.sprite = menuElements[i].ButtonIcon;
+                menuButton.Icon.sprite = MenuElements[i].ButtonIcon;
                 menuButton.IconRecttransform.rotation = Quaternion.identity;
             }
 
-            BackgroundPanel.SetActive(false);
+            _backgroundPanel.SetActive(false);
         }
 
         private void Update()
@@ -84,38 +83,36 @@ namespace masterland.Building
 
         private void GetCurrentMenuElement()
         {
-            float rotationalIncrementalValue = 360f / menuElements.Count;
-            currentMousePosition = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2);
+            float rotationalIncrementalValue = 360f / MenuElements.Count;
+            _currentMousePosition = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2);
+            _currentSelectionAngle = 90 + rotationalIncrementalValue + Mathf.Atan2(_currentMousePosition.y, _currentMousePosition.x) * Mathf.Rad2Deg;
+            _currentSelectionAngle = (_currentSelectionAngle + 360f) % 360f;
 
-            currentSelectionAngle = 90 + rotationalIncrementalValue + Mathf.Atan2(currentMousePosition.y, currentMousePosition.x) * Mathf.Rad2Deg;
-            currentSelectionAngle = (currentSelectionAngle + 360f) % 360f;
+            _currentMenuItemIndex = (int)(_currentSelectionAngle / rotationalIncrementalValue);
 
-            currentMenuItemIndex = (int)(currentSelectionAngle / rotationalIncrementalValue);
-
-            if (currentMenuItemIndex != previousMenuItemIndex)
+            if (_currentMenuItemIndex != _previousMenuItemIndex)
             {
-                menuElements[previousMenuItemIndex].ButtonBackground.color = NormalButtonColor;
+                MenuElements[_previousMenuItemIndex].ButtonBackground.color = _normalButtonColor;
 
-                previousMenuItemIndex = currentMenuItemIndex;
-
-                menuElements[currentMenuItemIndex].ButtonBackground.color = UseGradient ? HighlightedButtonGradient.Evaluate(1f / menuElements.Count
-                * currentMenuItemIndex) : HighlightedButtonColor;
-                InformalCenterBackground.color = UseGradient ? HighlightedButtonGradient.Evaluate(1f / menuElements.Count * currentMenuItemIndex) :
-                HighlightedButtonColor;
+                _previousMenuItemIndex = _currentMenuItemIndex;
+                MenuElements[_currentMenuItemIndex].ButtonBackground.color = _useGradient ? _highlightedButtonGradient.Evaluate(1f / MenuElements.Count
+                * _currentMenuItemIndex) : _highlightedButtonColor;
+                _informalCenterBackground.color = _useGradient ? _highlightedButtonGradient.Evaluate(1f / MenuElements.Count * _currentMenuItemIndex) :
+                _highlightedButtonColor;
                 RefreshInformalCenter();
             }
         }
 
         private void RefreshInformalCenter()
         {
-            ItemName.text = menuElements[currentMenuItemIndex].Name;
-            ItemDescription.text = menuElements[currentMenuItemIndex].Description;
-            ItemIcon.sprite = menuElements[currentMenuItemIndex].ButtonIcon;
+            _itemName.text = MenuElements[_currentMenuItemIndex].Name;
+            _itemDescription.text = MenuElements[_currentMenuItemIndex].Description;
+            _itemIcon.sprite = MenuElements[_currentMenuItemIndex].ButtonIcon;
         }
 
         private void Select()
         {
-            //BuildingSystem.Instance.SwitchToIndex(currentMenuItemIndex);
+            BuildingSystem.Instance.SwitchToIndex(_currentMenuItemIndex);
             Deactivate();
         }
 
@@ -128,13 +125,13 @@ namespace masterland.Building
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            BackgroundPanel.SetActive(true);
+            _backgroundPanel.SetActive(true);
             RefreshInformalCenter();
         }
 
         public void Deactivate()
         {
-            BackgroundPanel.SetActive(false);
+            _backgroundPanel.SetActive(false);
         }
 
     }

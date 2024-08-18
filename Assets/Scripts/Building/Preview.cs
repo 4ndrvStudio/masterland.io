@@ -62,8 +62,8 @@ namespace masterland.Building
                 {
                     if (_other.tag == "Foundation")
                     {
-                        // BuildingSystem.Instance.objectToSnap = _other.gameObject;
-                        // BuildingSystem.Instance.snapping = true;
+                        BuildingSystem.Instance.ObjectToSnap = _other.gameObject;
+                        BuildingSystem.Instance.Snapping = true;
                     }
                 }
                 else if (tag == "Roof" || tag == "Foundation")
@@ -71,8 +71,8 @@ namespace masterland.Building
                     if (_other.tag == "Wall" || _other.tag == "Door")
                     {
                         MeshCollider otherCollider = _other.GetComponent<MeshCollider>();
-                        // BuildingSystem.Instance.hightOffset = _other.transform.position.y + otherCollider.bounds.size.y / 2f;
-                        // BuildingSystem.Instance.snappingOffset = meshcollider.bounds.center;
+                        BuildingSystem.Instance.HightOffset = _other.transform.position.y + otherCollider.bounds.size.y / 2f;
+                        BuildingSystem.Instance.SnappingOffset = meshcollider.bounds.center;
                     }
                 }
                 else
@@ -90,8 +90,8 @@ namespace masterland.Building
                 {
                     if (_other.tag == "Foundation")
                     {
-                        // BuildingSystem.Instance.objectToSnap = null;
-                        // BuildingSystem.Instance.snapping = false;
+                        BuildingSystem.Instance.ObjectToSnap = null;
+                        BuildingSystem.Instance.Snapping = false;
                     }
                 }
                 else
