@@ -19,3 +19,5 @@ MonoBehaviour:
     Description: A Roof for building...
     ButtonBackground: {fileID: 0}
     ButtonIcon: {fileID: 21300000, guid: 1b952f1b91f58764daf56eb61c3e5495, type: 3}
+  Stone: 0
+  Wood: 1

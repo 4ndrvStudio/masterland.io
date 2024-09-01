@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4134b20b3cd0e64dbd2b02a39b47961, type: 3}
-  m_Name: Door
+  m_Name: Wall Cut
   m_EditorClassIdentifier: 
-  PreviewPrefab: {fileID: 2585657974599445001, guid: 0009ceda500432c4e847aa3e152b505a, type: 3}
-  BuildingElementPrefab: {fileID: 4141681106011315708, guid: 180680d02604e3f4497ae4cffb164bfe, type: 3}
+  PreviewPrefab: {fileID: 4944653621993944638, guid: b6bf6a50272e84d47883137a81192dca, type: 3}
+  BuildingElementPrefab: {fileID: 6074292605551754494, guid: d00f920b9d5cc9f4cbada53180c41a4a, type: 3}
   MenuElement:
-    Name: Wall Door
-    Description: Wall door for house
+    Name: Wall Cut
+    Description: A wall cut for building...
     ButtonBackground: {fileID: 0}
-    ButtonIcon: {fileID: 21300000, guid: 92f79d9211d12b24aa0eac58a2083126, type: 3}
-  Stone: 0
+    ButtonIcon: {fileID: 21300000, guid: 791e11083f89702488f30fb59cffcc72, type: 3}
+  Stone: 1
   Wood: 1

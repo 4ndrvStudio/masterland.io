@@ -53,10 +53,13 @@ namespace masterland.Building
         [Range(1f, 20f)]
         [SerializeField] private float _rotationSpeed;
 
-
         [Header("MODE")]
         public bool EditMode;
         public bool PreviewMode;
+
+        [Header("Prices")]
+        public int Wood;
+        public int Stone;
 
         private void Start()
         {
@@ -65,6 +68,17 @@ namespace masterland.Building
                 UserInterface.Instance.MenuElements.Add(_buildingComponents[i].MenuElement);
             }
             UserInterface.Instance.Initialize();
+        }
+
+        public void CheckMaterials() 
+        {
+            Wood = 0;
+            Stone = 0;
+            _elementConnectionsList.ForEach(item => {
+                var element = item.Element.GetComponentInChildren<Element>();
+                Wood += element.BuildingComponent.Wood;
+                Stone += element.BuildingComponent.Stone;
+            });
         }
 
         private void Update()
@@ -190,6 +204,7 @@ namespace masterland.Building
                     element.Connections.RemoveAll(connection => connection == null);
                 }
             }
+            CheckMaterials();
         }
 
 
@@ -322,6 +337,8 @@ namespace masterland.Building
             {
                     element.Connections.RemoveAll(connection => connection == null);
             }
+
+            CheckMaterials();
 
         }
 

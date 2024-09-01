@@ -304,6 +304,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fda006bdb5c041c42b9e777d0a89cb30, type: 2}
   - {fileID: 11400000, guid: 71519fff065b40c42864b3f5e7c240da, type: 2}
   - {fileID: 11400000, guid: 269c5db8e46826d45beb9ade877d3c69, type: 2}
+  - {fileID: 11400000, guid: 7cf7b16367b0e7e418f79447e75dc4cf, type: 2}
   _gridSize: 0.5
   _gridOffset: 0.1
   _currentPreviewGameObject: {fileID: 0}
@@ -549,7 +550,7 @@ Transform:
   m_GameObject: {fileID: 1071265740}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.13, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3, y: 1, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children: []

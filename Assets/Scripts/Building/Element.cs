@@ -5,6 +5,7 @@ namespace masterland.Building
 {
     public class Element : MonoBehaviour
     {
+        public BuildingComponent BuildingComponent;
         [SerializeField] private Material _deleteMaterial;
         [SerializeField] private MeshRenderer _meshrenderer;
         
@@ -27,10 +28,6 @@ namespace masterland.Building
         public void CanDelete(bool isCan) 
         {
             _meshrenderer.materials = isCan ? _deleteMaterials : _materials;
-        }
-
-        private void OnCollisionStay(Collision other) {
-            Debug.Log(other.gameObject.name);
         }
 
         

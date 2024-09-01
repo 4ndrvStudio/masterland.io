@@ -8,6 +8,8 @@ namespace masterland.Building
         public GameObject PreviewPrefab;
         public GameObject BuildingElementPrefab;
         public CircularMenuElement MenuElement;
+        public int Stone;
+        public int Wood;
     }
 }
 

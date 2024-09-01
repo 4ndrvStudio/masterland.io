@@ -19,3 +19,5 @@ MonoBehaviour:
     Description: A wall for building...
     ButtonBackground: {fileID: 0}
     ButtonIcon: {fileID: 21300000, guid: d7a1bef1c033df84596f07030c5436a1, type: 3}
+  Stone: 1
+  Wood: 1

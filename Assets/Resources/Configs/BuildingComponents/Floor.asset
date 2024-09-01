@@ -19,3 +19,5 @@ MonoBehaviour:
     Description: A floor of a house.
     ButtonBackground: {fileID: 0}
     ButtonIcon: {fileID: 21300000, guid: 63d2c815094751c48918bebd69b93b47, type: 3}
+  Stone: 2
+  Wood: 0

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83dca5ec585a29c46bc1eadf90c48719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuildingComponent: {fileID: 11400000, guid: 269c5db8e46826d45beb9ade877d3c69, type: 2}
   _deleteMaterial: {fileID: 2100000, guid: 815c5d1a139f541d7adc673766648f75, type: 2}
   _meshrenderer: {fileID: 5737351939585964313}
   _collideTransform: []
