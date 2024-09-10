@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using masterland.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace masterland.Master
@@ -25,8 +26,18 @@ namespace masterland.Master
             _master.Input.MasterInput.Player.NormalMode.performed -= OnPerformNormalmode;
         }
 
-        private void OnPerformAImode(InputAction.CallbackContext context) {PlayBot = true;}
-        private void OnPerformNormalmode(InputAction.CallbackContext context) {PlayBot = false;}
+        private void OnPerformAImode(InputAction.CallbackContext context) 
+        {
+            if(GameManager.Instance && UIController.Instance && UIController.Instance.Standby)
+                return;
+            PlayBot = true;
+        }
+        private void OnPerformNormalmode(InputAction.CallbackContext context) 
+        {
+            if(GameManager.Instance && UIController.Instance && UIController.Instance.Standby)
+                return;
+            PlayBot = false;
+        }
 
 
         public override void OnTick()

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 39e17b22ddfc6427a9c66f22f66ecb25
+timeCreated: 1468536301
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Demos/Stress Test/Stress Test.unity
+  uploadId: 314719

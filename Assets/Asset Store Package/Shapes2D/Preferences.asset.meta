@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 625b6ef095c26463685d2cf468f81259
+timeCreated: 1476819238
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Preferences.asset
+  uploadId: 314719

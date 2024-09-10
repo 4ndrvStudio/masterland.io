@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e54e9ede914c249ab92fbbcdd56c5049
+timeCreated: 1480149030
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Resources/Shapes2D/Prefabs/Line Path.prefab
+  uploadId: 314719

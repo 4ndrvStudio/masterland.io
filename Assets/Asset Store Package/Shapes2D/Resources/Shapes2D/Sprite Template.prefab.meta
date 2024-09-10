@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 51d4e7141568f49118de5d20445984ee
+timeCreated: 1464239468
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Resources/Shapes2D/Sprite Template.prefab
+  uploadId: 314719

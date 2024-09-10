@@ -167,7 +167,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""02cfc91f-6c23-4b05-822a-62895e07acbb"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -176,6 +176,15 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
                     ""name"": ""ResidentLicense"",
                     ""type"": ""Button"",
                     ""id"": ""947e2c8a-b153-46cc-82b8-d25cba33c053"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Building"",
+                    ""type"": ""Button"",
+                    ""id"": ""361ea269-e6dd-44ce-98fa-59df8ffef1c6"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -438,6 +447,17 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""bddd06f4-3d1d-42b4-93ef-0728ac411748"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Building"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""d0ba9e66-574b-4df7-ba1a-8de40f1ffe4c"",
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
@@ -576,6 +596,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
         m_Player_Cancel = m_Player.FindAction("Cancel", throwIfNotFound: true);
         m_Player_ResidentLicense = m_Player.FindAction("ResidentLicense", throwIfNotFound: true);
+        m_Player_Building = m_Player.FindAction("Building", throwIfNotFound: true);
         // All
         m_All = asset.FindActionMap("All", throwIfNotFound: true);
     }
@@ -662,6 +683,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Zoom;
     private readonly InputAction m_Player_Cancel;
     private readonly InputAction m_Player_ResidentLicense;
+    private readonly InputAction m_Player_Building;
     public struct PlayerActions
     {
         private @MasterInput m_Wrapper;
@@ -683,6 +705,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
         public InputAction @Cancel => m_Wrapper.m_Player_Cancel;
         public InputAction @ResidentLicense => m_Wrapper.m_Player_ResidentLicense;
+        public InputAction @Building => m_Wrapper.m_Player_Building;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -743,6 +766,9 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
             @ResidentLicense.started += instance.OnResidentLicense;
             @ResidentLicense.performed += instance.OnResidentLicense;
             @ResidentLicense.canceled += instance.OnResidentLicense;
+            @Building.started += instance.OnBuilding;
+            @Building.performed += instance.OnBuilding;
+            @Building.canceled += instance.OnBuilding;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -798,6 +824,9 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
             @ResidentLicense.started -= instance.OnResidentLicense;
             @ResidentLicense.performed -= instance.OnResidentLicense;
             @ResidentLicense.canceled -= instance.OnResidentLicense;
+            @Building.started -= instance.OnBuilding;
+            @Building.performed -= instance.OnBuilding;
+            @Building.canceled -= instance.OnBuilding;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -872,6 +901,7 @@ public partial class @MasterInput: IInputActionCollection2, IDisposable
         void OnZoom(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnResidentLicense(InputAction.CallbackContext context);
+        void OnBuilding(InputAction.CallbackContext context);
     }
     public interface IAllActions
     {

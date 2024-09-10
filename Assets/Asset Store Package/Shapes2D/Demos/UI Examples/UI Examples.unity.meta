@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 255c38a1c36024072a332e856380221a
+timeCreated: 1463103393
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Demos/UI Examples/UI Examples.unity
+  uploadId: 314719

@@ -23,7 +23,7 @@ namespace masterland.Manager
         [SerializeField] private ushort _port = 7777;
      
         [SerializeField] private Transform _spawnPos;
-        private NetworkManager _networkManager;
+        [HideInInspector] public NetworkManager _networkManager;
         private Multipass _mp;
         private Tugboat _tugboat;
         private Bayou _bayou;
@@ -34,7 +34,7 @@ namespace masterland.Manager
 
         public void SetupNetwork() 
         {
-            _networkManager = _networkManager = FindFirstObjectByType<NetworkManager>();
+            _networkManager = FindFirstObjectByType<NetworkManager>();
             _mp = FindFirstObjectByType<Multipass>();       
             _tugboat = FindFirstObjectByType<Tugboat>();   
             _bayou = FindFirstObjectByType<Bayou>();
@@ -49,11 +49,11 @@ namespace masterland.Manager
 
             _uiManager.SetActive(!GameManager.Instance.IsServer);
 
-            _networkManager.TransportManager.Transport.SetClientAddress(GameManager.Instance.IsDev ? "192.168.1.4" :Sanitize(_serverIpAddress));
+            _networkManager.TransportManager.Transport.SetClientAddress(GameManager.Instance.IsDev ? "localhost" :Sanitize(_serverIpAddress));
            
             if (GameManager.Instance.IsServer || GameManager.Instance.IsDev)
             {
-               // StartServer();
+               //StartServer();
             }
 
             if (_networkManager == null)

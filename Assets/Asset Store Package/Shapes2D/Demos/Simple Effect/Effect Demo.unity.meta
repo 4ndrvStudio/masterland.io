@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 03e8513a8f6af4e659524816813f67d1
+timeCreated: 1463705922
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Demos/Simple Effect/Effect Demo.unity
+  uploadId: 314719

@@ -29,7 +29,8 @@ namespace masterland.Building
 
         private void Update()
         {
-            Buildable = contacts == 0;
+            //Buildable = contacts == 0;
+            Buildable = true;
             if (Buildable)
             {
                 SetMaterials(BuildableMaterial);

@@ -56417,8 +56417,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6615697361846800458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.38102028, z: 0, w: 0.9245667}
-  m_LocalPosition: {x: 616.1148, y: 57.58, z: 879.72845}
+  m_LocalRotation: {x: 0, y: 0.63631445, z: 0, w: -0.7714298}
+  m_LocalPosition: {x: 634.7659, y: 57.58, z: 879.72845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56534,7 +56534,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 1
   _teleportThreshold: 10
-  <PrefabId>k__BackingField: 0
+  <PrefabId>k__BackingField: 1
   <SpawnableCollectionId>k__BackingField: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 5149249012087252414
@@ -56630,6 +56630,9 @@ MonoBehaviour:
   PlayDodge: 0
   PlayAI: 0
   PlayMint: 0
+  PlayBuild: 0
+  HouseRotationLeft: 0
+  HouseRotationRight: 0
 --- !u!114 &8575488650261935804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56757,8 +56760,8 @@ MonoBehaviour:
   _componentIndexCache: 8
   _addedNetworkObject: {fileID: 578991581174262709}
   _networkObjectCache: {fileID: 578991581174262709}
-  MoveSpeed: 3
-  SprintSpeed: 8
+  MoveSpeed: 3.5
+  SprintSpeed: 10
   RotationSmoothTime: 12
   SpeedChangeRate: 10
   JumpHeight: 1.2
@@ -56944,6 +56947,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   checkInterval: 0.1
+  SelectorState: 1
+  _terrainLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _builableLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  _elementConnectionsList: []
+  _houseHolder: {fileID: 0}
+  _selectedHousePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1660651514022504267
 MonoBehaviour:
   m_ObjectHideFlags: 0

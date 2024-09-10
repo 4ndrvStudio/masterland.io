@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: c4e42a850499d4b8697b8147caff842c
+timeCreated: 1463705683
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Demos/Simple Effect/TapEffect.cs
+  uploadId: 314719

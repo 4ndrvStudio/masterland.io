@@ -11,8 +11,7 @@ using UnityEngine;
 
 namespace masterland.Manager
 {
-    using FishNet.Transporting.Multipass;
-    using Map;
+
     using masterland.UI;
     using masterland.Wallet;
     using Data;
@@ -55,6 +54,5 @@ namespace masterland.Manager
         }
 
         public void EnterMap() => Network.Instance.StartClient();
-
     }
 }

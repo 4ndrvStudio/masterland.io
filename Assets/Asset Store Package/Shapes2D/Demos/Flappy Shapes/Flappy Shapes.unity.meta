@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 43d3b285b93f944b0b1fea99c756bafd
+timeCreated: 1458678116
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Demos/Flappy Shapes/Flappy Shapes.unity
+  uploadId: 314719

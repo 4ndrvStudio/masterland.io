@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: beddc3e21016e4092a17e6b82e54a697
+timeCreated: 1462404442
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Demos/Flappy Shapes/Flap.anim
+  uploadId: 314719

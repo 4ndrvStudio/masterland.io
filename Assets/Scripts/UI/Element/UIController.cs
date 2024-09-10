@@ -7,6 +7,8 @@ namespace masterland
     
     public class UIController : Singleton<UIController>
     {
+        public bool Standby;
+        //Interact
         [SerializeField] private UIInteractTutorial _interactTutorial;
 
         public void ShowInteractTutorial(string function) 
@@ -15,5 +17,6 @@ namespace masterland
         }
 
         public void HideInteractTutorial() => _interactTutorial.Hide();
+
     }
 }

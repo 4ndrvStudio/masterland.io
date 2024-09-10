@@ -10,6 +10,7 @@ namespace masterland.UI
         Init = 1,
         Login = 2,
         Menu = 3,
+        Unuse = 4,
         Gameplay = 100
     }
     public class UIView : MonoBehaviour

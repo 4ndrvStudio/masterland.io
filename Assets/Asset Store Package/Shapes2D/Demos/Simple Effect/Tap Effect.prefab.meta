@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5c8286de5b3a44f68ad65ac56c88766d
+timeCreated: 1463705691
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Demos/Simple Effect/Tap Effect.prefab
+  uploadId: 314719

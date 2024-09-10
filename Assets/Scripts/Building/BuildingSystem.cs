@@ -8,6 +8,8 @@ namespace masterland.Building
     public class ElementConnections
     {
         public GameObject Element;
+        public BuildingComponent BuildingComponentConfig;
+        public GameObject Preview;
         public List<GameObject> Connections;
     }
 
@@ -20,11 +22,12 @@ namespace masterland.Building
         [SerializeField] private LayerMask _floorLayerMask;
         [SerializeField] private Camera _camera;
         [SerializeField] private Transform _cameraHolder;
-        [SerializeField] private GameObject _houseHolder;
+        public GameObject HouseHolder;
         [SerializeField] private GameObject _floorOb;
 
         [Header("BUILDING COMPONENT CATALOGUE")]
         [SerializeField] private List<BuildingComponent> _buildingComponents = new List<BuildingComponent>();
+        public List<BuildingComponent> BuildingComponents => _buildingComponents;
 
         [Header("SNAPPING")]
         [SerializeField] private float _gridSize = 2;
@@ -38,7 +41,7 @@ namespace masterland.Building
 
         [SerializeField] private Preview _currentPreview;
         [SerializeField] private GameObject _currentElement;
-        [SerializeField] private List<ElementConnections> _elementConnectionsList = new();
+        public List<ElementConnections> ElementConnectionsList = new();
         [SerializeField] private float _connectedThreshold = 0.5f;
         [SerializeField] private float _overlapBoxThreshHold = 1f;
 
@@ -63,22 +66,29 @@ namespace masterland.Building
 
         private void Start()
         {
+            if(BuildingManager.Instance)
+                _buildingComponents = BuildingManager.Instance.BuildingComponents;
+
             for (int i = 0; i < _buildingComponents.Count; i++)
             {
                 UserInterface.Instance.MenuElements.Add(_buildingComponents[i].MenuElement);
             }
+
             UserInterface.Instance.Initialize();
         }
 
-        public void CheckMaterials() 
+        public void CheckMaterials()
         {
             Wood = 0;
             Stone = 0;
-            _elementConnectionsList.ForEach(item => {
+            ElementConnectionsList.ForEach(item =>
+            {
                 var element = item.Element.GetComponentInChildren<Element>();
                 Wood += element.BuildingComponent.Wood;
                 Stone += element.BuildingComponent.Stone;
             });
+
+            UserInterface.Instance.UpdateMinerals(Wood, Stone);
         }
 
         private void Update()
@@ -87,21 +97,13 @@ namespace masterland.Building
             {
                 if (Input.GetKeyDown(KeyCode.B))
                 {
-                    if (UserInterface.Instance.Active)
-                    {
-                        UserInterface.Instance.Deactivate();
-                    }
-                    else
-                    {
-                        UserInterface.Instance.Activate();
-                    }
+                   ShowBuildingUI();
                 }
-                else
+                
+                if(!UserInterface.Instance.Active)
                 {
                     if (Input.GetMouseButton(0))
                     {
-                        float mouseX = Input.GetAxis("Mouse X");
-
                         _cameraHolder.eulerAngles += new Vector3(0, _uiTouchField.TouchDist.x * _rotationSpeed * Time.deltaTime, 0);
                     }
                 }
@@ -135,6 +137,22 @@ namespace masterland.Building
             {
                 ResetDelete();
             }
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                MoveHouseToCenter();
+            }
+        }
+
+        public void ShowBuildingUI() {
+            if (UserInterface.Instance.Active)
+            {
+                UserInterface.Instance.Deactivate();
+            }
+            else
+            {
+                UserInterface.Instance.Activate();
+            }
         }
 
         private void ShowDelete()
@@ -142,9 +160,11 @@ namespace masterland.Building
             if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _raycastHit, float.MaxValue, _buildableLayers,
             QueryTriggerInteraction.Ignore))
             {
-                foreach (Transform element in _houseHolder.transform)
+                foreach (Transform element in HouseHolder.transform)
                 {
                     var elementScript = element.GetComponentInChildren<Element>();
+                    if(elementScript == null) continue;
+                    
                     if (element.GetChild(0) == _raycastHit.transform)
                     {
                         elementScript.CanDelete(true);
@@ -157,7 +177,6 @@ namespace masterland.Building
                 if (_raycastHit.transform.gameObject != _floorOb)
                 {
                     bool isConnectedOther = IsConnected(_raycastHit.transform.parent.gameObject, _floorOb);
-                    Debug.Log(isConnectedOther);
                 }
             }
             else
@@ -168,9 +187,11 @@ namespace masterland.Building
 
         public void ResetDelete()
         {
-            foreach (Transform element in _houseHolder.transform)
+            foreach (Transform element in HouseHolder.transform)
             {
                 var elementScript = element.GetComponentInChildren<Element>();
+                if(elementScript == null) continue;
+
                 elementScript.CanDelete(false);
             }
             _currentElement = null;
@@ -180,26 +201,28 @@ namespace masterland.Building
         {
             if (Input.GetMouseButtonDown(1) && _currentElement != null)
             {
-                var el = _elementConnectionsList.Find(item => item.Element == _currentElement);
-                _elementConnectionsList.Remove(el);
+                var el = ElementConnectionsList.Find(item => item.Element == _currentElement);
+                Destroy(el.Preview);
+                ElementConnectionsList.Remove(el);
                 Destroy(_currentElement);
-
-                foreach (var element in _elementConnectionsList)
+            
+                foreach (var element in ElementConnectionsList)
                 {
                     element.Connections.RemoveAll(connection => connection == null);
                 }
 
-                _elementConnectionsList.RemoveAll(elementConnections =>
+                ElementConnectionsList.RemoveAll(elementConnections =>
                 {
-                    if (!IsConnected(elementConnections.Element, _floorOb))
+                    if (!IsConnected(elementConnections.Element, _floorOb) && elementConnections.Element.transform.localPosition.y > 0.2f)
                     {
                         Destroy(elementConnections.Element);
+                        Destroy(elementConnections.Preview);
                         return true;
                     }
                     return false;
                 });
 
-                foreach (var element in _elementConnectionsList)
+                foreach (var element in ElementConnectionsList)
                 {
                     element.Connections.RemoveAll(connection => connection == null);
                 }
@@ -306,25 +329,32 @@ namespace masterland.Building
         private void Place()
         {
             PreviewMode = false;
-            GameObject instanctiated = Instantiate(_currentlyPreviewedComponent.BuildingElementPrefab, _currentPosition, _currentPreviewGameObject.transform.rotation, _houseHolder.transform);
-            instanctiated.GetComponentInChildren<Rigidbody>().isKinematic = true;
+            
+            GameObject elementOb = Instantiate(_currentlyPreviewedComponent.BuildingElementPrefab, _currentPosition, _currentPreviewGameObject.transform.rotation, HouseHolder.transform);
+            elementOb.GetComponentInChildren<Rigidbody>().isKinematic = true;
+            GameObject previewOb =  Instantiate(_currentlyPreviewedComponent.PreviewPrefab, _currentPosition, _currentPreviewGameObject.transform.rotation, HouseHolder.transform);
+            previewOb.SetActive(false);
+            
+            ObjectToSnap = null;
+            Snapping = false;
+            ElementConnections elementConnections = new ElementConnections
+            {
+                Element = elementOb,
+                Preview =  previewOb,
+                BuildingComponentConfig = _currentlyPreviewedComponent,
+                Connections = GetConnectedObject(elementOb.transform.GetChild(0)),
+            };
+
+
             if (_currentPreviewGameObject != null)
             {
                 GameObject temp = _currentPreviewGameObject;
                 Destroy(temp);
             }
-            ObjectToSnap = null;
-            Snapping = false;
 
-            ElementConnections elementConnections = new ElementConnections
-            {
-                Element = instanctiated,
-                Connections = GetConnectedObject(instanctiated.transform.GetChild(0)),
-            };
-
-            _elementConnectionsList.Add(elementConnections);
+            ElementConnectionsList.Add(elementConnections);
             //update connecition
-            _elementConnectionsList.ForEach(item =>
+            ElementConnectionsList.ForEach(item =>
             {
                 int index = elementConnections.Connections.FindIndex(i => i == item.Element);
                 if (index != -1)
@@ -333,9 +363,9 @@ namespace masterland.Building
                 }
             });
 
-            foreach (var element in _elementConnectionsList)
+            foreach (var element in ElementConnectionsList)
             {
-                    element.Connections.RemoveAll(connection => connection == null);
+                element.Connections.RemoveAll(connection => connection == null);
             }
 
             CheckMaterials();
@@ -420,7 +450,7 @@ namespace masterland.Building
 
             visited.Add(current);
 
-            ElementConnections currentConnections = _elementConnectionsList.Find(ec => ec.Element == current);
+            ElementConnections currentConnections = ElementConnectionsList.Find(ec => ec.Element == current);
 
             if (currentConnections != null)
             {
@@ -439,8 +469,36 @@ namespace masterland.Building
             return false;
         }
 
-     
 
+        public void MoveHouseToCenter()
+        {
+            Vector3 center = CalculateCenter();
+            Vector3 offset = Vector3.one * 1.25f;
+            offset.y =0;
+            foreach (ElementConnections elementConnection in ElementConnectionsList)
+            {
+                elementConnection.Element.transform.position -= center;
+                elementConnection.Element.transform.position += offset;
+            }
+
+        }
+
+        Vector3 CalculateCenter()
+        {
+            float sumX = 0f;
+            float sumZ = 0f;
+
+            foreach (ElementConnections obj in ElementConnectionsList)
+            {
+                sumX += obj.Element.transform.position.x;
+                sumZ +=  obj.Element.transform.position.z;
+            }
+
+            float averageX = sumX / ElementConnectionsList.Count;
+            float averageZ = sumZ / ElementConnectionsList.Count;
+
+            return new Vector3(averageX, 0f, averageZ);
+        }
 
     }
 }

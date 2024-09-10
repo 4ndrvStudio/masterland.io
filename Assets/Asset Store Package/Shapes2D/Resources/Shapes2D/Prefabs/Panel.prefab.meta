@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e79ffb4d5659e4ddbb228bc9414c4b33
+timeCreated: 1462954304
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Resources/Shapes2D/Prefabs/Panel.prefab
+  uploadId: 314719

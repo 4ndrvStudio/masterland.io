@@ -21,3 +21,4 @@ MonoBehaviour:
     ButtonIcon: {fileID: 21300000, guid: 791e11083f89702488f30fb59cffcc72, type: 3}
   Stone: 1
   Wood: 1
+  Type: 4

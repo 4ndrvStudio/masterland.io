@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: be9bd3791835d47698329754e8f74356
+timeCreated: 1475178785
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Resources/Shapes2D/Prefabs/Rounded Rectangle.prefab
+  uploadId: 314719

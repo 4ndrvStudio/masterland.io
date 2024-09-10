@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 38f36d84e6fb44409bb572a615f25189
+timeCreated: 1475178883
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Resources/Shapes2D/Prefabs/Donut.prefab
+  uploadId: 314719

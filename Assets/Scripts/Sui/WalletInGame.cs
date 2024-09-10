@@ -41,7 +41,7 @@ namespace masterland.Wallet
         private static JsonSerializerSettings jsonSettings = new JsonSerializerSettings
         {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                Formatting =Formatting.Indented
+                Formatting = Formatting.Indented
         };
 
         public static void Login(string mnemo = null)

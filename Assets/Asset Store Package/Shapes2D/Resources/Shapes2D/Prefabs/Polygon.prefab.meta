@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6c9b74b5b1c0448dd89ec27ebec7a7eb
+timeCreated: 1462394195
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Resources/Shapes2D/Prefabs/Polygon.prefab
+  uploadId: 314719

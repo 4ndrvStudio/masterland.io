@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using masterland.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace masterland.Master
 {
+    using UI;
+    using Manager;
+
     public class Input : MasterComponent
     {
         public MasterInput MasterInput;
@@ -18,7 +20,9 @@ namespace masterland.Master
         public bool PlayDodge;
         public bool PlayAI;
         public bool PlayMint;
-
+        public bool PlayBuild;
+        public bool HouseRotationLeft;
+        public bool HouseRotationRight;
         private bool _avoidMultiClick = false;
 
         public override void Awake() {
@@ -34,6 +38,7 @@ namespace masterland.Master
             MasterInput.Player.FastDodgeRight.performed += OnPerformFastDodgeRight;
             MasterInput.Player.Interact.performed += OnPerformInteract;
             MasterInput.Player.ResidentLicense.performed += OnPerformResidentLicense;
+            MasterInput.Player.Building.performed += OnPerformBuilding;
 
         }
         public override void OnStopClient()
@@ -45,36 +50,85 @@ namespace masterland.Master
             MasterInput.Player.FastDodgeRight.performed -= OnPerformFastDodgeRight;
             MasterInput.Player.Interact.performed -= OnPerformInteract;
             MasterInput.Player.ResidentLicense.performed -= OnPerformResidentLicense;
+            MasterInput.Player.Building.performed -= OnPerformBuilding;
         }
 
         public void OnPerformAttack(InputAction.CallbackContext context) 
         { 
+            if(GameManager.Instance && UIController.Instance &&  UIController.Instance.Standby) 
+                return;
+
             if (!_avoidMultiClick) 
             {
-                StartCoroutine(IEPlayAttack());
-            }
+                if(!PlayBuild)
+                    StartCoroutine(IEPlayAttack());
+                else
+                    _master.Selector.RequireBuild();
+            }   
+            
         }
         public void OnPerformJump(InputAction.CallbackContext context) 
         { 
+            if(GameManager.Instance && UIController.Instance &&  UIController.Instance.Standby) 
+                return;
+
             PlayJump =true;
             if(PlayLockOn) 
                 StartCoroutine(IEPlayDodge());
               
         }
-        public void OnPerformFastDodgeLeft(InputAction.CallbackContext context) { PlayFastDodgeLeft = true ; }
-        public void OnPerformFastDodgeRight(InputAction.CallbackContext context) { PlayFastDodgeRight = true ; }
+        public void OnPerformFastDodgeLeft(InputAction.CallbackContext context) 
+        { 
+            if(GameManager.Instance && UIController.Instance &&  UIController.Instance.Standby) 
+                return;
+            if(PlayBuild)
+                return;
+
+            PlayFastDodgeLeft = true ; 
+        }
+        public void OnPerformFastDodgeRight(InputAction.CallbackContext context) 
+        { 
+            if(GameManager.Instance && UIController.Instance &&  UIController.Instance.Standby) 
+                return;
+
+            if(PlayBuild)
+                return;
+
+            PlayFastDodgeRight = true ; 
+        }
 
         public void OnPerformInteract(InputAction.CallbackContext context) 
         { 
+            if(GameManager.Instance && UIController.Instance &&  UIController.Instance.Standby) 
+                return;
+
             if(_master.Selector.CurrentSelectedObject == null ) return;
 
             _master.Selector.CurrentSelectedObject.CurrentSelectedObject.Interact(_master.Owner);
         }
 
-        public void OnPerformResidentLicense(InputAction.CallbackContext context) { UIManager.Instance.ShowPopup(PopupName.ResidentLicense);}
+        public void OnPerformResidentLicense(InputAction.CallbackContext context) 
+        { 
+            if(GameManager.Instance && UIController.Instance &&  UIController.Instance.Standby) 
+                return;
+            
+            UIManager.Instance.ShowPopup(PopupName.ResidentLicense);
+        }
+
+        public void OnPerformBuilding(InputAction.CallbackContext context) 
+        { 
+            if(GameManager.Instance && UIController.Instance &&  UIController.Instance.Standby) 
+                return;
+            
+            if(SceneController.Instance.LoadSceneAsync(SceneName.Scene_Building)) 
+                UIManager.Instance.ToggleView(ViewName.Unuse);
+        }
 
         private void Update()
         {
+            if(GameManager.Instance && UIController.Instance &&  UIController.Instance.Standby) 
+                return;
+
             if (!IsOwner) return;
 
             if(!_master.MasterBot.PlayBot) 
@@ -83,8 +137,8 @@ namespace masterland.Master
                 PlayLockOn = MasterInput.Player.LockOn.IsPressed();
             }   
             PlaySprint = MasterInput.Player.Sprint.IsPressed();
-
-
+            HouseRotationLeft = PlayBuild && MasterInput.Player.FastDodgeLeft.IsPressed();
+            HouseRotationRight = PlayBuild && MasterInput.Player.FastDodgeRight.IsPressed();
         }
 
         IEnumerator IEPlayAttack() {

@@ -1,9 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 namespace masterland.Building
 {
+    using M = Master;
+    using Manager;
+    using masterland.UI;
+    using UnityEngine.SceneManagement;
+
     public class UserInterface : Singleton<UserInterface>
     {
         [Header("GENERAL")]
@@ -12,15 +18,26 @@ namespace masterland.Building
         [SerializeField] private bool _useGradient;
 
         [Header("BUTTONS")]
+        [SerializeField] private Button _backBtn;
+        [SerializeField] private Button _confirmBtn;
+        [SerializeField] private Button _buildingsBtn;
+
+        [Header("COLORS")]
         [SerializeField] private Color _normalButtonColor;
         [SerializeField] private Color _highlightedButtonColor;
         [SerializeField] private Gradient _highlightedButtonGradient = new Gradient();
+
+   
 
         [Header("INFORMAL CENTER")]
         [SerializeField] private Image _informalCenterBackground;
         [SerializeField] private Text _itemName;
         [SerializeField] private Text _itemDescription;
         [SerializeField] private Image _itemIcon;
+
+        [Header("INFORMAL MINERALS")]
+        [SerializeField] private TextMeshProUGUI _woodText;
+        [SerializeField] private TextMeshProUGUI _stoneText;
 
 
         private int _currentMenuItemIndex;
@@ -31,11 +48,29 @@ namespace masterland.Building
         private List<CircularMenuElement> _menuElements = new List<CircularMenuElement>();
 
         public bool Active { get { return _backgroundPanel.activeSelf; } }
+
+
         public List<CircularMenuElement> MenuElements
         {
             get { return _menuElements; }
             set { _menuElements = value; }
         }
+
+        private void Start() 
+        {
+            _backBtn.onClick.AddListener(() => {
+                if(!SceneController.Instance) return;
+                SceneController.Instance.UnloadSceneAsync(SceneName.Scene_Building);
+                UIManager.Instance.ToggleView(ViewName.Gameplay);
+            });
+
+            _buildingsBtn.onClick.AddListener(() => {
+                BuildingSystem.Instance.ShowBuildingUI();
+            });
+
+            _confirmBtn.onClick.AddListener(SetupBuildingToPlace);
+        }
+
 
         public void Initialize()
         {
@@ -81,6 +116,13 @@ namespace masterland.Building
             }
         }
 
+        public void UpdateMinerals(int wood, int stone) 
+        {
+            _woodText.text = wood.ToString();
+            _stoneText.text = stone.ToString();
+        }
+
+
         private void GetCurrentMenuElement()
         {
             float rotationalIncrementalValue = 360f / MenuElements.Count;
@@ -106,8 +148,9 @@ namespace masterland.Building
         private void RefreshInformalCenter()
         {
             _itemName.text = MenuElements[_currentMenuItemIndex].Name;
-            _itemDescription.text = MenuElements[_currentMenuItemIndex].Description;
             _itemIcon.sprite = MenuElements[_currentMenuItemIndex].ButtonIcon;
+            _itemDescription.text = MenuElements[_currentMenuItemIndex].Description;
+            _itemDescription.text = $"Wood: {BuildingSystem.Instance.BuildingComponents[_currentMenuItemIndex].Wood} \n STONE: {BuildingSystem.Instance.BuildingComponents[_currentMenuItemIndex].Stone}";
         }
 
         private void Select()
@@ -132,6 +175,21 @@ namespace masterland.Building
         public void Deactivate()
         {
             _backgroundPanel.SetActive(false);
+        }
+
+        public void SetupBuildingToPlace() 
+        {
+            if(M.Master.Local)
+            {
+                BuildingSystem.Instance.MoveHouseToCenter();
+                M.Master.Local.Selector.SetupBuilding(BuildingSystem.Instance.ElementConnectionsList,BuildingSystem.Instance.HouseHolder);
+                Scene targetScene = SceneManager.GetSceneByName(SceneName.Scene_Boostrap); 
+                
+                SceneManager.MoveGameObjectToScene(BuildingSystem.Instance.HouseHolder, targetScene);
+
+                SceneController.Instance.UnloadSceneAsync(SceneName.Scene_Building);
+                UIManager.Instance.ToggleView(ViewName.Gameplay);
+            }
         }
 
     }

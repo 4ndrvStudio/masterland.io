@@ -12,6 +12,7 @@ TagManager:
   - Wall
   - Roof
   - Floor
+  - Ground
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ebef7e572ff124d2988bd9343a0028b5
+timeCreated: 1462400924
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Demos/Flappy Shapes/Bird.controller
+  uploadId: 314719

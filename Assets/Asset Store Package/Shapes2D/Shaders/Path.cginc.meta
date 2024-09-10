@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1d4c7f05e00b940d9a99cd0b857bd409
+timeCreated: 1479249944
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Shaders/Path.cginc
+  uploadId: 314719

@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 58247d47821b74087bc2b4ca18bcc8c2
+timeCreated: 1476819039
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 62586
+  packageName: Shapes2D - Make art fast!
+  packageVersion: 1.13
+  assetPath: Assets/Shapes2D/Scripts/Shapes2DPrefs.cs
+  uploadId: 314719

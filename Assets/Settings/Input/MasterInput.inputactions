@@ -144,7 +144,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "02cfc91f-6c23-4b05-822a-62895e07acbb",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -153,6 +153,15 @@
                     "name": "ResidentLicense",
                     "type": "Button",
                     "id": "947e2c8a-b153-46cc-82b8-d25cba33c053",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Building",
+                    "type": "Button",
+                    "id": "361ea269-e6dd-44ce-98fa-59df8ffef1c6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -410,6 +419,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "ResidentLicense",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bddd06f4-3d1d-42b4-93ef-0728ac411748",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Building",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
