@@ -29,7 +29,7 @@ namespace masterland.Master
                 return null;
      
             var nearestToAttack = new List<Collider>(Physics.OverlapSphere(transform.position, _zone, _enemyMask));
-
+            
             SelectedNearest = null;
             _nearestTemp = Mathf.Infinity;
 

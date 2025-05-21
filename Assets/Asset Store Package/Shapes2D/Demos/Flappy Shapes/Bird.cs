@@ -64,7 +64,7 @@
 		
 		void Die() {
 			GetComponent<Animator>().enabled = false;
-			rb.velocity = new Vector2(0, 0);
+			rb.linearVelocity = new Vector2(0, 0);
 			rb.AddForce(new Vector2(0, -force * 2), ForceMode2D.Impulse);
 			dead = true;
 			playing = false;
@@ -72,8 +72,8 @@
 		}
 		
 		void Flap() {
-			if (rb.velocity.y < 0)
-				rb.velocity = new Vector2(rb.velocity.x, 0);
+			if (rb.linearVelocity.y < 0)
+				rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
 			rb.AddForce(new Vector2(0, force), ForceMode2D.Impulse);
 			transform.rotation = Quaternion.Euler(0, 0, 30);
 		}
@@ -85,7 +85,7 @@
 					&& !EventSystem.current.IsPointerOverGameObject())
 				Flap();
 			float theta = Mathf.LerpAngle(-30, 50, 
-					Mathf.Clamp(rb.velocity.y, -1, 1));
+					Mathf.Clamp(rb.linearVelocity.y, -1, 1));
 			transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, theta), Time.deltaTime * 5);
 		}
 	}

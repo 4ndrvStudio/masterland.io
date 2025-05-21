@@ -53,7 +53,7 @@ namespace masterland.Manager
            
             if (GameManager.Instance.IsServer || GameManager.Instance.IsDev)
             {
-               //StartServer();
+               StartServer();
             }
 
             if (_networkManager == null)

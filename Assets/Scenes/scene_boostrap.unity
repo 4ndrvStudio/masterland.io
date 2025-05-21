@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5241314, g: 0.56181264, b: 0.47702473, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11548,6 +11547,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!114 &99906775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25367,31 +25367,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00008624321
+      value: 0.00007988469
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23619
+      value: 3.0333967
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.6888847
+      value: -4.310673
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.98432136
+      value: 0.9649183
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1763845
+      value: 0.26255038
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000009039857
+      value: -0.000008927511
       objectReference: {fileID: 0}
     - target: {fileID: 7725000675303613411, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000016198882
+      value: 0.0000024291394
       objectReference: {fileID: 0}
     - target: {fileID: 8172712363684064962, guid: 77d8a49570751094dac0928ded1c7109, type: 3}
       propertyPath: m_ControllerManager.Controllers.Array.data[0].Input.Gain
@@ -42224,7 +42224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &4952671588778858259
 MonoBehaviour:
   m_ObjectHideFlags: 0
